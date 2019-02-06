@@ -1,0 +1,76 @@
+/*body{
+	font-family: lato;
+}
+.bungkus{
+	margin: 0 auto;
+	width: 35%;
+	margin-top: 100px;
+	min-height: 340px;
+	background: whitesmoke;
+}
+.bungkus-head{
+	background: #3498db;
+	color: white;
+	text-align: center;
+	padding: 12px;
+	margin-bottom: 2%;
+	text-transform: uppercase;
+}
+.bungkus-body{
+	padding: 20px;
+}
+.bungkus-footer{
+	padding-left: 20px;
+	padding-bottom: 20px;
+}
+.alerts{
+	text-align: center;
+	margin-bottom: 0%;
+	width: 35%;
+	margin: 0 auto;
+	margin-top: 2%;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.container{
+	background: white;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.error{
+	color: red;
+}
+table th,
+table td{
+	text-align: center;
+}
+footer{
+	width: 100%;
+	margin-top: 2%;
+	border-top: 2px solid #808080;
+	text-align: center;
+	padding: 15px;
+}
+.scroll{
+	background: transparent;
+	border-radius: 50%;
+	color: #349d8d;
+	padding-top: 1%;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	transition: 0.5s;
+}
+a:hover{
+	text-decoration: none;
+}
+.w3-btn:hover,a,a:hover,.w3-button{
+	text-decoration: none;
+}*/
+
+.dataTables-filter{
+	position: fixed;
+	right: 0;
+}
