@@ -1,17 +1,15 @@
 <title>List Pembayaran Siswa | PPDB SMK Walisongo Pecangaan</title>
 <div class="row">
     <div class="col-md-6">
-        <a href="?a=bayar&ke=tambah" class="btn btn-info"><i class="fa fa-plus"> Tambah Pembayaran</i></a>
-        <a href="export.php?e=bayar" target="_blank" rel="noopener noreferrer" class="btn btn-success"><i class="fa fa-download"> Export Laporan Pembayaran</i></a>
+        <a href="?a=bayar&ke=tambah" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Pembayaran</a>
+        <a href="export.php?e=bayar" target="_blank" rel="noopener noreferrer" class="btn btn-success"><i class="fa fa-download"></i> Export Laporan Pembayaran</a>
     </div>
 </div><br />
 <div class="row">
     <div class="col-md-12">
         <div class="box box-danger">
-            <div class="box-head">
-                <h4 class="text-default">
-                    <center>List Pembayaran Siswa Baru</center>
-                </h4>
+            <div class="box-head" style="text-align: center;">
+                <h4 class="text-default">List Pembayaran Siswa Baru</h4>
             </div>
             <div class="box-body">
                 <div class="table-responsive">
