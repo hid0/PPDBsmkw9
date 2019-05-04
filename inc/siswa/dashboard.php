@@ -18,6 +18,7 @@ if (empty($_GET['a']) || $_GET['a'] == 'index') {
     echo "<title>Dashboard Siswa | PPDB SMK Walisongo</title>";
 } elseif ($_GET['a'] == 'pembayaran') {
     if ($_GET['ke'] == 'history') {
+        echo "<title>Riwayat Pembayaran | PPDB SMK Walisongo Pecangaan</title>";
         include getInc()."siswa/list_bayar.php";
     } elseif ($_GET['ke'] == 'tagihan') {
         echo "Ini halaman nageh utang";
