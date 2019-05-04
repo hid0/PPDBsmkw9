@@ -5,7 +5,7 @@
                 <div class="box-title"><i class="fa fa-money"></i> Riwayat Pembayaran <?= $d['nama_lengkap'] ?></div>
             </div>
             <div class="box-body">
-                <table class="table table-bordered table-striped table-hover" id="riwayat">
+                <table class="table table-bordered table-striped table-hover">
                     <div class="table-responsive">
                         <thead>
                             <tr>
@@ -49,12 +49,12 @@
 </div>
 <script>
     $(document).ready(function() {
-        $("#riwayat").dataTable({
-            "lengthMenu": [
-                [5, 10, 15, -1],
-                [5, 10, 15, "All"]
-            ]
+        // $("#riwayat").dataTable({
+        //     "lengthMenu": [
+        //         [5, 10, 15, -1],
+        //         [5, 10, 15, "All"]
+        //     ]
 
-        });
+        // });
     });
 </script>
