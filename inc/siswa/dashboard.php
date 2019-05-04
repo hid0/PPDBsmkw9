@@ -21,7 +21,9 @@ if (empty($_GET['a']) || $_GET['a'] == 'index') {
         echo "<title>Riwayat Pembayaran | PPDB SMK Walisongo Pecangaan</title>";
         include getInc()."siswa/list_bayar.php";
     } elseif ($_GET['ke'] == 'tagihan') {
-        echo "Ini halaman nageh utang";
+        // echo "Ini halaman nageh utang";
+        echo "<title>Halaman Tagihan Siswa Baru | PPDB SMK Walisongo Pecangaan";
+        include getInc()."siswa/tagihan.php";
     }
 } elseif ($_GET['a'] == 'logout') {
     session_destroy();
