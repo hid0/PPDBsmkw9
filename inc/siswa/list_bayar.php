@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="box box-primary">
             <div class="box-header">
-                <div class="box-title"><i class="fa fa-money"></i> Riwayat Pembayaran <?= $gt['nama_lengkap'] ?></div>
+                <div class="box-title"><i class="fa fa-money"></i> Riwayat Pembayaran <?= $d['nama_lengkap'] ?></div>
             </div>
             <div class="box-body">
                 <table class="table table-bordered table-striped table-hover" id="riwayat">

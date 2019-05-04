@@ -20,7 +20,7 @@ $d = $db->fetch($q);
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Tgl. Pendaftaran</label>
                     <div class="col-sm-8">
-                        <p class="form-control-static"><?= $d['tgl_dftr'] ?></p>
+                        <p class="form-control-static"><?= localdate($d['tgl_dftr']) ?></p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -126,6 +126,13 @@ $d = $db->fetch($q);
                         <p class="form-control-static"><?= $d['saudara'] ?></p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="box box-info">
+            <div class="box-header">
+                <div class="box-title">Informasi Pendaftaran Gelombang</div>
             </div>
         </div>
     </div>
