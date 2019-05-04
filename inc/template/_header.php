@@ -106,7 +106,7 @@
                         <ul class="treeview-menu">
                             <li><a href="?a=pembayaran&ke=history"><i class="fa fa-line-chart"></i> Riwayat Pembayaran</a></li>
                             <li><a href="?a=pembayaran&ke=tagihan"><i class="fa fa-money"></i> Daftar Tagihan</a></li>
-                            <script src="<?= getJS() ?>jquery.min.js"></script>
+                            <!-- <script src="<?= getJS() ?>jquery.min.js"></script> -->
                         </ul>
                     </li>
                     <li>
