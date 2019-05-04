@@ -19,6 +19,7 @@
             $core->redirect('?a=index&ke=dashboard');
         } elseif ($_GET['ke'] == 'dashboard') {
             if ($_SESSION['rol_log'] == 'super-admin' || $_SESSION['rol_log'] == 'tata-usaha' || $_SESSION['rol_log'] == 'keuangan') {
+                echo "<title>Dashboard Admin | PPDB SMK Walisongo</title>";
                 include getInc() . "admin/daftar_siswa.php";
             } else {
                 echo "<title>Error 405 Access Denied!!!</title>";
