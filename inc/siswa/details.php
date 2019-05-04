@@ -136,10 +136,7 @@ $d = $db->fetch($q);
             </div>
             <div class="box-body">
                 <?php
-                // $gel = "SELECT `no_nik`, `tgl_dftr` FROM `registrasi` WHERE `tgl_dftr` BETWEEN `2019-05-02` AND `2019-05-29`";
-                // $save = $db->fetch($gel);
-                // echo $save['tgl_dftr']
-                if ($d['tgl_dftr'] <= '2019-05-02' && $d['tgl_dftr'] <= '2019-05-29') {
+                if ($d['tgl_dftr'] <= '2019-05-02' && $d['tgl_dftr'] < '2019-06-15') {
                     // echo "gel 1";
                     echo "<div class=\"alert alert-info\">Anda Terdaftar Sebagai Siswa Gelombang Ke-1</div>";
                 }elseif ($d['tgl_dftr'] <= '2019-06-15' && $d['tgl_dftr'] <= '2019-07-11') {
