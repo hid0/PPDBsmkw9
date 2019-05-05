@@ -44,8 +44,8 @@
 						Pilih Kompentensi keahlian 1
 					</td>
 					<td>
-						<select class="w3-input w3-border" name="jurusan1">
-							<option>PILIH JURUSAN</option>
+						<select class="w3-input w3-border" name="jurusan1" required>
+							<option value="">PILIH JURUSAN</option>
 							<option value="KT">KRIYA TEKSTIL</option>
 							<option value="TKR">TEKNIK KENDARAAN RINGAN</option>
 							<option value="TKJ">TEKNIK KOMPUTER JARINGAN</option>
@@ -75,7 +75,7 @@
 						Asal sekolah
 					</td>
 					<td>
-						<input type="text" name="asal_sekolah" class="w3-input w3-border" placeholder="nama asal sekolah" required>
+						<input type="text" name="asal_sekolah" class="w3-input w3-border" min="6" placeholder="nama asal sekolah" required>
 					</td>
 				</tr>
 				<tr>
@@ -83,7 +83,7 @@
 						Alamat asal sekolah
 					</td>
 					<td>
-						<textarea class="w3-input w3-border" name="alamat_asal_sekolah" placeholder="Kecamatan, Kabupaten. contoh: Pecangaan, Jepara" required></textarea>
+						<textarea class="w3-input w3-border" name="alamat_asal_sekolah" placeholder="Kecamatan, Kabupaten. contoh: Pecangaan, Jepara" min="6" required></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -94,7 +94,7 @@
 						</small>
 					</td>
 					<td>
-						<input type="number" name="no_nik" minlength="16" class="w3-input w3-border" placeholder="332002**********" required>
+						<input type="number" name="no_nik" minlength="16" maxlength="16" class="w3-input w3-border" placeholder="332002**********" required>
 					</td>
 				</tr>
 				<tr>
@@ -320,7 +320,7 @@
 											<input type="number" name="mtk" class="w3-input w3-border ">
 										</div>
 										<div class="w3-quarter">
-											<label>Ilmu pengetahuan alam</label>
+											<label>IPA</label>
 											<input type="number" name="ipa" class="w3-input w3-border ">
 										</div>
 									</div>
