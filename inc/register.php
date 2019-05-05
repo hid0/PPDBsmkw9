@@ -75,7 +75,7 @@
 						Asal sekolah
 					</td>
 					<td>
-						<input type="text" name="asal_sekolah" class="w3-input w3-border" min="6" placeholder="nama asal sekolah" required>
+						<input type="text" name="asal_sekolah" class="w3-input w3-border" minlength="6" placeholder="nama asal sekolah" required>
 					</td>
 				</tr>
 				<tr>
@@ -83,7 +83,7 @@
 						Alamat asal sekolah
 					</td>
 					<td>
-						<textarea class="w3-input w3-border" name="alamat_asal_sekolah" placeholder="Kecamatan, Kabupaten. contoh: Pecangaan, Jepara" min="6" required></textarea>
+						<textarea class="w3-input w3-border" name="alamat_asal_sekolah" placeholder="Kecamatan, Kabupaten. contoh: Pecangaan, Jepara" minlength="6" required></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -185,11 +185,11 @@
 								<div class="w3-row-padding">
 									<div class="w3-half">
 										<label>RT</label>
-										<input class="w3-input w3-border" type="number" placeholder="RT" name="rt">
+										<input class="w3-input w3-border" type="number" placeholder="RT" name="rt" required>
 									</div>
 									<div class="w3-half">
 										<label>RW</label>
-										<input class="w3-input w3-border" type="number" placeholder="RW" name="rw">
+										<input class="w3-input w3-border" type="number" placeholder="RW" name="rw" required>
 									</div>
 								</div>
 							</td>
@@ -199,15 +199,15 @@
 								<div class="w3-row-padding">
 									<div class="w3-third">
 										<label>Kelurahan/Desa</label>
-										<input class="w3-input w3-border" type="text" placeholder="Kelurahan" name="desa">
+										<input class="w3-input w3-border" type="text" placeholder="Kelurahan" name="desa" required>
 									</div>
 									<div class="w3-third">
 										<label>Kecamatan</label>
-										<input class="w3-input w3-border" type="text" placeholder="Kecamatan" name="kecamatan">
+										<input class="w3-input w3-border" type="text" placeholder="Kecamatan" name="kecamatan" required>
 									</div>
 									<div class="w3-third">
 										<label>Kabupaten</label>
-										<input class="w3-input w3-border" type="text" placeholder="Kabupaten" name="kabupaten">
+										<input class="w3-input w3-border" type="text" placeholder="Kabupaten" name="kabupaten" required>
 									</div>
 								</div>
 							</td>
@@ -215,8 +215,8 @@
 						<tr>
 							<td>Tempat tinggal</td>
 							<td>
-								<select class="w3-input w3-border" name="tempat_tinggal">
-									<option>- Pilih dimana Anda bertempat tinggal</option>
+								<select class="w3-input w3-border" name="tempat_tinggal" required>
+									<option value="">- Pilih dimana Anda bertempat tinggal</option>
 									<option value="bersama orang tua">Bersama orang tua</option>
 									<option value="bersama wali">Bersama wali</option>
 									<option value="kos">Kos</option>
@@ -230,8 +230,8 @@
 						<tr>
 							<td>Moda transportasi</td>
 							<td>
-								<select class="w3-input w3-border" name="transportasi">
-									<option>- Pilih moda transportasi Anda menuju sekolah</option>
+								<select class="w3-input w3-border" name="transportasi" required>
+									<option ="">- Pilih moda transportasi Anda menuju sekolah</option>
 									<option value="Jalan kaki">Jalan kaki</option>
 									<option value="Kendaraan pribadi">Kendaraan pribadi</option>
 									<option value="Kendaraan umum">Kendaraan umum</option>
@@ -240,7 +240,7 @@
 						</tr>
 						<tr>
 							<td>Nomor Hp.</td>
-							<td><input type="number" name="hp" placeholder="dapat menerima sms, boleh nomor milik orang tua atau suadara" class="w3-input w3-border" required></td>
+							<td><input type="number" name="hp" placeholder="dapat menerima sms, boleh nomor milik orang tua atau suadara" max=13 minlength="10" class="w3-input w3-border" required></td>
 						</tr>
 						<tr>
 							<td>Email</td>
