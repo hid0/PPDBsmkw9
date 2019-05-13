@@ -1,6 +1,3 @@
-<title>Dashboard Admin | PPDB SMK Walisongo</title>
-
-<!-- /.row -->
 <div class="row">
     <div class="col-md-12">
         <div class="btn-group">
@@ -20,101 +17,96 @@
                 <li><a href="export.php?e=data&method=hafidz" target="_blank" rel="noopener noreferrer">Hafidz</a></li>
                 <li><a href="export.php?e=data&method=yatim" target="_blank" rel="noopener noreferrer">Yatim</a></li>
                 <li><a href="export.php?e=data&method=w9" target="_blank" rel="noopener noreferrer">SMP/MTs Walisongo</a></li>
-                <li><a href="#" target="_blank" rel="noopener noreferrer">Saudara Se-Yayasan</a></li>
-                <li><a href="#" target="_blank" rel="noopener noreferrer">Putra Guru/Karyawan</a></li>
+                <li><a href="export.php?e=data&method=seYyysn" target="_blank" rel="noopener noreferrer">Saudara Se-Yayasan</a></li>
+                <li><a href="export.php?e=data&method=anakGrKrywn" target="_blank" rel="noopener noreferrer">Putra Guru/Karyawan</a></li>
             </ul>
         </div>
     </div>
 </div><br />
 <div class="row">
     <div class="col-md-12">
-        <div class="panel panel-default">
-        <div class="panel-head">
-            <h4 class="text-default"><center><b>Data Peserta Didik Baru 2019 / 2020</b></center></h4>
-        </div>
-            <div class="panel-body">
+        <div class="box box-success">
+            <div class="box-head">
+                <h4 class="text-default">
+                    <center><b>Data Peserta Didik Baru 2019 / 2020</b></center>
+                </h4>
+            </div>
+            <div class="box-body">
                 <div class="table-responsive">
-                <table class="table table-bordered table-striped table-hover" id="gg">
-                    <thead>
-                        <tr>
-                            <th style="width:3px;">#</th>
-                            <th>Nama</th>
-                            <th style="width:2px;">L/P</th>
-                            <th>TTL</th>
-                            <th>Alamat</th>
-                            <th>Jurusan</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    $no = 1;
-                    $q = $db->query('SELECT * FROM registrasi,data_casis,trespass WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis ');
-                    while ($d = $db->fetch($q)) { ?>
+                    <table class="table table-bordered table-striped table-hover" id="dt-data">
+                        <thead>
+                            <tr>
+                                <th style="width:3px;">#</th>
+                                <th>Nama</th>
+                                <th style="width:2px;">L/P</th>
+                                <th>TTL</th>
+                                <th>Alamat</th>
+                                <th>Jurusan</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $no = 1;
+                            $q = $db->query('SELECT * FROM registrasi,data_casis,trespass WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis ');
+                            while ($d = $db->fetch($q)) { ?>
 
-                        <tr>
-                            <td><?=$no++?></td>
-                            <td><?=$d['nama_lengkap']?></td>
-                            <td><?=$d['jenkel']?></td>
-                            <td><?=$d['ttl']?></td>
-                            <td><?=$d['alamat']?></td>
-                            <td><b><?=$d['jurusan1']?></b><br /><i><?=$d['jurusan2']?></i></td>
-                            <td>
-                                <?php
-                                if ($d['status'] == 'lulus') { ?>
+                                <tr>
+                                    <td><?= $no++ ?></td>
+                                    <td><?= $d['nama_lengkap'] ?></td>
+                                    <td><?= $d['jenkel'] ?></td>
+                                    <td><?= $d['ttl'] ?></td>
+                                    <td><?= $d['alamat'] ?></td>
+                                    <td><b><?= $d['jurusan1'] ?></b><br /><i><?= $d['jurusan2'] ?></i></td>
+                                    <td>
+                                        <?php
+                                        if ($d['status'] == 'lulus') { ?>
 
-                                <form onchange="this.submit()" method="post">
-                                    <select name="status" class="form-control">
-                                        <option value="lulus" selected>LULUS</option>
-                                        <option value="tidak">TIDAK LULUS</option>
-                                    </select>
-                                    <input type="hidden" name="id" value="<?=$d['id_reg']?>">
-                                </form>
+                                            <form onchange="this.submit()" method="post">
+                                                <select name="status" class="form-control">
+                                                    <option value="lulus" selected>LULUS</option>
+                                                    <option value="tidak">TIDAK LULUS</option>
+                                                </select>
+                                                <input type="hidden" name="id" value="<?= $d['id_reg'] ?>">
+                                            </form>
 
-                                <?php
-                                } else { ?>
+                                        <?php
+                                    } else { ?>
 
-                                <form onchange="this.submit()" method="post">
-                                    <select name="status" class="form-control">
-                                        <option value="lulus">LULUS</option>
-                                        <option value="tidak" selected>TIDAK LULUS</option>
-                                    </select>
-                                    <input type="hidden" name="id" value="<?=$d['id_reg']?>">
-                                </form>
+                                            <form onchange="this.submit()" method="post">
+                                                <select name="status" class="form-control">
+                                                    <option value="lulus">LULUS</option>
+                                                    <option value="tidak" selected>TIDAK LULUS</option>
+                                                </select>
+                                                <input type="hidden" name="id" value="<?= $d['id_reg'] ?>">
+                                            </form>
 
-                                <?php
-                                }
-                                if(isset($_POST['status']))
-                                {
-                                    $q = $db->update('registrasi',['status' => $_POST['status']],['id_reg' => $_POST['id']]);
-                                    $core->redirect('admin.php?a=index');  }
-                                ?>
-                            </td>
-                            <td>
-                                <a href="?a=index&ke=detail&id=<?=$d['id_casis']?>" class="btn btn-xs btn-info"><i class="fa fa-info"></i></a>
-                                <!-- <a href="#" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i></a> -->
-                                <a href="?a=index&ke=dashboard&act=hapus&id=<?=$d['id_casis']?>" onclick="return confirm('Anda Yakin ingin menghapus data ini ?')" href="#" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr>
+                                        <?php
+                                    }
+                                    if (isset($_POST['status'])) {
+                                        $q = $db->update('registrasi', ['status' => $_POST['status']], ['id_reg' => $_POST['id']]);
+                                        $core->redirect('admin.php?a=index');
+                                    }
+                                    ?>
+                                    </td>
+                                    <td>
+                                        <a href="?a=index&ke=detail&id=<?= $d['id_casis'] ?>" class="btn btn-xs btn-info"><i class="fa fa-info"></i></a>
+                                        <!-- <a href="#" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i></a> -->
+                                        <a href="?a=index&ke=dashboard&act=hapus&id=<?= $d['id_casis'] ?>" onclick="return confirm('Anda Yakin ingin menghapus data ini ?')" href="#" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
 
-                    <?php
-                    }
-                    if ($_GET['']) {
-                        # code...
-                    }
-                    ?>
-                    </tbody>
-                </table>
+                            <?php
+                        }
+                        if ($_GET['']) {
+                            # code...
+                        }
+                        ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script>
-    $(document).ready( function () {
-        $("#gg").dataTable({
-            "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]]
-        });
-    });
-</script>

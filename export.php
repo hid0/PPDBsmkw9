@@ -929,6 +929,103 @@ if(isset($_GET['e']))
 			<?php
 			$core->export_excel('DataYatim-PPDBSMKW9'.date('Y').'-'.time().'.xls');
 
+		} elseif ($_GET['method'] == 'anakGrKrywn') {
+
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='pa/pi guru/karyawan' ");
+			//$get_data = $db->fetch($q);
+			//print_r($get_data);
+			?>
+			<table border="1" style="width: 100%;border-collapse:collapse;">
+				<thead>
+					<tr>
+						<th style="width:3px">No.</th>
+						<th>NIK</th>
+						<th>Jurusan 1</th>
+						<th>Jurusan 2</th>
+						<th>Nama lengkap</th>
+						<th>JK</th>
+						<th>TTL</th>
+						<th>Agama</th>
+						<th>Alamat</th>
+						<th>Transportasi</th>
+						<th>HP</th>
+						<th>Email</th>
+						<th>Nama Ayah</th>
+						<th>Pekerjaan Ayah</th>
+						<th>Nama Ibu</th>
+						<th>Pekerjaan</th>
+						<th>Nama Wali</th>
+						<th>Pekerjaan Wali</th>
+						<th>Anakke</th>
+						<th>saudara</th>
+						<th>MTK</th>
+						<th>B.Indo</th>
+						<th>B.Inggris</th>
+						<th>IPA</th>
+						<th>Jenis Pendaftaran</th>
+						<th>Jalur Pendaftaran</th>
+						<th>Jalur Khusus</th>
+						<th>Asal Sekolah</th>
+						<th>Alamat Asal Sekolah</th>
+						<th>Prestasi Akademik</th>
+						<th>Prestasi Nonakademik</th>
+						<th>Merokok</th>
+						<th>Berkebutuhan khusus</th>
+						<th>Bertato</th>
+						<th>Buta warna</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+					$n = 1;
+					while($get_data = $db->fetch($q)){ ?>
+					<tr>
+						<td><?=$n++?></td>
+						<td><?=$get_data['no_nik']?></td>
+						<td><?=$get_data['jurusan1']?></td>
+						<td><?=$get_data['jurusan2']?></td>
+						<td><?=$get_data['nama_lengkap']?></td>
+						<td><?=$get_data['jenkel']?></td>
+						<td><?=$get_data['ttl']?></td>
+						<td><?=$get_data['agama']?></td>
+						<td><?=$get_data['alamat']?></td>
+						<td><?=$get_data['transportasi']?></td>
+						<td><?=$get_data['hp']?></td>
+						<td><?=$get_data['email']?></td>
+						<td><?=$get_data['nama_ayah']?></td>
+						<td><?=$get_data['pekerjaan_ayah']?></td>
+						<td><?=$get_data['nama_ibu']?></td>
+						<td><?=$get_data['pekerjaan_ibu']?></td>
+						<td><?=$get_data['nama_wali']?></td>
+						<td><?=$get_data['pekerjaan_wali']?></td>
+						<td><?=$get_data['anakke']?></td>
+						<td><?=$get_data['saudara']?></td>
+						<td><?=$get_data['mtk']?></td>
+						<td><?=$get_data['bindo']?></td>
+						<td><?=$get_data['bing']?></td>
+						<td><?=$get_data['ipa']?></td>
+						<td><?=$get_data['jenis_pendaftaran']?></td>
+						<td><?=$get_data['jalur_pendaftaran']?></td>
+						<td><?=$get_data['jalur_DaftarKhusus']?></td>
+						<td><?=$get_data['asal_sekolah']?></td>
+						<td><?=$get_data['alamat_asal_sekolah']?></td>
+						<td><?=$get_data['prestasi_akademik']?></td>
+						<td><?=$get_data['prestasi_nonakademik']?></td>
+						<td><?=$get_data['merokok']?></td>
+						<td><?=$get_data['bk']?></td>
+						<td><?=$get_data['bertato']?></td>
+						<td><?=$get_data['bw']?></td>
+						<td><?=strtoupper($get_data['status'])?></td>
+					</tr>
+				<?php
+				}
+				?>
+				</tbody>
+			</table>
+			<?php
+			$core->export_excel('Data_pIp_AguruKrywn-PPDBSMKW9'.date('Y').'-'.time().'.xls');
+
 		} elseif ($_GET['method'] == 'w9') {
 
 			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='mts/smp w9' ");
@@ -1025,6 +1122,103 @@ if(isset($_GET['e']))
 			</table>
 			<?php
 			$core->export_excel('DataSmpMtsW9-PPDBSMKW9'.date('Y').'-'.time().'.xls');
+
+		} elseif ($_GET['method'] == 'seYyysn') {
+
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='saudara 1 unit' ");
+			//$get_data = $db->fetch($q);
+			//print_r($get_data);
+			?>
+			<table border="1" style="width: 100%;border-collapse:collapse;">
+				<thead>
+					<tr>
+						<th style="width:3px">No.</th>
+						<th>NIK</th>
+						<th>Jurusan 1</th>
+						<th>Jurusan 2</th>
+						<th>Nama lengkap</th>
+						<th>JK</th>
+						<th>TTL</th>
+						<th>Agama</th>
+						<th>Alamat</th>
+						<th>Transportasi</th>
+						<th>HP</th>
+						<th>Email</th>
+						<th>Nama Ayah</th>
+						<th>Pekerjaan Ayah</th>
+						<th>Nama Ibu</th>
+						<th>Pekerjaan</th>
+						<th>Nama Wali</th>
+						<th>Pekerjaan Wali</th>
+						<th>Anakke</th>
+						<th>saudara</th>
+						<th>MTK</th>
+						<th>B.Indo</th>
+						<th>B.Inggris</th>
+						<th>IPA</th>
+						<th>Jenis Pendaftaran</th>
+						<th>Jalur Pendaftaran</th>
+						<th>Jalur Khusus</th>
+						<th>Asal Sekolah</th>
+						<th>Alamat Asal Sekolah</th>
+						<th>Prestasi Akademik</th>
+						<th>Prestasi Nonakademik</th>
+						<th>Merokok</th>
+						<th>Berkebutuhan khusus</th>
+						<th>Bertato</th>
+						<th>Buta warna</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+					$n = 1;
+					while($get_data = $db->fetch($q)){ ?>
+					<tr>
+						<td><?=$n++?></td>
+						<td><?=$get_data['no_nik']?></td>
+						<td><?=$get_data['jurusan1']?></td>
+						<td><?=$get_data['jurusan2']?></td>
+						<td><?=$get_data['nama_lengkap']?></td>
+						<td><?=$get_data['jenkel']?></td>
+						<td><?=$get_data['ttl']?></td>
+						<td><?=$get_data['agama']?></td>
+						<td><?=$get_data['alamat']?></td>
+						<td><?=$get_data['transportasi']?></td>
+						<td><?=$get_data['hp']?></td>
+						<td><?=$get_data['email']?></td>
+						<td><?=$get_data['nama_ayah']?></td>
+						<td><?=$get_data['pekerjaan_ayah']?></td>
+						<td><?=$get_data['nama_ibu']?></td>
+						<td><?=$get_data['pekerjaan_ibu']?></td>
+						<td><?=$get_data['nama_wali']?></td>
+						<td><?=$get_data['pekerjaan_wali']?></td>
+						<td><?=$get_data['anakke']?></td>
+						<td><?=$get_data['saudara']?></td>
+						<td><?=$get_data['mtk']?></td>
+						<td><?=$get_data['bindo']?></td>
+						<td><?=$get_data['bing']?></td>
+						<td><?=$get_data['ipa']?></td>
+						<td><?=$get_data['jenis_pendaftaran']?></td>
+						<td><?=$get_data['jalur_pendaftaran']?></td>
+						<td><?=$get_data['jalur_DaftarKhusus']?></td>
+						<td><?=$get_data['asal_sekolah']?></td>
+						<td><?=$get_data['alamat_asal_sekolah']?></td>
+						<td><?=$get_data['prestasi_akademik']?></td>
+						<td><?=$get_data['prestasi_nonakademik']?></td>
+						<td><?=$get_data['merokok']?></td>
+						<td><?=$get_data['bk']?></td>
+						<td><?=$get_data['bertato']?></td>
+						<td><?=$get_data['bw']?></td>
+						<td><?=strtoupper($get_data['status'])?></td>
+					</tr>
+				<?php
+				}
+				?>
+				</tbody>
+			</table>
+			<?php
+			$core->export_excel('Data_SeYysn-PPDBSMKW9'.date('Y').'-'.time().'.xls');
 
 		}
 	} elseif ($_GET['e'] == 'bayar') {

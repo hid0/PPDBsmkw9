@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="author" content="Faiz Hidayatulloh">
-    <link rel="shortcut icon" href="<?=getImg()?>logo-smk.png" type="image/x-icon">
-    <link rel="stylesheet" href="<?=getCss()?>bootstrap.min.css">
-    <link rel="stylesheet" href="<?=getCss()?>font-awesome.min.css">
-    <link rel="stylesheet" href="<?=getCss()?>ionicons.min.css">
-    <link rel="stylesheet" href="<?=getCss()?>AdminLTE.min.css">
-    <link rel="stylesheet" href="<?=getCss()?>skins/_all-skins.min.css">
+    <link rel="shortcut icon" href="<?= getImg() ?>logo-smk.png" type="image/x-icon">
+    <link rel="stylesheet" href="<?= getCss() ?>bootstrap.min.css">
+    <link rel="stylesheet" href="<?= getCss() ?>font-awesome.min.css">
+    <link rel="stylesheet" href="<?= getCss() ?>ionicons.min.css">
+    <link rel="stylesheet" href="<?= getCss() ?>AdminLTE.min.css">
+    <link rel="stylesheet" href="<?= getCss() ?>skins/_all-skins.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <script src="<?=getJS()?>jquery.min.js"></script>
+    <script src="<?= getJS() ?>jquery.min.js"></script>
 </head>
 
-<body class="hold-transition skin-yellow fixed">
+<body class="hold-transition skin-green fixed">
 
     <div class="wrapper">
 
@@ -39,7 +39,7 @@
                         <li class="dropdown messages-menu">
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="<?=getImg()?>avatar5.png" class="user-image" alt="User Image">
+                                <img src="<?= getImg() ?>avatar5.png" class="user-image" alt="User Image">
                                 <span class="hidden-xs">Account</span>
                             </a>
                             <ul class="dropdown-menu">
@@ -50,15 +50,15 @@
                                 $d = $db->fetch($q);
                                 ?>
                                 <li class="user-header">
-                                    <img src="<?=getImg()?>avatar5.png" class="img-circle" alt="User Image">
+                                    <img src="<?= getImg() ?>avatar5.png" class="img-circle" alt="User Image">
                                     <p>
-                                        <?=$d['nama_lengkap']?>
+                                        <?= $d['nama_lengkap'] ?>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="?a=pengaturan" class="btn btn-default btn-flat">Setting</a>
+                                        <a href="?a=pengaturan" class="btn btn-default btn-flat disabled">Setting</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="?a=logout" onclick="return confirm('Apakah ingin Keluar?')" class="btn btn-default btn-flat">Logout</a>
@@ -78,10 +78,10 @@
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="<?=getImg()?>avatar5.png" class="img-circle" alt="User Image">
+                        <img src="<?= getImg() ?>avatar5.png" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p style="font-size: 12px;"><?=$d['nama_lengkap']?></p>
+                        <p style="font-size: 12px;"><?= $d['nama_lengkap'] ?></p>
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                         <ul class="treeview-menu">
                             <li><a href="?a=pembayaran&ke=history"><i class="fa fa-line-chart"></i> Riwayat Pembayaran</a></li>
                             <li><a href="?a=pembayaran&ke=tagihan"><i class="fa fa-money"></i> Daftar Tagihan</a></li>
-                            <script src="<?=getJS()?>jquery.min.js"></script>
+                            <!-- <script src="<?= getJS() ?>jquery.min.js"></script> -->
                         </ul>
                     </li>
                     <li>
