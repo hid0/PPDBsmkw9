@@ -21,7 +21,8 @@ if($d['jenkel'] == 'L')
 }else{
 	$jk = "Unknown";
 }
-$content =
+
+$c =
 '<style type="text/css">
 	<!--
 	.content{width: 100%;margin:  0 auto;}
@@ -86,6 +87,112 @@ $content =
 	<tr><td>ONLINE </td><td>'.$getKet['homepage'].'</td></tr>-->
 </table>
 </div>';
+
+$content = '
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        
+    }
+    .content {
+        border: 1px solid #000;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+    }
+    .judul {
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 0;
+        margin: 2px;
+	}
+	#kop {
+		height: 100px !important;
+		width: 100% !important;
+	}
+</style>
+<div class="content">
+    <table id="kop">
+        <thead>
+            <tr>
+                <img src="./assets/svg/kop.svg" alt="">
+            </tr>
+        </thead>
+        <br />
+        <br />
+        <tbody>
+            <h3 class="judul">
+                <p>bukti pendaftaran</p>
+                <p>peserta didik baru smk walisongo pecangaan</p>
+                <p>tahun pelajaran 2019/2020</p>
+            </h3>
+        </tbody>
+	</table>
+	<br />
+    <br />
+    <table>
+        <thead>
+            <tr>
+
+            </tr>
+        </thead>
+        <tbody>
+            <!-- bagian biodata siswa baru  -->
+            <tr>
+                <td>
+                    Nomor Pendaftaran
+                </td>
+                <td>: '.$d['id_reg'].'</td>
+			</tr>
+			<tr>
+                <td>
+                    Nama Lengkap     
+                </td>
+                <td>'.$d['nama_lengkap'].'</td>
+			</tr>
+			<tr>
+                <td>
+                    Tempat, Tanggal lahir
+                </td>
+                <td>'.$d['ttl'].'</td>
+			</tr>
+			<tr>
+                <td>
+                    Alamat               
+                </td>
+                <td>'.$d['alamat'].'</td>
+			</tr>
+			<tr>
+                <td>
+                    Asal Sekolah         
+                </td>
+                <td>'.$d['asal_sekolah'].'</td>
+			</tr>
+			<tr>
+                <td>
+                    Pilihan Jurusan      
+                </td>
+                <td>'.$d['jurusan1'].' dan '.$d['jurusan2'].'</td>
+			</tr>
+			<tr>
+                <td>
+                    Tanggal Pendaftaran  
+                </td>
+                <td>'.$core->IndoTgl().'</td>
+			</tr>
+			<tr>
+                <td>
+                    Username / Password  
+                </td>
+                <td>'.$username.' / '.$password.'</td>
+			</tr>
+		</tbody>
+	</table><br /><br /><br />
+	<img src="./assets/svg/isi.svg" id="ngisor">
+</div>
+';
 
 
 $html2pdf = new \Spipu\Html2Pdf\Html2Pdf('P','A4','en', false, 'UTF-8');

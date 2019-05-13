@@ -136,6 +136,7 @@ $d = $db->fetch($q);
             </div>
             <div class="box-body">
                 <?php
+                // anda terdaftar pada gel 1, segera daftar ulang maksimal 31 Mei 2019 untuk mendapatkan 20% potongan seragam
                 if ($d['tgl_dftr'] >= '2019-05-02' && $d['tgl_dftr'] <= '2019-06-14') {
                     // echo "gel 1";
                     echo "<div class=\"alert alert-info\">Anda Terdaftar Sebagai Siswa Gelombang Ke-1</div>";
