@@ -171,13 +171,13 @@
 						<tr>
 							<td>Tempat lahir</td>
 							<td>
-								<input type="text" name="tmpt_lahir" placeholder="Jepara" class="w3-input w3-border" required>
+								<input type="text" name="tmpt_lahir" value="Jepara" class="w3-input w3-border" required>
 							</td>
 						</tr>
 						<tr>
 							<td>Tanggal lahir</td>
 							<td>
-								<input type="date" name="tgl_lahir" placeholder="mm/dd/yyyy" class="w3-input w3-border" required>
+								<input type="text" name="tgl_lahir" placeholder="1 Januari 2003" class="w3-input w3-border" required>
 							</td>
 						</tr>
 						<tr>
