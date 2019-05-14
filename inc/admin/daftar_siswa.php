@@ -99,8 +99,15 @@
 
                             <?php
                         }
-                        if ($_GET['']) {
-                            # code...
+                        if ($_GET['act'] == 'hapus') {
+                            if ($_SESSION['rol_log'] == 'super-admin') {
+                                $db->delete('data_casis', ['id_casis' => $_GET['id']]);
+                                $db->delete('trespass', ['id_casis' => $_GET['id']]);
+                                $db->delete('nilai_un', ['id_casis' => $_GET['id']]);
+                                echo "<script>alert('Berhasil Terhapus!!!')</script>";
+                            } else {
+                                echo "<script>alert('Ente Bukan Admin....')</script>";
+                            }
                         }
                         ?>
                         </tbody>

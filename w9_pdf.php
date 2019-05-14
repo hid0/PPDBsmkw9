@@ -91,51 +91,60 @@ $c =
 $content = '
 <style>
     * {
-        margin: 0;
+		margin: 0;
         padding: 0;
-        
     }
-    .content {
-        border: 1px solid #000;
-        height: 100%;
-        width: 100%;
-        text-align: center;
-    }
+	#kop {
+		align-content: center;
+		text-align: center;
+		margin: 0 auto;
+		top: 0;
+		height: 100px !important;
+		width: 100% !important;
+		margin: 0 auto;
+	}
+	#data {
+		font-size: 11px;
+		text-align: none !important;
+	}
     .judul {
-        text-align: center;
+		text-align: center;
         text-decoration: none;
         text-transform: uppercase;
         padding: 0;
         margin: 2px;
 	}
-	#kop {
-		height: 100px !important;
-		width: 100% !important;
+	#ngisor {
+		bottom: 0;
 	}
 </style>
 <div class="content">
-    <table id="kop">
-        <thead>
-            <tr>
-                <img src="./assets/svg/kop.svg" alt="">
-            </tr>
-        </thead>
-        <br />
-        <br />
-        <tbody>
-            <h3 class="judul">
-                <p>bukti pendaftaran</p>
-                <p>peserta didik baru smk walisongo pecangaan</p>
-                <p>tahun pelajaran 2019/2020</p>
-            </h3>
-        </tbody>
-	</table>
+	<div id="kop" style="left: 10px;">
+		<img src="./assets/svg/kop.png">
+	</div>
 	<br />
-    <br />
-    <table>
+	<h5 class="judul">
+		<p>bukti pendaftaran</p>
+		<p>peserta didik baru smk walisongo pecangaan</p>
+		<p>tahun pelajaran 2019/2020</p>
+	</h5>
+    <table id="data>
         <thead>
             <tr>
-
+				<th></th>
+				<th></th>
+            </tr>
+            <tr>
+				<th></th>
+				<th></th>
+            </tr>
+            <tr>
+				<th></th>
+				<th></th>
+            </tr>
+            <tr>
+				<th></th>
+				<th></th>
             </tr>
         </thead>
         <tbody>
@@ -150,47 +159,47 @@ $content = '
                 <td>
                     Nama Lengkap     
                 </td>
-                <td>'.$d['nama_lengkap'].'</td>
+                <td>: '.$d['nama_lengkap'].'</td>
 			</tr>
 			<tr>
                 <td>
                     Tempat, Tanggal lahir
                 </td>
-                <td>'.$d['ttl'].'</td>
+                <td>: '.$d['ttl'].'</td>
 			</tr>
 			<tr>
                 <td>
                     Alamat               
                 </td>
-                <td>'.$d['alamat'].'</td>
+                <td>: '.$d['alamat'].'</td>
 			</tr>
 			<tr>
                 <td>
                     Asal Sekolah         
                 </td>
-                <td>'.$d['asal_sekolah'].'</td>
+                <td>: '.$d['asal_sekolah'].'</td>
 			</tr>
 			<tr>
                 <td>
                     Pilihan Jurusan      
                 </td>
-                <td>'.$d['jurusan1'].' dan '.$d['jurusan2'].'</td>
+                <td>: '.$d['jurusan1'].' dan '.$d['jurusan2'].'</td>
 			</tr>
 			<tr>
                 <td>
                     Tanggal Pendaftaran  
                 </td>
-                <td>'.$core->IndoTgl().'</td>
+                <td>: '.$core->IndoTgl().'</td>
 			</tr>
 			<tr>
                 <td>
                     Username / Password  
                 </td>
-                <td>'.$username.' / '.$password.'</td>
+                <td>: '.$username.' / '.$password.'</td>
 			</tr>
 		</tbody>
-	</table><br /><br /><br />
-	<img src="./assets/svg/isi.svg" id="ngisor">
+	</table>
+	<img src="./assets/svg/isi.png" id="ngisor">
 </div>
 ';
 
