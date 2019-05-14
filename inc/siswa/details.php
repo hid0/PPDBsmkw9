@@ -139,7 +139,7 @@ $d = $db->fetch($q);
                 // anda terdaftar pada gel 1, segera daftar ulang maksimal 31 Mei 2019 untuk mendapatkan 20% potongan seragam
                 if ($d['tgl_dftr'] >= '2019-05-02' && $d['tgl_dftr'] <= '2019-06-14') {
                     // echo "gel 1";
-                    echo "<div class=\"alert alert-info\">Anda Terdaftar Sebagai Siswa Gelombang Ke-1, \nsegera daftar ulang maksimal 31 Mei 2019 untuk mendapatkan 20% potongan seragam</div>";
+                    echo "<div class=\"alert alert-info\">Anda Terdaftar Sebagai Siswa Gelombang Ke-1, \n segera daftar ulang maksimal 31 Mei 2019 untuk mendapatkan 20% potongan seragam</div>";
                 }elseif ($d['tgl_dftr'] >= '2019-06-15' && $d['tgl_dftr'] <= '2019-07-11') {
                     // echo "gel 2";
                     echo "<div class=\"alert alert-info\">Anda Terdaftar Sebagai Siswa Gelombang Ke-2</div>";
