@@ -321,7 +321,7 @@ $d = $db->fetch($q);
                         </div>
                     </div>
                     <?php
-                    if (isset($_POST['gantiGan'])) {
+                    if (isset($_POST['gentiGan'])) {
                         // $q = $db->update('registrasi',['status' => $_POST['status']],['id_reg' => $_POST['id']]);
                         $q = $db->update('registrasi', ['password_login' => md5($_POST['newPass'])], ['id_casis' => $_POST['iduser']]);
                     }
