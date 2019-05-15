@@ -49,10 +49,12 @@ $d = $db->fetch($q);
                     <label class="col-sm-4 control-label">Jenis Kelamin</label>
                     <div class="col-sm-8">
                         <?php
-                        if ($d['jenkel' == 'L']) {
-                            $jk = 'Laki-laki';
-                        } else {
-                            $jk = 'Perempuan';
+                        if($d['jenkel'] == 'L') {
+                            $jk = "Laki-Laki";
+                        }elseif($d['jenkel'] == 'P') {
+                            $jk = "Perempuan";
+                        }else {
+                            $jk = "Unknown";
                         }
                         ?>
                         <p class="form-control-static"><?= $jk ?></p>
