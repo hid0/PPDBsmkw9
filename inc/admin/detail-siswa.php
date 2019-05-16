@@ -280,12 +280,12 @@ $d = $db->fetch($q);
             </div>
             <form action="" method="post">
                 <div class="modal-body">
-                    <input type="hidden" name="iduser" value="<?= $d['id_casis'] ?>">
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon">
                                 <span class="fa fa-user"></span>
                             </div>
+                            <input type="hidden" name="iduser" value="<?= $d['id_reg'] ?>">
                             <input type="text" class="form-control" value="<?= $d['no_nik'] ?>" readonly>
                             <span class="help-block"></span>
                         </div>

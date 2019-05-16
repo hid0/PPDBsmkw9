@@ -21,35 +21,48 @@
             if ($_SESSION['rol_log'] == 'super-admin' || $_SESSION['rol_log'] == 'tata-usaha' || $_SESSION['rol_log'] == 'keuangan') {
                 echo "<title>Dashboard Admin | PPDB SMK Walisongo</title>";
                 include getInc() . "admin/daftar_siswa.php";
-                if ($_GET['act'] == 'hapus') {
-                    if ($_SESSION['rol_log'] == 'super-admin') {
-                        $db->delete('data_casis', ['id_casis' => $_GET['id']]);
-                        $db->delete('trespass', ['id_casis' => $_GET['id']]);
-                        $db->delete('nilai_un', ['id_casis' => $_GET['id']]);
-                        echo "<script>alert('Berhasil Terhapus!!!')</script>";
-                        $core->redirect('?a=index');
-                    } else {
-                        $core->redirect('?a=index');
-                        echo "<script>alert('Ente Bukan Admin....')</script>";
-                    }
-                }
-                if (isset($_POST['gentiGan'])) {
-                    // $q = $db->update('registrasi',['status' => $_POST['status']],['id_reg' => $_POST['id']]);
-                    if ($_POST['newPass'] == $_POST['newPass1']) {
-                       $db->update('registrasi', ['password_login' => md5($_POST['newPass1'])], ['id_casis' => $_POST['iduser']]);
-                        echo "<script>alert('Changed!!!')</script>";
-                    } else {
-                        echo "<script>alert('Password Tidak Cocok!!!')</script>";
-                    }
-                }
             } else {
                 echo "<title>Error 405 Access Denied!!!</title>";
                 echo "<h1 class=\"text-danger\">Anda tidak punya akses</h1>";
             }
+            if ($_GET['act'] == 'hapus') {
+                if ($_SESSION['rol_log'] == 'super-admin') {
+                    $db->delete('data_casis', ['id_reg' => $_GET['idr']]);
+                    $db->delete('trespass', ['id_casis' => $_GET['idc']]);
+                    $db->delete('nilai_un', ['id_reg' => $_GET['idr']]);
+                    $core->redirect('?a=index');
+                    echo "<script>alert('Berhasil Terhapus!!!')</script>";
+                } elseif ($_SESSION['rol_log'] != 'super-admin') {
+                    $core->redirect('?a=index');
+                    echo "<script>alert('Ente Bukan Admin....')</script>";
+                }
+            }
+            if ($_GET['act'] == 'hapus') {
+                if ($_SESSION['rol_log'] == 'super-admin') {
+                    $db->delete('data_casis', ['id_reg' => $_GET['idr']]);
+                    $db->delete('trespass', ['id_casis' => $_GET['idc']]);
+                    $db->delete('nilai_un', ['id_reg' => $_GET['idr']]);
+                    echo "<script>alert('Berhasil Terhapus!!!')</script>";
+                    $core->redirect('?a=index');
+                } else {
+                    $core->redirect('?a=index');
+                    echo "<script>alert('Ente Bukan Admin....')</script>";
+                }
+            }
         } elseif ($_GET['ke'] == 'detail') {
             if ($_SESSION['rol_log'] == 'super-admin' || $_SESSION['rol_log'] == 'tata-usaha' || $_SESSION['rol_log'] == 'keuangan') {
                 include getInc() . "admin/detail-siswa.php";
-                
+                if (isset($_POST['gentiGan'])) {
+                    // $q = $db->update('registrasi',['status' => $_POST['status']],['id_reg' => $_POST['id']]);
+                    if ($_POST['newPass'] == $_POST['newPass1']) {
+                        $db->update('registrasi', ['password_login' => md5($_POST['newPass1'])], ['id_reg' => $_POST['iduser']]);
+                        echo "<script>alert('Changed!!!')</script>";
+                    } elseif ($_POST['newPass'] != $_POST['newPass1']) {
+                        echo "<script>alert('Password Tidak Cocok!!!')</script>";
+                    } else {
+                        echo "<script>alert('Error!!!')</script>";
+                    }
+                }
             } else {
                 echo "<title>Error 405 Access Denied!!!</title>";
                 echo "<h1 class=\"text-danger\">Anda tidak punya akses</h1>";
