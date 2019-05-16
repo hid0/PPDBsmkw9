@@ -8,7 +8,7 @@ $d = $db->fetch($q);
     <div class="col-md-8">
         <div class="box box-primary">
             <div class="box-header">
-                <div class="box-title">Biodata Siswa</div>
+                <div class="box-title">Biodata Peserta Didik Baru</div>
             </div>
             <div class="box-body">
                 <div class="form-group">
@@ -39,10 +39,12 @@ $d = $db->fetch($q);
                     <label class="col-sm-4 control-label">Jenis Kelamin</label>
                     <div class="col-sm-8">
                         <?php
-                        if ($d['jenkel' == 'L']) {
-                            $jk = 'Laki-laki';
-                        } else {
-                            $jk = 'Perempuan';
+                        if($d['jenkel'] == 'L') {
+                            $jk = "Laki-Laki";
+                        }elseif($d['jenkel'] == 'P') {
+                            $jk = "Perempuan";
+                        }else {
+                            $jk = "Unknown";
                         }
                         ?>
                         <p class="form-control-static"><?= $jk ?></p>
@@ -115,7 +117,7 @@ $d = $db->fetch($q);
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-4 control-label">Anak Ke-</label>
+                    <label class="col-sm-4 control-label">Anak-</label>
                     <div class="col-sm-8">
                         <p class="form-control-static"><?= $d['anakke'] ?></p>
                     </div>
@@ -139,36 +141,36 @@ $d = $db->fetch($q);
                 // anda terdaftar pada gel 1, segera daftar ulang maksimal 31 Mei 2019 untuk mendapatkan 20% potongan seragam
                 if ($d['tgl_dftr'] >= '2019-05-02' && $d['tgl_dftr'] <= '2019-06-14') {
                     // echo "gel 1";
-                    echo "<div class=\"alert alert-info\">Anda Terdaftar Sebagai Siswa Gelombang Ke-1, \n segera daftar ulang maksimal 31 Mei 2019 untuk mendapatkan 20% potongan seragam</div>";
+                    echo "<div class=\"alert alert-info\">Anda Terdaftar Sebagai Peserta Didik Baru Gelombang-1, \n segera daftar ulang maksimal 31 Mei 2019 untuk mendapatkan 20% potongan seragam</div>";
                 }elseif ($d['tgl_dftr'] >= '2019-06-15' && $d['tgl_dftr'] <= '2019-07-11') {
                     // echo "gel 2";
-                    echo "<div class=\"alert alert-info\">Anda Terdaftar Sebagai Siswa Gelombang Ke-2</div>";
+                    echo "<div class=\"alert alert-info\">Anda Terdaftar Sebagai Peserta Didik Baru Gelombang-2</div>";
                 } else {
                     // echo "gel 3";
-                    echo "<div class=\"alert alert-info\">Anda Terdaftar Sebagai Siswa Gelombang Ke-3</div>";
+                    echo "<div class=\"alert alert-info\">Anda Terdaftar Sebagai Peserta Didik Baru Gelombang-3</div>";
                 }
                 ?>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4" style="text-align: center;">
         <div class="box box-info">
             <div class="box-header">
-                <div class="box-title" style="text-align: center;">Informasi Penerimaan Peserta Didik Baru SMK Walisongo</div>
+                <div class="box-title">Informasi Penerimaan Peserta Didik Baru SMK Walisongo</div>
             </div>
             <div class="box-body">
                 <?php
                 if ($d['status'] == 'lulus') { ?>
 
                     <div class="alert alert-success">
-                        Selamat Anda Diterima menjadi Siswa di SMK Walisongo Pecangaan
+                        Selamat Anda Diterima menjadi Peserta Didik Baru di SMK Walisongo Pecangaan
                     </div>
 
                 <?php
             } elseif ($d['status'] == 'tidak') { ?>
 
                     <div class="alert alert-danger">
-                        Anda Belum Diterima menjadi Siswa di SMK Walisongo Pecangaan
+                        Segera Menyelesaikan Daftar Ulang Anda
                     </div>
 
                 <?php

@@ -21,6 +21,27 @@
             if ($_SESSION['rol_log'] == 'super-admin' || $_SESSION['rol_log'] == 'tata-usaha' || $_SESSION['rol_log'] == 'keuangan') {
                 echo "<title>Dashboard Admin | PPDB SMK Walisongo</title>";
                 include getInc() . "admin/daftar_siswa.php";
+                if ($_GET['act'] == 'hapus') {
+                    if ($_SESSION['rol_log'] == 'super-admin') {
+                        $db->delete('data_casis', ['id_casis' => $_GET['id']]);
+                        $db->delete('trespass', ['id_casis' => $_GET['id']]);
+                        $db->delete('nilai_un', ['id_casis' => $_GET['id']]);
+                        echo "<script>alert('Berhasil Terhapus!!!')</script>";
+                        $core->redirect('?a=index');
+                    } else {
+                        $core->redirect('?a=index');
+                        echo "<script>alert('Ente Bukan Admin....')</script>";
+                    }
+                }
+                if (isset($_POST['gentiGan'])) {
+                    // $q = $db->update('registrasi',['status' => $_POST['status']],['id_reg' => $_POST['id']]);
+                    if ($_POST['newPass'] == $_POST['newPass1']) {
+                       $db->update('registrasi', ['password_login' => md5($_POST['newPass1'])], ['id_casis' => $_POST['iduser']]);
+                        echo "<script>alert('Changed!!!')</script>";
+                    } else {
+                        echo "<script>alert('Password Tidak Cocok!!!')</script>";
+                    }
+                }
             } else {
                 echo "<title>Error 405 Access Denied!!!</title>";
                 echo "<h1 class=\"text-danger\">Anda tidak punya akses</h1>";
@@ -28,6 +49,7 @@
         } elseif ($_GET['ke'] == 'detail') {
             if ($_SESSION['rol_log'] == 'super-admin' || $_SESSION['rol_log'] == 'tata-usaha' || $_SESSION['rol_log'] == 'keuangan') {
                 include getInc() . "admin/detail-siswa.php";
+                
             } else {
                 echo "<title>Error 405 Access Denied!!!</title>";
                 echo "<h1 class=\"text-danger\">Anda tidak punya akses</h1>";
@@ -66,7 +88,7 @@
     } elseif ($_GET['a'] == 'nagih') {
         if ($_GET['ex'] == '' || $_GET['ex'] == 'index') {
             if ($_SESSION['rol_log'] == 'super-admin') {
-                echo "<title>Daftar Tagihan Siswa Baru | PPDB SMK Walisongo Pecangaan</title>";
+                echo "<title>Daftar Tagihan Peserta Didik Baru | PPDB SMK Walisongo Pecangaan</title>";
                 include getInc() . "admin/tagihan/index.php";
             } else {
                 echo "<title>Error 405 Access Denied!!!</title>";
@@ -74,7 +96,7 @@
             }
         } elseif ($_GET['ex'] == 'add') {
             if ($_SESSION['rol_log'] == 'super-admin') {
-                echo "<title>Tambah Daftar Tagihan Siswa Baru | PPDB SMK Walisongo Pecangaan</title>";
+                echo "<title>Tambah Daftar Tagihan Peserta Didik Baru | PPDB SMK Walisongo Pecangaan</title>";
                 include getInc() . "admin/tagihan/add.php";
             } else {
                 echo "<title>Error 405 Access Denied!!!</title>";

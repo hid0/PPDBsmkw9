@@ -24,7 +24,6 @@
 								<option value="mts/smp w9">dari MTs./SMP Walisongo</option>
 								<option value="saudara 1 unit">Saudara Kandung siswa di Yayasan Walisongo</option>
 								<option value="pa/pi guru/karyawan">Putra/i Guru/karyawan di Yayasan Walisongo</option>
-								<option value="pilih KT">Peserta didik Kriya Tekstil dan Batik</option>
 								<option value="tahfidz">Peserta didik Tahfidz minimal 5 Juz</option>
 							</select>
 						</div>
