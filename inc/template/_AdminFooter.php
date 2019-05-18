@@ -20,6 +20,9 @@
                 [5, 10, 15, -1],
                 [5, 10, 15, "All"]
             ],
+            "targets": 'no-sort',
+            "bSort": false,
+            "order": []
         });
         // console.log('Berhasil');
     });

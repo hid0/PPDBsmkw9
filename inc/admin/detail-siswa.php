@@ -26,7 +26,7 @@ $d = $db->fetch($q);
                 <div class="form-group">
                     <label class="control-label">No.Pendaftaran</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="id_reg" id="id_reg" value="<?= date('Y') . '-' . $d['id_reg'] ?>" class="form-control" readonly disabled>
+                    <input type="text" name="id_reg" id="id_reg" value="<?= $d['id_reg'] ?>" class="form-control" readonly disabled>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Tgl. Pendaftaran</label>
@@ -90,7 +90,7 @@ $d = $db->fetch($q);
                 <div class="form-group">
                     <label class="control-label">Nama Ibu</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="nyokal" id="nyokap" value="<?= $d['nama_ibu'] ?>" class="form-control" required>
+                    <input type="text" name="nyokap" id="nyokap" value="<?= $d['nama_ibu'] ?>" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Pekerjaan Ibu</label>
@@ -236,7 +236,7 @@ $d = $db->fetch($q);
                 <div class="form-group">
                     <label class="control-label">Bertato</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <select name="rokok" id="rokok" class="form-control" required>
+                    <select name="tato" id="tato" class="form-control" required>
                         <option value="">-- Pilih Satu --</option>
                         <option value="IYA" <?= $d['bertato'] == 'IYA' ? 'selected' : '' ?>>IYA</option>
                         <option value="TIDAK" <?= $d['bertato'] == 'TIDAK' ? 'selected' : '' ?>>TIDAK</option>
@@ -245,7 +245,7 @@ $d = $db->fetch($q);
                 <div class="form-group">
                     <label class="control-label">Berkebutuhan Khusus</label>
                     <!-- <p class="form-control-static"><?= $d['bk'] ?></p> -->
-                    <select name="rokok" id="rokok" class="form-control" required>
+                    <select name="bk" id="bk" class="form-control" required>
                         <option value="">-- Pilih Satu --</option>
                         <option value="IYA" <?= $d['bk'] == 'IYA' ? 'selected' : '' ?>>IYA</option>
                         <option value="TIDAK" <?= $d['bk'] == 'TIDAK' ? 'selected' : '' ?>>TIDAK</option>
@@ -254,7 +254,7 @@ $d = $db->fetch($q);
                 <div class="form-group">
                     <label class="control-label">Buta Warna</label>
                     <!-- <p class="form-control-static"><?= $d['bw'] ?></p> -->
-                    <select name="rokok" id="rokok" class="form-control" required>
+                    <select name="bw" id="bw" class="form-control" required>
                         <option value="">-- Pilih Satu --</option>
                         <option value="IYA" <?= $d['bw'] == 'IYA' ? 'selected' : '' ?>>IYA</option>
                         <option value="TIDAK" <?= $d['bw'] == 'TIDAK' ? 'selected' : '' ?>>TIDAK</option>
