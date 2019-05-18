@@ -92,7 +92,7 @@
                                     </td>
                                     <td>
                                         <!-- <a href="#" class="btn btn-xs btn-info"><i class="fa fa-info"></i></a> -->
-                                        <a href="#" class="btn btn-xs btn-success"><i class="fa fa-print"></i></a>
+                                        <a href="export.php?e=single&id=<?= $d['id_casis'] ?>" target="_blank" class="btn btn-xs btn-success"><i class="fa fa-print"></i></a>
                                         <a href="?a=index&ke=detail&idr=<?= $d['id_reg'] ?>&id=<?= $d['id_casis'] ?>" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i></a>
                                         <a href="?a=index&ke=dashboard&ac=del&idr=<?= $d['id_reg'] ?>&idc=<?= $d['id_casis'] ?>" onclick="return confirm('Anda Yakin ingin menghapus data ini ?')" href="#" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>
                                     </td>
