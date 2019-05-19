@@ -26,9 +26,9 @@
 <div class="row">
     <div class="col-md-12">
         <div class="box box-success">
-            <div class="box-head">
+            <div class="box-head" style="font-weight: bold;text-align: center;">
                 <h4 class="text-default">
-                    <center><b>Data Peserta Didik Baru 2019 / 2020</b></center>
+                    Data Peserta Didik Baru 2019 / 2020
                 </h4>
             </div>
             <div class="box-body">
@@ -49,7 +49,7 @@
                         <tbody>
                             <?php
                             $no = 1;
-                            $q = $db->query('SELECT * FROM registrasi,data_casis,trespass WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis ');
+                            $q = $db->query('SELECT * FROM registrasi,data_casis,trespass WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis ORDER BY data_casis.id_casis DESC');
                             while ($d = $db->fetch($q)) { ?>
 
                                 <tr>

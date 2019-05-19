@@ -42,23 +42,23 @@
                 include getInc() . "admin/detail-siswa.php";
                 if (isset($_POST['savekabeh'])) {
                     // biodata
-                    $tgl  = $core->filter_xss($_POST['tgl_dftr']); //tgl_dftr
-                    $nama = $core->filter_xss($_POST['nama']); //nama_lengkap
-                    $ttl  = $core->filter_xss($_POST['ttl']); //ttl
-                    $jk   = $core->filter_xss($_POST['jk']); //jenkel
-                    $agm  = $core->filter_xss($_POST['agm']); //agama
-                    $alam = $core->filter_xss($_POST['alamat']); // alamat
-                    $trans= $core->filter_xss($_POST['trans']); // transportasi
-                    $hp   = $core->filter_xss($_POST['hp']); // hp
-                    $email= $core->filter_xss($_POST['email']); //email
-                    $bokap= $core->filter_xss($_POST['bokap']); //nama_ayah
-                    $krj1 = $core->filter_xss($_POST['krjBokap']); // pekerjaan_ayah
-                    $nyoka= $core->filter_xss($_POST['nyokap']); // nama_ibu
-                    $krj2 = $core->filter_xss($_POST['krjNyokap']); //pekerjaan_ibu
-                    $wali = $core->filter_xss($_POST['wali']); // wali
-                    $krjw = $core->filter_xss($_POST['krjw']); // pekerjaan_wali
-                    $ank  = $core->filter_xss($_POST['an']); // anakke
-                    $sdr  = $core->filter_xss($_POST['sdr']); // saudara
+                    $tgl            = $core->filter_xss($_POST['tgl_dftr']); //tgl_dftr
+                    $nama_lengkap   = $core->filter_xss($_POST['nama_lengkap']); //nama_lengkap
+                    $ttl            = $core->filter_xss($_POST['ttl']); //ttl
+                    $jenkel         = $core->filter_xss($_POST['jenkel']); //jenkel
+                    $agama          = $core->filter_xss($_POST['agama']); //agama
+                    $alamat         = $core->filter_xss($_POST['alamat']); // alamat
+                    $transportasi   = $core->filter_xss($_POST['transportasi']); // transportasi
+                    $hp             = $core->filter_xss($_POST['hp']); // hp
+                    $email          = $core->filter_xss($_POST['email']); //email
+                    $nama_ayah      = $core->filter_xss($_POST['nama_ayah']); //nama_ayah
+                    $pekerjaan_ayah = $core->filter_xss($_POST['pekerjaan_ayah']); // pekerjaan_ayah
+                    $nama_ibu       = $core->filter_xss($_POST['nama_ibu']); // nama_ibu
+                    $pekerjaan_ibu  = $core->filter_xss($_POST['pekerjaan_ibu']); //pekerjaan_ibu
+                    $nama_wali      = $core->filter_xss($_POST['nama_wali']); // nama_wali
+                    $pekerjaan_wali = $core->filter_xss($_POST['pekerjaan_wali']); // pekerjaan_wali
+                    $anakke         = $core->filter_xss($_POST['anakke']); // anakke
+                    $saudara        = $core->filter_xss($_POST['saudara']); // saudara
                     // informasi pendaftaran
                     $jalor = $core->filter_xss($_POST['jalor']); // jalur_pendaftaran
                     $jur1  = $core->filter_xss($_POST['jur1']); // jurusan1
@@ -80,7 +80,7 @@
                     $id_casis = $_GET['id'];
                     $idreg = $_GET['idr'];
 
-                    $db->query("UPDATE data_casis SET nama_lengkap='$nama', jenkel='$jk', ttl='$ttl', agama='$agm', alamat='$alam', transportasi='$trans', hp='$hp', email='$email', nama_ayah='$bokap', pekerjaan_ayah='$krj1', nama_ibu='$nyoka', pekerjaan_ibu='$krj2', wali='$wali', pekerjaan_wali='$krjw', anakke='$ank', saudara='$sdr' WHERE id_casis='$id_casis' AND id_reg='$idreg'");
+                    $db->query("UPDATE data_casis SET nama_lengkap='$nama_lengkap', jenkel='$jenkel', ttl='$ttl', agama='$agama', alamat='$alamat', transportasi='$transportasi', hp='$hp', email='$email', nama_ayah='$nama_ayah', pekerjaan_ayah='$pekerjaan_ayah', nama_ibu='$nama_ibu', pekerjaan_ibu='$pekerjaan_ibu', nama_wali='$nama_wali', pekerjaan_wali='$pekerjaan_wali', anakke='$anakke', saudara='$saudara' WHERE id_casis='$id_casis'");
                     $db->query("UPDATE registrasi SET tgl_dftr='$tgl', jalur_pendaftaran='$jalor', jurusan1='$jur1', jurusan2='$jur2', asal_sekolah='$asal', alamat_asal_sekolah='$alms', prestasi_akademik='$presak', prestasi_nonakademik='$presno' WHERE id_reg='$idreg'");
                     $db->query("UPDATE trespass SET merokok='$rokok', bertato='$tato', bk='$bk', bw='$bw' WHERE id_casis='$id_casis'");
                     $db->query("UPDATE nilai_un SET mtk='$mtk', bindo='$bindo', bing='$bing', ipa='$ipa' WHERE id_casis='$id_casis'");

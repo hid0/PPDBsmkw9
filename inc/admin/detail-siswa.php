@@ -36,7 +36,7 @@ $d = $db->fetch($q);
                 <div class="form-group">
                     <label class="control-label">Nama Lengkap</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="nama" id="nama" value="<?= $d['nama_lengkap'] ?>" class="form-control">
+                    <input type="text" name="nama_lengkap" id="nama" value="<?= $d['nama_lengkap'] ?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="control-label">TTL</label>
@@ -46,7 +46,7 @@ $d = $db->fetch($q);
                 <div class="form-group">
                     <label class="control-label">Jenis Kelamin</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <select name="jk" id="jk" class="form-control" required>
+                    <select name="jenkel" id="jk" class="form-control" required>
                         <option value=""> -- Jenis Kelamin --</option>
                         <option value="L" <?= $d['jenkel'] == 'L' ? 'selected' : '' ?>>Laki-Laki</option>
                         <option value="P" <?= $d['jenkel'] == 'P' ? 'selected' : '' ?>>Perempuan</option>
@@ -55,7 +55,7 @@ $d = $db->fetch($q);
                 <div class="form-group">
                     <label class="control-label">Agama</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="agm" id="agm" value="<?= $d['agama'] ?>" class="form-control" required>
+                    <input type="text" name="agama" id="agm" value="<?= $d['agama'] ?>" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Alamat</label>
@@ -65,7 +65,7 @@ $d = $db->fetch($q);
                 <div class="form-group">
                     <label class="control-label">Transportasi</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="trans" id="trans" value="<?= $d['transportasi'] ?>" class="form-control" required>
+                    <input type="text" name="transportasi" id="trans" value="<?= $d['transportasi'] ?>" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label class="control-label">No.HP</label>
@@ -80,41 +80,41 @@ $d = $db->fetch($q);
                 <div class="form-group">
                     <label class="control-label">Nama Ayah</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="bokap" id="bokap" value="<?= $d['nama_ayah'] ?>" class="form-control" required>
+                    <input type="text" name="nama_ayah" id="bokap" value="<?= $d['nama_ayah'] ?>" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Pekerjaan Ayah</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="krjBokap" id="krjb" value="<?= $d['pekerjaan_ayah'] ?>" class="form-control" required>
+                    <input type="text" name="pekerjaan_ayah" id="krjb" value="<?= $d['pekerjaan_ayah'] ?>" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Nama Ibu</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="nyokap" id="nyokap" value="<?= $d['nama_ibu'] ?>" class="form-control" required>
+                    <input type="text" name="nama_ibu" id="nyokap" value="<?= $d['nama_ibu'] ?>" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Pekerjaan Ibu</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="krjNyokap" id="krjn" value="<?= $d['pekerjaan_ibu'] ?>" class="form-control" required>
+                    <input type="text" name="pekerjaan_ibu" id="krjn" value="<?= $d['pekerjaan_ibu'] ?>" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Nama Wali</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="wali" id="wali" value="<?= $d['nama_wali'] ?>" class="form-control" required>
+                    <input type="text" name="nama_wali" id="wali" value="<?= $d['nama_wali'] ?>" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Pekerjaan Wali</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="krjw" id="krjw" value="<?= $d['pekerjaan_wali'] ?>" class="form-control" required>
+                    <input type="text" name="pekerjaan_wali" id="krjw" value="<?= $d['pekerjaan_wali'] ?>" class="form-control" required>
                 <div class="form-group">
                     <label class="control-label">Anak Ke-</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="number" name="an" id="an" value="<?= $d['anakke'] ?>" class="form-control" required>
+                    <input type="number" name="anakke" id="an" value="<?= $d['anakke'] ?>" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Jumlah Saudara</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="number" name="sdr" id="sdr" value="<?= $d['saudara'] ?>" class="form-control">
+                    <input type="number" name="saudara" id="sdr" value="<?= $d['saudara'] ?>" class="form-control">
                 </div>
             </div>
         </div>
