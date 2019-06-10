@@ -51,7 +51,7 @@ if (!empty($_GET['step'])) {
 		//** collect data dude. **.///
 		// coded by : alin koko mansuby
 		$regid = $core->filter_xss($_POST['id_reg']);
-		$nama = $core->filter_xss($_POST['nama_lengkap']);
+		$nama = $core->filter_xss(strtoupper($_POST['nama_lengkap']));
 		$jk = $core->filter_xss($_POST['jk']);
 		$ttl = $core->filter_xss($_POST['tmpt_lahir'] . ', ' . $core->filter_xss($_POST['tgl_lahir']));
 		$alamat = $core->filter_xss("Desa : " . $_POST['desa'] . " RT:" . $_POST['rt'] . " RW:" . $_POST['rw'] . ", Kecamatan : " . $_POST['kecamatan'] . ", Kabupaten/Kota : " . $_POST['kabupaten']);
