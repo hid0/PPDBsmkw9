@@ -48,13 +48,13 @@
                         </thead>
                         <tbody>
                             <?php
-                            $no = 1;
+                            // $no = 1;
                             // $q = $db->query('SELECT * FROM registrasi,data_casis,trespass WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis ORDER BY data_casis.id_casis ASC');
-                            $q = $db->query('SELECT * FROM registrasi,data_casis,trespass WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis GROUP BY data_casis.id_casis');
+                            $q = $db->query('SELECT * FROM registrasi,data_casis,trespass WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis GROUP BY data_casis.id_reg');
                             while ($d = $db->assoc($q)) { ?>
 
                                 <tr>
-                                    <td><?= $no++ ?></td>
+                                    <td><?= $d['id_reg'] ?></td>
                                     <td><?= $d['nama_lengkap'] ?></td>
                                     <td><?= $d['jenkel'] ?></td>
                                     <td><?= $d['ttl'] ?></td>

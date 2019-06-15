@@ -308,19 +308,19 @@
 									<div class="w3-row-padding">
 										<div class="w3-quarter">
 											<label>Bahasa Indonesia</label>
-											<input type="number" name="bindo" class="w3-input w3-border ">
+											<input type="number" value="0" name="bindo" class="w3-input w3-border " required>
 										</div>
 										<div class="w3-quarter">
 											<label>Bahasa Inggris</label>
-											<input type="number" name="bing" class="w3-input w3-border ">
+											<input type="number" value="0" name="bing" class="w3-input w3-border " required>
 										</div>
 										<div class="w3-quarter">
 											<label>Matematika</label>
-											<input type="number" name="mtk" class="w3-input w3-border ">
+											<input type="number" value="0" name="mtk" class="w3-input w3-border " required>
 										</div>
 										<div class="w3-quarter">
 											<label>IPA</label>
-											<input type="number" name="ipa" class="w3-input w3-border ">
+											<input type="number" value="0" name="ipa" class="w3-input w3-border " required>
 										</div>
 									</div>
 								</td>
