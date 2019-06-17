@@ -29,7 +29,7 @@ $num_tkr = $db->count_rows($tkr);
 $tkj = $db->query("SELECT * FROM registrasi WHERE jurusan1 = 'TKJ'");
 $num_tkj = $db->count_rows($tkj);
 $pbs = $db->query("SELECT * FROM registrasi WHERE jurusan1 = 'PBS'");
-$num_PBS = $db->count_rows($pbs);
+$num_pbs = $db->count_rows($pbs);
 ?>
 <script>
     $(document).ready(function() {
