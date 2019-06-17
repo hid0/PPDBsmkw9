@@ -1,17 +1,26 @@
 <?php
 require 'autoload.php';
+<<<<<<< HEAD
 require __DIR__.'/vendor/autoload.php';
+=======
+require __DIR__ . '/vendor/autoload.php';
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 use Spipu\Html2Pdf\Html2Pdf;
 use Spipu\Html2Pdf\Exception\Html2PdfException;
 use Spipu\Html2Pdf\Exception\ExceptionFormatter;
 
 $getKet = $db->fetch($db->select('jadwal'));
+<<<<<<< HEAD
 $secret = explode("|",base64_decode($_GET['secret']));
+=======
+$secret = explode("|", base64_decode($_GET['secret']));
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 $username = $secret[0];
 $password = $secret[1];
 
 $q = $db->query("SELECT * FROM registrasi,data_casis WHERE registrasi.id_reg=data_casis.id_reg AND registrasi.id_reg='$_GET[idr]' AND data_casis.id_casis='$_GET[ids]' ");
 $d = $db->fetch($q);
+<<<<<<< HEAD
 if($d['jenkel'] == 'L')
 {
 	$jk = "Laki-Laki";
@@ -24,6 +33,17 @@ if($d['jenkel'] == 'L')
 
 $c =
 '<style type="text/css">
+=======
+if ($d['jenkel'] == 'L') {
+	$jk = "Laki-Laki";
+} elseif ($d['jenkel'] == 'P') {
+	$jk = "Perempuan";
+} else {
+	$jk = "Unknown";
+}
+$content =
+	'<style type="text/css">
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 	<!--
 	.content{width: 100%;margin:  0 auto;}
 	.tabel1,.tabel2,.tabel3{width:800px;margin: 0 auto;}.tabel2{border: 1px solid #000;border-collapse: collapse;width: 800px;}.tabel3{width: 800px;text-align: center;}
@@ -49,6 +69,7 @@ $c =
 <table class="tabel2" align="center">
 	<tr class="tr1">
 				<td class="td3">Nomor pendaftaran<br><br>
+<<<<<<< HEAD
 					<b>'.$d['id_reg'].'</b>
 				</td><td class="td3">Pilihan jurusan<br><br>
 					<b>1. '.$d['jurusan1'].' | 2. '.$d['jurusan2'].'</b></td><td class="td3">Tanggal daftar<br><br>
@@ -59,6 +80,18 @@ $c =
 			<tr><td>Jenis kelamin</td><td>'.$jk.'</td></tr>
 			<tr><td>Alamat</td><td  style="width:200px;word-wrap:break-word;"><p style="word-wrap:break-word;">'.$d['alamat'].'</p></td></tr>
 			<tr><td>Sekolah asal</td><td>'.$d['asal_sekolah'].'</td></tr>
+=======
+					<b>' . $d['id_reg'] . '</b>
+				</td><td class="td3">Pilihan jurusan<br><br>
+					<b>1. ' . $d['jurusan1'] . ' | 2. ' . $d['jurusan2'] . '</b></td><td class="td3">Tanggal daftar<br><br>
+						<b>' . $core->IndoTgl() . '</b></td></tr>
+			<tr><td colspan="3" class="td4"></td></tr>
+			<tr><td>Nama Lengkap</td><td>: ' . $d['nama_lengkap'] . '</td></tr>
+			<tr><td>Tempat,Tgl. Lahir</td><td>: ' . $d['ttl'] . '</td></tr>
+			<tr><td>Jenis kelamin</td><td>: ' . $jk . '</td></tr>
+			<tr><td>Alamat</td><td style="width:250px;word-wrap:break-word;"><p style="word-wrap:break-word;">: ' . $d['alamat'] . '</p></td></tr>
+			<tr><td>Sekolah asal</td><td>: ' . $d['asal_sekolah'] . '</td></tr>
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 			<tr><td colspan="3"><br><br></td></tr>
 </table>
 
@@ -68,7 +101,11 @@ $c =
 		<tr><td colspan="3"><br><br></td></tr>
 		<tr><td class="td3"><b>Calon Siswa</b></td><td class="td3"><b>Orang tua/Wali</b></td><td class="td3"><b>Panitia PPDB</b></td></tr>
 		<tr><td colspan="3"><br><br><br></td></tr>
+<<<<<<< HEAD
 		<tr><td class="td3">'.$d['nama_lengkap'].'</td><td class="td3">..........</td><td class="td3">..........</td></tr>
+=======
+		<tr><td class="td3">' . $d['nama_lengkap'] . '</td><td class="td3">..........</td><td class="td3">..........</td></tr>
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 </table>
 <br>
 <p><font color=red>*</font> NB : Cetak/Print Dokumen ini dan bawa persyaratan pendaftaran di bawah ini saat daftar ulang :</p>
@@ -81,6 +118,7 @@ $c =
 <hr style="border:1px solid dashed">
 <table align="center">
 	<tr><td colspan="3" style="border-bottom: 1px solid #000;" align="center"><b> INFORMASI LOGIN | PPDB SMK WALISONGO PECANGAAN</b></td></tr>
+<<<<<<< HEAD
 	<tr><td rowspan="4"><img src="assets/img/logo-smk.png"></td><td>USERNAME :</td><td>'.$username.'</td></tr>
 	<tr><td>PASSWORD</td><td>'.$password.'</td></tr>
 	<!--<tr><td>TANGGAL/JAM</td><td>'.$getKet['tanggal'].' / '.$getKet['jam'].'</td></tr>
@@ -92,5 +130,16 @@ $content = require('./assets/pdf.php');
 
 
 $html2pdf = new \Spipu\Html2Pdf\Html2Pdf('P','A4','en', false, 'UTF-8');
+=======
+	<tr><td rowspan="4"><img src="assets/img/logo-smk.png"></td><td>USERNAME :</td><td>' . $username . '</td></tr>
+	<tr><td>PASSWORD</td><td>' . $password . '</td></tr>
+	<!--<tr><td>TANGGAL/JAM</td><td>' . $getKet['tanggal'] . ' / ' . $getKet['jam'] . '</td></tr>
+	<tr><td>ONLINE </td><td>' . $getKet['homepage'] . '</td></tr>-->
+</table>
+</div>';
+
+
+$html2pdf = new \Spipu\Html2Pdf\Html2Pdf('P', 'A4', 'en', false, 'UTF-8');
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 $html2pdf->writeHTML($content);
 $html2pdf->output();

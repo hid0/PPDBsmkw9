@@ -20,7 +20,11 @@ $ez = $db->fetch($qu);
     <link rel="stylesheet" href="<?= getCss() ?>skins/_all-skins.min.css">
     <link rel="stylesheet" href="<?= getCss() ?>select2.min.css">
     <link rel="stylesheet" href="<?= getCss() ?>select2-bootstrap.min.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" />
+=======
+    <link rel="stylesheet" href="<?= getCss() ?>sweetalert2.min.css">
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
     <script src="<?= getJS() ?>jquery.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">

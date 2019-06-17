@@ -21,15 +21,24 @@
                 <li><a href="export.php?e=data&method=anakGrKrywn" target="_blank" rel="noopener noreferrer">Putra Guru/Karyawan</a></li>
             </ul>
         </div>
+<<<<<<< HEAD
         <button class="btn btn-info"  data-toggle="modal" data-target="#st"><i class="fa fa-pie-chart"></i> Statistik</button>
+=======
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
     </div>
 </div><br />
 <div class="row">
     <div class="col-md-12">
         <div class="box box-success">
+<<<<<<< HEAD
             <div class="box-head" style="font-weight: bold;text-align: center;">
                 <h4 class="text-default">
                     Data Peserta Didik Baru 2019 / 2020
+=======
+            <div class="box-head">
+                <h4 class="text-default">
+                    <center><b>Data Peserta Didik Baru 2019 / 2020</b></center>
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
                 </h4>
             </div>
             <div class="box-body">
@@ -49,6 +58,7 @@
                         </thead>
                         <tbody>
                             <?php
+<<<<<<< HEAD
                             // $no = 1;
                             // $q = $db->query('SELECT * FROM registrasi,data_casis,trespass WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis ORDER BY data_casis.id_casis ASC');
                             $q = $db->query('SELECT * FROM registrasi,data_casis,trespass WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis GROUP BY data_casis.id_reg');
@@ -56,6 +66,14 @@
 
                                 <tr>
                                     <td><?= $d['id_reg'] ?></td>
+=======
+                            $no = 1;
+                            $q = $db->query('SELECT * FROM registrasi,data_casis,trespass WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis ');
+                            while ($d = $db->fetch($q)) { ?>
+
+                                <tr>
+                                    <td><?= $no++ ?></td>
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
                                     <td><?= $d['nama_lengkap'] ?></td>
                                     <td><?= $d['jenkel'] ?></td>
                                     <td><?= $d['ttl'] ?></td>
@@ -93,15 +111,27 @@
                                     ?>
                                     </td>
                                     <td>
+<<<<<<< HEAD
                                         <!-- <a href="#" class="btn btn-xs btn-info"><i class="fa fa-info"></i></a> -->
                                         <a href="export.php?e=single&id=<?= $d['id_casis'] ?>" target="_blank" class="btn btn-xs btn-success"><i class="fa fa-print"></i></a>
                                         <a href="?a=index&ke=detail&idr=<?= $d['id_reg'] ?>&id=<?= $d['id_casis'] ?>" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i></a>
                                         <a href="?a=index&ke=dashboard&ac=del&idr=<?= $d['id_reg'] ?>&idc=<?= $d['id_casis'] ?>" onclick="return confirm('Anda Yakin ingin menghapus data ini ?')" href="#" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>
+=======
+                                        <a href="?a=index&ke=detail&id=<?= $d['id_casis'] ?>" class="btn btn-xs btn-info"><i class="fa fa-info"></i></a>
+                                        <!-- <a href="#" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i></a> -->
+                                        <a href="?a=index&ke=dashboard&act=hapus&id=<?= $d['id_casis'] ?>" onclick="return confirm('Anda Yakin ingin menghapus data ini ?')" href="#" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
                                     </td>
                                 </tr>
 
                             <?php
                         }
+<<<<<<< HEAD
+=======
+                        if ($_GET['']) {
+                            # code...
+                        }
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
                         ?>
                         </tbody>
                     </table>
@@ -109,6 +139,7 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 </div>
 
 <div id="st" class="modal fade">
@@ -130,4 +161,6 @@
             </div>
         </div>
     </div>
+=======
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 </div>

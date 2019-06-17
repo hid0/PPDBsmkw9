@@ -3,11 +3,14 @@
 
 
 require 'autoload.php';
+<<<<<<< HEAD
 require __DIR__.'/vendor/autoload.php';
 use Spipu\Html2Pdf\Html2Pdf;
 use Spipu\Html2Pdf\Exception\Html2PdfException;
 use Spipu\Html2Pdf\Exception\ExceptionFormatter;
 
+=======
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 function title($s,$format)
 {
 	$ganti = array(' ','.',',');
@@ -22,6 +25,7 @@ if(isset($_GET['e']))
 	if($_GET['e'] == 'single')
 	{
 		$q = $db->query("SELECT * FROM registrasi,data_casis,trespass WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND data_casis.id_casis='$_GET[id]' ");
+<<<<<<< HEAD
 		$d = $db->fetch($q);
 		if($d['jenkel'] == 'L')
 		{
@@ -42,12 +46,55 @@ if(isset($_GET['e']))
 		$html2pdf->writeHTML($content);
 		$html2pdf->output();
 		// $core->export_word(title($get_data['id_casis'].$get_data['nama_lengkap'],'docx'));
+=======
+		$get_data = $db->fetch($q);
+		//print_r($get_data);
+		//$core->export_excel(title($get_data['id_casis'].$get_data['nama_lengkap'],'xls'));
+		?>
+		<table style="border: 1px solid #000;border-collapse:collapse;width: 100%" border="1">
+			<tr><th colspan="2"><b>Identitas Calon Peserta Didik</b></th></tr>
+
+			<tr><td>Nama Lengkap</td><td> <?=$get_data['nama_lengkap'];?> </td></tr>
+			<tr><td>Jenis Kelamin</td><td> <?=$get_data['jenkel'];?> </td></tr>
+			<tr><td>Tempat,Tanggal lahir</td><td> <?=$get_data['ttl'];?> </td></tr>
+			<tr><td>Agama</td><td> <?=$get_data['agama'];?> </td></tr>
+			<tr><td>Anak ke / Jumlah Saudara</td><td> <?=$get_data['anakke'];?> / <?=$get_data['saudara'];?> </td></tr>
+			<tr><td>Alamat / tempat tinggal</td><td> <?=$get_data['alamat'];?> / <?=$get_data['tempat_tinggal'];?> </td></tr>
+			<tr><td>Nomor HP</td><td> <?=$get_data['hp'];?></td></tr>
+			<tr><td>Email</td><td><?=$get_data['email'];?></td></tr>
+			<tr><td>Pilihan Jurusan</td><td> <?=$get_data['jurusan1'];?> / <?=$get_data['jurusan2'];?> </td></tr>
+
+			<tr><th colspan="2"><b>Identitas Orang tua/Wali</b></th></tr>
+			<tr><td>Nama Ayah</td><td> <?=$get_data['nama_ayah'];?> </td></tr>
+			<tr><td>Nama Ibu</td><td> <?=$get_data['nama_ibu'];?> </td></tr>
+			<tr><td>Alamat orang tua</td><td> <?=$get_data['pekerjaan_ayah'];?></td></tr>
+			<tr><td>Pekerjaan Ayah / Ibu</td><td> <?=$get_data['pekerjaan_ibu'];?></td></tr>
+			<tr><td>Nama wali</td><td><?=$get_data['nama_wali'];?></td></tr>
+			<tr><td>Pekerjaan wali</td><td><?=$get_data['pekerjaan_wali'];?></td></tr>
+
+			<tr><th colspan="2"><b>Asal Sekolah</b></th></tr>
+			<tr><td>Asal sekolah</td><td><?=$get_data['asal_sekolah'];?></td></tr>
+			<tr><td>Alamat sekolah</td><td><?=$get_data['alamat_asal_sekolah'];?></td></tr>
+			<tr><td>Nomer Ujian</td><td><?=$get_data['no_ujian'];?></td></tr>
+
+			<tr><th colspan="2"><b>Prestasi akademik / Non-Akademik</b></th></tr>
+			<tr><td>Akademik</td><td><?=$get_data['prestasi_akademik'];?></td></tr>
+			<tr><td>Non-akademik</td><td><?=$get_data['prestasi_nonakademik'];?></td></tr>
+
+		</table>
+		<?php
+		$core->export_word(title($get_data['id_casis'].$get_data['nama_lengkap'],'docx'));
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 	} elseif($_GET['e'] == 'data')
 	{
 		if ($_GET['method'] == 'all') {
 
+<<<<<<< HEAD
 			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis GROUP BY data_casis.id_casis");
 			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis GROUP BY data_casis.id_casis");
+=======
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis ");
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -144,8 +191,12 @@ if(isset($_GET['e']))
 
 		} elseif ($_GET['method'] == 'ngam') {
 
+<<<<<<< HEAD
 			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_pendaftaran='umum' GROUP BY data_casis.id_casis");
 			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_pendaftaran='umum' GROUP BY data_casis.id_casis");
+=======
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_pendaftaran='umum' ");
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -242,8 +293,12 @@ if(isset($_GET['e']))
 
 		} elseif ($_GET['method'] == 'khos') {
 
+<<<<<<< HEAD
 			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_pendaftaran='khusus' GROUP BY data_casis.id_casis");
 			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_pendaftaran='khusus' GROUP BY data_casis.id_casis");
+=======
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_pendaftaran='khusus' ");
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -340,8 +395,12 @@ if(isset($_GET['e']))
 
 		} elseif ($_GET['method'] == 'kt') {
 
+<<<<<<< HEAD
 			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='KT' GROUP BY data_casis.id_casis");
 			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='KT' GROUP BY data_casis.id_casis");
+=======
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='KT' ");
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -438,8 +497,12 @@ if(isset($_GET['e']))
 
 		} elseif ($_GET['method'] == 'tkr') {
 
+<<<<<<< HEAD
 			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='TKR' GROUP BY data_casis.id_casis");
 			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='TKR' GROUP BY data_casis.id_casis");
+=======
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='TKR'");
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -536,8 +599,12 @@ if(isset($_GET['e']))
 
 		} elseif ($_GET['method'] == 'tkj') {
 
+<<<<<<< HEAD
 			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='TKJ' GROUP BY data_casis.id_casis");
 			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='TKJ' GROUP BY data_casis.id_casis");
+=======
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='TKJ' ");
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -634,8 +701,12 @@ if(isset($_GET['e']))
 
 		} elseif ($_GET['method'] == 'pbs') {
 
+<<<<<<< HEAD
 			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='PBS' GROUP BY data_casis.id_casis");
 			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='PBS' GROUP BY data_casis.id_casis");
+=======
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='PBS' ");
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -732,8 +803,12 @@ if(isset($_GET['e']))
 
 		} elseif ($_GET['method'] == 'hafidz') {
 
+<<<<<<< HEAD
 			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='tahfidz' GROUP BY data_casis.id_casis");
 			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='tahfidz' GROUP BY data_casis.id_casis");
+=======
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='tahfidz' ");
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -830,8 +905,12 @@ if(isset($_GET['e']))
 
 		} elseif ($_GET['method'] == 'yatim') {
 
+<<<<<<< HEAD
 			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='yatim' GROUP BY data_casis.id_casis");
 			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='yatim' GROUP BY data_casis.id_casis");
+=======
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='yatim' ");
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -928,8 +1007,12 @@ if(isset($_GET['e']))
 
 		} elseif ($_GET['method'] == 'anakGrKrywn') {
 
+<<<<<<< HEAD
 			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='pa/pi guru/karyawan' GROUP BY data_casis.id_casis");
 			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='pa/pi guru/karyawan' GROUP BY data_casis.id_casis");
+=======
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='pa/pi guru/karyawan' ");
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -1026,8 +1109,12 @@ if(isset($_GET['e']))
 
 		} elseif ($_GET['method'] == 'w9') {
 
+<<<<<<< HEAD
 			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='mts/smp w9' GROUP BY data_casis.id_casis");
 			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='mts/smp w9' GROUP BY data_casis.id_casis");
+=======
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='mts/smp w9' ");
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -1124,8 +1211,12 @@ if(isset($_GET['e']))
 
 		} elseif ($_GET['method'] == 'seYyysn') {
 
+<<<<<<< HEAD
 			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='saudara 1 unit' GROUP BY data_casis.id_casis");
 			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='saudara 1 unit' GROUP BY data_casis.id_casis");
+=======
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='saudara 1 unit' ");
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>

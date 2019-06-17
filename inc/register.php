@@ -24,6 +24,10 @@
 								<option value="mts/smp w9">dari MTs./SMP Walisongo</option>
 								<option value="saudara 1 unit">Saudara Kandung siswa di Yayasan Walisongo</option>
 								<option value="pa/pi guru/karyawan">Putra/i Guru/karyawan di Yayasan Walisongo</option>
+<<<<<<< HEAD
+=======
+								<option value="pilih KT">Peserta didik Kriya Tekstil dan Batik</option>
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 								<option value="tahfidz">Peserta didik Tahfidz minimal 5 Juz</option>
 							</select>
 						</div>
@@ -170,13 +174,21 @@
 						<tr>
 							<td>Tempat lahir</td>
 							<td>
+<<<<<<< HEAD
 								<input type="text" name="tmpt_lahir" value="Jepara" class="w3-input w3-border" required>
+=======
+								<input type="text" name="tmpt_lahir" placeholder="Jepara" class="w3-input w3-border" required>
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 							</td>
 						</tr>
 						<tr>
 							<td>Tanggal lahir</td>
 							<td>
+<<<<<<< HEAD
 								<input type="text" name="tgl_lahir" placeholder="1 Januari 2003" class="w3-input w3-border" required>
+=======
+								<input type="date" name="tgl_lahir" placeholder="mm/dd/yyyy" class="w3-input w3-border" required>
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 							</td>
 						</tr>
 						<tr>
@@ -239,7 +251,11 @@
 						</tr>
 						<tr>
 							<td>Nomor Hp.</td>
+<<<<<<< HEAD
 							<td><input type="number" name="hp" placeholder="dapat menerima sms, boleh nomor milik orang tua atau suadara" maxlength="13" minlength="10" class="w3-input w3-border" required></td>
+=======
+							<td><input type="number" name="hp" placeholder="dapat menerima sms, boleh nomor milik orang tua atau suadara" max=13 minlength="10" class="w3-input w3-border" required></td>
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 						</tr>
 						<tr>
 							<td>Email</td>
@@ -308,6 +324,7 @@
 									<div class="w3-row-padding">
 										<div class="w3-quarter">
 											<label>Bahasa Indonesia</label>
+<<<<<<< HEAD
 											<input type="number" value="0" name="bindo" class="w3-input w3-border " required>
 										</div>
 										<div class="w3-quarter">
@@ -321,6 +338,21 @@
 										<div class="w3-quarter">
 											<label>IPA</label>
 											<input type="number" value="0" name="ipa" class="w3-input w3-border " required>
+=======
+											<input type="number" name="bindo" class="w3-input w3-border ">
+										</div>
+										<div class="w3-quarter">
+											<label>Bahasa Inggris</label>
+											<input type="number" name="bing" class="w3-input w3-border ">
+										</div>
+										<div class="w3-quarter">
+											<label>Matematika</label>
+											<input type="number" name="mtk" class="w3-input w3-border ">
+										</div>
+										<div class="w3-quarter">
+											<label>IPA</label>
+											<input type="number" name="ipa" class="w3-input w3-border ">
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 										</div>
 									</div>
 								</td>

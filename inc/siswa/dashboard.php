@@ -15,14 +15,22 @@
 
 if (empty($_GET['a']) || $_GET['a'] == 'index') {
     include getInc()."siswa/details.php";
+<<<<<<< HEAD
     echo "<title>Dashboard Peserta Didik Baru | PPDB SMK Walisongo</title>";
+=======
+    echo "<title>Dashboard Siswa | PPDB SMK Walisongo</title>";
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 } elseif ($_GET['a'] == 'pembayaran') {
     if ($_GET['ke'] == 'history') {
         echo "<title>Riwayat Pembayaran | PPDB SMK Walisongo Pecangaan</title>";
         include getInc()."siswa/list_bayar.php";
     } elseif ($_GET['ke'] == 'tagihan') {
         // echo "Ini halaman nageh utang";
+<<<<<<< HEAD
         echo "<title>Halaman Tagihan Peserta Didik Baru | PPDB SMK Walisongo Pecangaan</title>";
+=======
+        echo "<title>Halaman Tagihan Siswa Baru | PPDB SMK Walisongo Pecangaan</title>";
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
         include getInc()."siswa/tagihan.php";
     }
 } elseif ($_GET['a'] == 'logout') {

@@ -189,8 +189,13 @@ Class Core_ko{
 		}
 		return $tanggal.' '.$bln.' '.$tahun;
 	}
+<<<<<<< HEAD
 	public function welcome() {
 		print "<!DOCTYPE html><html><head><title>MaFrame Priv8 Library by Alinko.</title></head><body style='background:#eee;color:#888'><div style='max-width:500px;margin:0 auto;'><center><h1 style='color:#888;font-size:300%;margin-top:200px;font-family:courier'>Welcome MaFrame</h1></center></div></body></html>";
+=======
+	public function welcome()
+	{print "<!DOCTYPE html><html><head><title>MaFrame Priv8 Library by Alinko.</title></head><body style='background:#eee;color:#888'><div style='max-width:500px;margin:0 auto;'><center><h1 style='color:#888;font-size:300%;margin-top:200px;font-family:courier'>Welcome MaFrame</h1></center></div></body></html>";
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
 	}
 
 }

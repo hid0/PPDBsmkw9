@@ -25,6 +25,7 @@
                 echo "<title>Error 405 Access Denied!!!</title>";
                 echo "<h1 class=\"text-danger\">Anda tidak punya akses</h1>";
             }
+<<<<<<< HEAD
             if (@$_GET['ac'] == 'del') {
                 if ($_SESSION['rol_log'] == 'super-admin') {
                     $db->delete('data_casis', ['id_reg' => $_GET['idr']]);
@@ -97,6 +98,11 @@
                         echo "<script>alert('Error!!!')</script>";
                     }
                 }
+=======
+        } elseif ($_GET['ke'] == 'detail') {
+            if ($_SESSION['rol_log'] == 'super-admin' || $_SESSION['rol_log'] == 'tata-usaha' || $_SESSION['rol_log'] == 'keuangan') {
+                include getInc() . "admin/detail-siswa.php";
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
             } else {
                 echo "<title>Error 405 Access Denied!!!</title>";
                 echo "<h1 class=\"text-danger\">Anda tidak punya akses</h1>";
@@ -135,7 +141,11 @@
     } elseif ($_GET['a'] == 'nagih') {
         if ($_GET['ex'] == '' || $_GET['ex'] == 'index') {
             if ($_SESSION['rol_log'] == 'super-admin') {
+<<<<<<< HEAD
                 echo "<title>Daftar Tagihan Peserta Didik Baru | PPDB SMK Walisongo Pecangaan</title>";
+=======
+                echo "<title>Daftar Tagihan Siswa Baru | PPDB SMK Walisongo Pecangaan</title>";
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
                 include getInc() . "admin/tagihan/index.php";
             } else {
                 echo "<title>Error 405 Access Denied!!!</title>";
@@ -143,7 +153,11 @@
             }
         } elseif ($_GET['ex'] == 'add') {
             if ($_SESSION['rol_log'] == 'super-admin') {
+<<<<<<< HEAD
                 echo "<title>Tambah Daftar Tagihan Peserta Didik Baru | PPDB SMK Walisongo Pecangaan</title>";
+=======
+                echo "<title>Tambah Daftar Tagihan Siswa Baru | PPDB SMK Walisongo Pecangaan</title>";
+>>>>>>> 512552ed7e3a0b265673d34c1a97e481179648ea
                 include getInc() . "admin/tagihan/add.php";
             } else {
                 echo "<title>Error 405 Access Denied!!!</title>";
