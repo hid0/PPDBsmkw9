@@ -194,22 +194,22 @@ $d = $db->fetch($q);
                 <div class="form-group">
                     <label class="control-label">Matematika</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="number" name="mtk" id="mtk" value="<?= $d['mtk'] ?>" class="form-control">
+                    <input type="text" name="mtk" id="mtk" value="<?= $d['mtk'] ?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="control-label">Bahasa Indonesia</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="number" name="bindo" id="bindo" value="<?= $d['bindo'] ?>" class="form-control">
+                    <input type="text" name="bindo" id="bindo" value="<?= $d['bindo'] ?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="control-label">Bahasa Inggris</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="number" name="bing" id="bing" value="<?= $d['bing'] ?>" class="form-control">
+                    <input type="text" name="bing" id="bing" value="<?= $d['bing'] ?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="control-label">IPA</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="number" name="ipa" id="ipa" value="<?= $d['ipa'] ?>" class="form-control">
+                    <input type="text" name="ipa" id="ipa" value="<?= $d['ipa'] ?>" class="form-control">
                 </div>
             </div>
         </div>

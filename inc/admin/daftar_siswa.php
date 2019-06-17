@@ -21,6 +21,7 @@
                 <li><a href="export.php?e=data&method=anakGrKrywn" target="_blank" rel="noopener noreferrer">Putra Guru/Karyawan</a></li>
             </ul>
         </div>
+        <button class="btn btn-info"  data-toggle="modal" data-target="#st"><i class="fa fa-pie-chart"></i> Statistik</button>
     </div>
 </div><br />
 <div class="row">
@@ -104,6 +105,27 @@
                         ?>
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="st" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"  style="font-weight: bold;text-align: center;">Statistik Kelas</h4>
+            </div>
+            <div class="modal-body">
+                <div class="chart">
+                    <canvas id="Donut"></canvas>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="pull-left">
+                    <button class="btn btn-danger" data-dismiss="modal">Tutup</i></button>
                 </div>
             </div>
         </div>
