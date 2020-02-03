@@ -21,7 +21,8 @@ if($d['jenkel'] == 'L')
 }else{
 	$jk = "Unknown";
 }
-$content =
+
+$c =
 '<style type="text/css">
 	<!--
 	.content{width: 100%;margin:  0 auto;}
@@ -86,6 +87,8 @@ $content =
 	<tr><td>ONLINE </td><td>'.$getKet['homepage'].'</td></tr>-->
 </table>
 </div>';
+
+$content = require('./assets/pdf.php');
 
 
 $html2pdf = new \Spipu\Html2Pdf\Html2Pdf('P','A4','en', false, 'UTF-8');

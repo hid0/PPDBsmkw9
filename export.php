@@ -3,6 +3,11 @@
 
 
 require 'autoload.php';
+require __DIR__.'/vendor/autoload.php';
+use Spipu\Html2Pdf\Html2Pdf;
+use Spipu\Html2Pdf\Exception\Html2PdfException;
+use Spipu\Html2Pdf\Exception\ExceptionFormatter;
+
 function title($s,$format)
 {
 	$ganti = array(' ','.',',');
@@ -17,48 +22,32 @@ if(isset($_GET['e']))
 	if($_GET['e'] == 'single')
 	{
 		$q = $db->query("SELECT * FROM registrasi,data_casis,trespass WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND data_casis.id_casis='$_GET[id]' ");
-		$get_data = $db->fetch($q);
+		$d = $db->fetch($q);
+		if($d['jenkel'] == 'L')
+		{
+			$jk = "Laki-Laki";
+		}elseif($d['jenkel'] == 'P')
+		{
+			$jk = "Perempuan";
+		}else{
+			$jk = "Unknown";
+		}
+		$username = $d['no_nik'];
+		$password = 'smkw9_' . substr($username, 6, 11);
 		//print_r($get_data);
 		//$core->export_excel(title($get_data['id_casis'].$get_data['nama_lengkap'],'xls'));
-		?>
-		<table style="border: 1px solid #000;border-collapse:collapse;width: 100%" border="1">
-			<tr><th colspan="2"><b>Identitas Calon Peserta Didik</b></th></tr>
-
-			<tr><td>Nama Lengkap</td><td> <?=$get_data['nama_lengkap'];?> </td></tr>
-			<tr><td>Jenis Kelamin</td><td> <?=$get_data['jenkel'];?> </td></tr>
-			<tr><td>Tempat,Tanggal lahir</td><td> <?=$get_data['ttl'];?> </td></tr>
-			<tr><td>Agama</td><td> <?=$get_data['agama'];?> </td></tr>
-			<tr><td>Anak ke / Jumlah Saudara</td><td> <?=$get_data['anakke'];?> / <?=$get_data['saudara'];?> </td></tr>
-			<tr><td>Alamat / tempat tinggal</td><td> <?=$get_data['alamat'];?> / <?=$get_data['tempat_tinggal'];?> </td></tr>
-			<tr><td>Nomor HP</td><td> <?=$get_data['hp'];?></td></tr>
-			<tr><td>Email</td><td><?=$get_data['email'];?></td></tr>
-			<tr><td>Pilihan Jurusan</td><td> <?=$get_data['jurusan1'];?> / <?=$get_data['jurusan2'];?> </td></tr>
-
-			<tr><th colspan="2"><b>Identitas Orang tua/Wali</b></th></tr>
-			<tr><td>Nama Ayah</td><td> <?=$get_data['nama_ayah'];?> </td></tr>
-			<tr><td>Nama Ibu</td><td> <?=$get_data['nama_ibu'];?> </td></tr>
-			<tr><td>Alamat orang tua</td><td> <?=$get_data['pekerjaan_ayah'];?></td></tr>
-			<tr><td>Pekerjaan Ayah / Ibu</td><td> <?=$get_data['pekerjaan_ibu'];?></td></tr>
-			<tr><td>Nama wali</td><td><?=$get_data['nama_wali'];?></td></tr>
-			<tr><td>Pekerjaan wali</td><td><?=$get_data['pekerjaan_wali'];?></td></tr>
-
-			<tr><th colspan="2"><b>Asal Sekolah</b></th></tr>
-			<tr><td>Asal sekolah</td><td><?=$get_data['asal_sekolah'];?></td></tr>
-			<tr><td>Alamat sekolah</td><td><?=$get_data['alamat_asal_sekolah'];?></td></tr>
-			<tr><td>Nomer Ujian</td><td><?=$get_data['no_ujian'];?></td></tr>
-
-			<tr><th colspan="2"><b>Prestasi akademik / Non-Akademik</b></th></tr>
-			<tr><td>Akademik</td><td><?=$get_data['prestasi_akademik'];?></td></tr>
-			<tr><td>Non-akademik</td><td><?=$get_data['prestasi_nonakademik'];?></td></tr>
-
-		</table>
-		<?php
-		$core->export_word(title($get_data['id_casis'].$get_data['nama_lengkap'],'docx'));
+		$content = require('./assets/pdf.php');
+		
+		$html2pdf = new \Spipu\Html2Pdf\Html2Pdf('P','A4','en', false, 'UTF-8');
+		$html2pdf->writeHTML($content);
+		$html2pdf->output();
+		// $core->export_word(title($get_data['id_casis'].$get_data['nama_lengkap'],'docx'));
 	} elseif($_GET['e'] == 'data')
 	{
 		if ($_GET['method'] == 'all') {
 
-			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis ");
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis GROUP BY data_casis.id_casis");
+			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis GROUP BY data_casis.id_casis");
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -155,7 +144,8 @@ if(isset($_GET['e']))
 
 		} elseif ($_GET['method'] == 'ngam') {
 
-			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_pendaftaran='umum' ");
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_pendaftaran='umum' GROUP BY data_casis.id_casis");
+			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_pendaftaran='umum' GROUP BY data_casis.id_casis");
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -252,7 +242,8 @@ if(isset($_GET['e']))
 
 		} elseif ($_GET['method'] == 'khos') {
 
-			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_pendaftaran='khusus' ");
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_pendaftaran='khusus' GROUP BY data_casis.id_casis");
+			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_pendaftaran='khusus' GROUP BY data_casis.id_casis");
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -349,7 +340,8 @@ if(isset($_GET['e']))
 
 		} elseif ($_GET['method'] == 'kt') {
 
-			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='KT' ");
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='KT' GROUP BY data_casis.id_casis");
+			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='KT' GROUP BY data_casis.id_casis");
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -446,7 +438,8 @@ if(isset($_GET['e']))
 
 		} elseif ($_GET['method'] == 'tkr') {
 
-			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='TKR'");
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='TKR' GROUP BY data_casis.id_casis");
+			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='TKR' GROUP BY data_casis.id_casis");
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -543,7 +536,8 @@ if(isset($_GET['e']))
 
 		} elseif ($_GET['method'] == 'tkj') {
 
-			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='TKJ' ");
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='TKJ' GROUP BY data_casis.id_casis");
+			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='TKJ' GROUP BY data_casis.id_casis");
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -640,7 +634,8 @@ if(isset($_GET['e']))
 
 		} elseif ($_GET['method'] == 'pbs') {
 
-			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='PBS' ");
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='PBS' GROUP BY data_casis.id_casis");
+			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jurusan1='PBS' GROUP BY data_casis.id_casis");
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -737,7 +732,8 @@ if(isset($_GET['e']))
 
 		} elseif ($_GET['method'] == 'hafidz') {
 
-			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='tahfidz' ");
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='tahfidz' GROUP BY data_casis.id_casis");
+			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='tahfidz' GROUP BY data_casis.id_casis");
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -834,7 +830,8 @@ if(isset($_GET['e']))
 
 		} elseif ($_GET['method'] == 'yatim') {
 
-			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='yatim' ");
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='yatim' GROUP BY data_casis.id_casis");
+			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='yatim' GROUP BY data_casis.id_casis");
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -929,9 +926,108 @@ if(isset($_GET['e']))
 			<?php
 			$core->export_excel('DataYatim-PPDBSMKW9'.date('Y').'-'.time().'.xls');
 
+		} elseif ($_GET['method'] == 'anakGrKrywn') {
+
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='pa/pi guru/karyawan' GROUP BY data_casis.id_casis");
+			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='pa/pi guru/karyawan' GROUP BY data_casis.id_casis");
+			//$get_data = $db->fetch($q);
+			//print_r($get_data);
+			?>
+			<table border="1" style="width: 100%;border-collapse:collapse;">
+				<thead>
+					<tr>
+						<th style="width:3px">No.</th>
+						<th>NIK</th>
+						<th>Jurusan 1</th>
+						<th>Jurusan 2</th>
+						<th>Nama lengkap</th>
+						<th>JK</th>
+						<th>TTL</th>
+						<th>Agama</th>
+						<th>Alamat</th>
+						<th>Transportasi</th>
+						<th>HP</th>
+						<th>Email</th>
+						<th>Nama Ayah</th>
+						<th>Pekerjaan Ayah</th>
+						<th>Nama Ibu</th>
+						<th>Pekerjaan</th>
+						<th>Nama Wali</th>
+						<th>Pekerjaan Wali</th>
+						<th>Anakke</th>
+						<th>saudara</th>
+						<th>MTK</th>
+						<th>B.Indo</th>
+						<th>B.Inggris</th>
+						<th>IPA</th>
+						<th>Jenis Pendaftaran</th>
+						<th>Jalur Pendaftaran</th>
+						<th>Jalur Khusus</th>
+						<th>Asal Sekolah</th>
+						<th>Alamat Asal Sekolah</th>
+						<th>Prestasi Akademik</th>
+						<th>Prestasi Nonakademik</th>
+						<th>Merokok</th>
+						<th>Berkebutuhan khusus</th>
+						<th>Bertato</th>
+						<th>Buta warna</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+					$n = 1;
+					while($get_data = $db->fetch($q)){ ?>
+					<tr>
+						<td><?=$n++?></td>
+						<td><?=$get_data['no_nik']?></td>
+						<td><?=$get_data['jurusan1']?></td>
+						<td><?=$get_data['jurusan2']?></td>
+						<td><?=$get_data['nama_lengkap']?></td>
+						<td><?=$get_data['jenkel']?></td>
+						<td><?=$get_data['ttl']?></td>
+						<td><?=$get_data['agama']?></td>
+						<td><?=$get_data['alamat']?></td>
+						<td><?=$get_data['transportasi']?></td>
+						<td><?=$get_data['hp']?></td>
+						<td><?=$get_data['email']?></td>
+						<td><?=$get_data['nama_ayah']?></td>
+						<td><?=$get_data['pekerjaan_ayah']?></td>
+						<td><?=$get_data['nama_ibu']?></td>
+						<td><?=$get_data['pekerjaan_ibu']?></td>
+						<td><?=$get_data['nama_wali']?></td>
+						<td><?=$get_data['pekerjaan_wali']?></td>
+						<td><?=$get_data['anakke']?></td>
+						<td><?=$get_data['saudara']?></td>
+						<td><?=$get_data['mtk']?></td>
+						<td><?=$get_data['bindo']?></td>
+						<td><?=$get_data['bing']?></td>
+						<td><?=$get_data['ipa']?></td>
+						<td><?=$get_data['jenis_pendaftaran']?></td>
+						<td><?=$get_data['jalur_pendaftaran']?></td>
+						<td><?=$get_data['jalur_DaftarKhusus']?></td>
+						<td><?=$get_data['asal_sekolah']?></td>
+						<td><?=$get_data['alamat_asal_sekolah']?></td>
+						<td><?=$get_data['prestasi_akademik']?></td>
+						<td><?=$get_data['prestasi_nonakademik']?></td>
+						<td><?=$get_data['merokok']?></td>
+						<td><?=$get_data['bk']?></td>
+						<td><?=$get_data['bertato']?></td>
+						<td><?=$get_data['bw']?></td>
+						<td><?=strtoupper($get_data['status'])?></td>
+					</tr>
+				<?php
+				}
+				?>
+				</tbody>
+			</table>
+			<?php
+			$core->export_excel('Data_pIp_AguruKrywn-PPDBSMKW9'.date('Y').'-'.time().'.xls');
+
 		} elseif ($_GET['method'] == 'w9') {
 
-			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='mts/smp w9' ");
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='mts/smp w9' GROUP BY data_casis.id_casis");
+			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='mts/smp w9' GROUP BY data_casis.id_casis");
 			//$get_data = $db->fetch($q);
 			//print_r($get_data);
 			?>
@@ -1025,6 +1121,104 @@ if(isset($_GET['e']))
 			</table>
 			<?php
 			$core->export_excel('DataSmpMtsW9-PPDBSMKW9'.date('Y').'-'.time().'.xls');
+
+		} elseif ($_GET['method'] == 'seYyysn') {
+
+			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='saudara 1 unit' GROUP BY data_casis.id_casis");
+			// $q = $db->query("SELECT * FROM registrasi,data_casis,trespass,nilai_un WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis AND registrasi.jalur_DaftarKhusus='saudara 1 unit' GROUP BY data_casis.id_casis");
+			//$get_data = $db->fetch($q);
+			//print_r($get_data);
+			?>
+			<table border="1" style="width: 100%;border-collapse:collapse;">
+				<thead>
+					<tr>
+						<th style="width:3px">No.</th>
+						<th>NIK</th>
+						<th>Jurusan 1</th>
+						<th>Jurusan 2</th>
+						<th>Nama lengkap</th>
+						<th>JK</th>
+						<th>TTL</th>
+						<th>Agama</th>
+						<th>Alamat</th>
+						<th>Transportasi</th>
+						<th>HP</th>
+						<th>Email</th>
+						<th>Nama Ayah</th>
+						<th>Pekerjaan Ayah</th>
+						<th>Nama Ibu</th>
+						<th>Pekerjaan</th>
+						<th>Nama Wali</th>
+						<th>Pekerjaan Wali</th>
+						<th>Anakke</th>
+						<th>saudara</th>
+						<th>MTK</th>
+						<th>B.Indo</th>
+						<th>B.Inggris</th>
+						<th>IPA</th>
+						<th>Jenis Pendaftaran</th>
+						<th>Jalur Pendaftaran</th>
+						<th>Jalur Khusus</th>
+						<th>Asal Sekolah</th>
+						<th>Alamat Asal Sekolah</th>
+						<th>Prestasi Akademik</th>
+						<th>Prestasi Nonakademik</th>
+						<th>Merokok</th>
+						<th>Berkebutuhan khusus</th>
+						<th>Bertato</th>
+						<th>Buta warna</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+					$n = 1;
+					while($get_data = $db->fetch($q)){ ?>
+					<tr>
+						<td><?=$n++?></td>
+						<td><?=$get_data['no_nik']?></td>
+						<td><?=$get_data['jurusan1']?></td>
+						<td><?=$get_data['jurusan2']?></td>
+						<td><?=$get_data['nama_lengkap']?></td>
+						<td><?=$get_data['jenkel']?></td>
+						<td><?=$get_data['ttl']?></td>
+						<td><?=$get_data['agama']?></td>
+						<td><?=$get_data['alamat']?></td>
+						<td><?=$get_data['transportasi']?></td>
+						<td><?=$get_data['hp']?></td>
+						<td><?=$get_data['email']?></td>
+						<td><?=$get_data['nama_ayah']?></td>
+						<td><?=$get_data['pekerjaan_ayah']?></td>
+						<td><?=$get_data['nama_ibu']?></td>
+						<td><?=$get_data['pekerjaan_ibu']?></td>
+						<td><?=$get_data['nama_wali']?></td>
+						<td><?=$get_data['pekerjaan_wali']?></td>
+						<td><?=$get_data['anakke']?></td>
+						<td><?=$get_data['saudara']?></td>
+						<td><?=$get_data['mtk']?></td>
+						<td><?=$get_data['bindo']?></td>
+						<td><?=$get_data['bing']?></td>
+						<td><?=$get_data['ipa']?></td>
+						<td><?=$get_data['jenis_pendaftaran']?></td>
+						<td><?=$get_data['jalur_pendaftaran']?></td>
+						<td><?=$get_data['jalur_DaftarKhusus']?></td>
+						<td><?=$get_data['asal_sekolah']?></td>
+						<td><?=$get_data['alamat_asal_sekolah']?></td>
+						<td><?=$get_data['prestasi_akademik']?></td>
+						<td><?=$get_data['prestasi_nonakademik']?></td>
+						<td><?=$get_data['merokok']?></td>
+						<td><?=$get_data['bk']?></td>
+						<td><?=$get_data['bertato']?></td>
+						<td><?=$get_data['bw']?></td>
+						<td><?=strtoupper($get_data['status'])?></td>
+					</tr>
+				<?php
+				}
+				?>
+				</tbody>
+			</table>
+			<?php
+			$core->export_excel('Data_SeYysn-PPDBSMKW9'.date('Y').'-'.time().'.xls');
 
 		}
 	} elseif ($_GET['e'] == 'bayar') {
