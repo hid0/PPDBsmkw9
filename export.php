@@ -1,5 +1,6 @@
 <?php
 // exporter | coded by : alin koko mansuby
+// modified | coded by : Faiz Hidayatulloh
 
 
 require 'autoload.php';
@@ -8,8 +9,7 @@ use Spipu\Html2Pdf\Html2Pdf;
 use Spipu\Html2Pdf\Exception\Html2PdfException;
 use Spipu\Html2Pdf\Exception\ExceptionFormatter;
 
-function title($s,$format)
-{
+function title($s,$format) {
 	$ganti = array(' ','.',',');
 	$diganti = array('-');
 	$get = str_replace($ganti,$diganti,$s);
@@ -17,19 +17,15 @@ function title($s,$format)
 	$get = $get.'-SMKW9.'.$format;
 	return $get;
 }
-if(isset($_GET['e']))
-{
-	if($_GET['e'] == 'single')
-	{
+if(isset($_GET['e'])) {
+	if($_GET['e'] == 'single') {
 		$q = $db->query("SELECT * FROM registrasi,data_casis,trespass WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND data_casis.id_casis='$_GET[id]' ");
 		$d = $db->fetch($q);
-		if($d['jenkel'] == 'L')
-		{
+		if($d['jenkel'] == 'L') {
 			$jk = "Laki-Laki";
-		}elseif($d['jenkel'] == 'P')
-		{
+		}elseif($d['jenkel'] == 'P') {
 			$jk = "Perempuan";
-		}else{
+		}else {
 			$jk = "Unknown";
 		}
 		$username = $d['no_nik'];
@@ -42,8 +38,8 @@ if(isset($_GET['e']))
 		$html2pdf->writeHTML($content);
 		$html2pdf->output();
 		// $core->export_word(title($get_data['id_casis'].$get_data['nama_lengkap'],'docx'));
-	} elseif($_GET['e'] == 'data')
-	{
+
+	} elseif($_GET['e'] == 'data') {
 		if ($_GET['method'] == 'all') {
 
 			$q = $db->query("SELECT * FROM `registrasi`,`data_casis`,`trespass`,`nilai_un` WHERE registrasi.id_reg=data_casis.id_reg AND trespass.id_casis=data_casis.id_casis AND nilai_un.id_casis=data_casis.id_casis GROUP BY data_casis.id_casis");

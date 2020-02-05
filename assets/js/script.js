@@ -1,4 +1,4 @@
-$(document).ready( function () {
+$(document).ready(function() {
     $('.datepicker').datepicker({
         format: 'dd/mm/yyyy',
     });
@@ -8,9 +8,13 @@ $(document).ready( function () {
     $('input[value="umum"]').click(function() {
         $("#khusus").hide();
     });
+    // $('input[value="industri"]').click(function() {
+    //     $("#industri").show();
+    //     $("#khusus").hide();
+    // });
     $('textarea').css("resize", "none");
     $('input[type="text"]').attr("autocomplete", "off");
-    $('a[type="button"]').click( function () {
+    $('a[type="button"]').click(function() {
         if ($('#passwd').get(0).type == 'password') {
             $('#passwd').attr('type', 'text');
             $('.fa').removeClass("fa-eye");
@@ -21,41 +25,40 @@ $(document).ready( function () {
             $('.fa').addClass("fa-eye");
         }
     });
-    $('input#ayah').keyup( function () {
+    $('input#ayah').keyup(function() {
         var cont0 = $(this).val();
         $('input#wali').val(cont0);
     });
-    $('input#krj_ayah').keyup( function () {
+    $('input#krj_ayah').keyup(function() {
         var cont1 = $(this).val();
         $('input#krj_wali').val(cont1);
     });
+    $("#btnGetCaptcha").prop("disabled", true);
+    var iNumber = Math.floor(Math.random() * 10000);
+    $("#divGenerateRandomValues").css({ "background-image": 'url(../img/captcha.png)', 'width': '100p%', 'height': '40px' });
+    $("#divGenerateRandomValues").html("<input id='txtNewInput'></input>");
+    $("#txtNewInput").css({ 'background': 'transparent', 'font-family': 'Serif', 'font-style': 'bold', 'font-size': '35px' });
+    $("#txtNewInput").css({ 'width': '100px', 'border': 'none', 'color': 'black', 'text-decoration': 'line-through' });
+    $("#txtNewInput").val(iNumber);
+    $("#txtNewInput").prop('disabled', true);
+
+    $("#btnGetCaptcha").click(function() {
+        if ($("#textInput").val() != iNumber) {
+            alert("Captcha Keliru, Mohon diulangi!!!");
+        } else {
+            alert("Captcha bNer... :)");
+        }
+    });
+    var wrongInput = function() {
+        if ($("#textInput").val() != iNumber) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    $("#textInput").bind('input', function() {
+        $("#btnGetCaptcha").prop('disabled', wrongInput);
+    });
+    $("#textInput").addClass('form-control input-lg');
+    $("#btnGetCaptcha").addClass('btn btn-success btn-lg btn-block btn-flat');
 });
-function createCaptcha(){
-    for(i=0; i<6 ; i++){
-        if(i %2 ==0){
-            captcha[i] = String.fromCharCode(Math.floor((Math.random()*26)+65));
-        }else{      
-            captcha[i] = Math.floor((Math.random()*10)+0);
-        }
-    }
-    var thecaptcha=captcha.join("");
-    var elm = document.getElementById('captcha');
-    elm.innerHTML="<span class='captcha'> " + thecaptcha+ " </span>" + "&nbsp; <a onclick='createCaptcha()' class='badge badge-warning' href='#'>recaptcha</a>";
-}
-var captcha= new Array ();
-function validateRecaptcha(){
-    var recaptcha= document.getElementById("recaptcha").value;;
-    var validRecaptcha=0;
-    for(var j=0; j<6; j++){
-        if(recaptcha.charAt(j)!= captcha[j]){
-            validRecaptcha++;
-        }
-    }
-    if (recaptcha == ""){
-        document.getElementById('errCaptcha').innerHTML = 'Re-Captcha must be filled';
-    } else if (validRecaptcha>0 || recaptcha.length>6){
-        document.getElementById('errCaptcha').innerHTML = 'Sorry, Wrong Re-Captcha';
-    } else{
-        document.getElementById('errCaptcha').innerHTML = 'OK';
-    }
-}

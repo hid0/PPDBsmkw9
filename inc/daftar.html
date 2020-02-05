@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/script.js"></script>
 </head>
+
 <body>
     <!-- Header with logo SMK Walisongo -->
     <div class="row">
@@ -108,13 +110,13 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="rt">RT</label>
-                                                <input type="number" name="rt" id="rt" class="form-control" required>
+                                                <input type="number" name="rt" id="rt" class="form-control" placeholder="01" required>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="rw">RW</label>
-                                                <input type="number" name="rw" id="rw" class="form-control" required>
+                                                <input type="number" name="rw" id="rw" class="form-control" placeholder="12" required>
                                             </div>
                                         </div>
                                     </div>
@@ -225,28 +227,29 @@
                             </div>
                         </div>
                         <!-- end of data parents -->
-                        </div>
-                        <!-- new row -->
-                        <div class="row">
-                            <!-- data Pendaftaran -->
-                            <div class="col-md-6">
-                                <div class="box box-default">
-                                    <div class="box-header">
-                                        <h4>Pendaftaran Peserta Didik Baru</h4>
-                                    </div>
-                                    <div class="box-body">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="jalur">Jalur Pendaftaran</label><br>
-                                                    <label class="radio-inline" for="jal1"><input type="radio" name="jalur" id="jal1" value="umum"> Umum</label>
-                                                    <label class="radio-inline" for="jal2"><input type="radio" name="jalur" id="jal2" value="khusus"> Khusus</label>
-                                                </div>
+                    </div>
+                    <!-- new row -->
+                    <div class="row">
+                        <!-- data Pendaftaran -->
+                        <div class="col-md-6">
+                            <div class="box box-default">
+                                <div class="box-header">
+                                    <h4>Pendaftaran Peserta Didik Baru</h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="jalur">Jalur Pendaftaran</label><br>
+                                                <label class="radio-inline" for="jal1"><input type="radio" name="jalur" id="jal1" value="umum"> Umum</label>
+                                                <label class="radio-inline" for="jal2"><input type="radio" name="jalur" id="jal2" value="khusus"> Khusus</label>
+                                                <!-- <label class="radio-inline" for="jal3"><input type="radio" name="jalur" id="jal3" value="industri"> Industri</label> -->
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group" id="khusus" style="display:none;">
-                                                    <label for="khus">Jalur Khusus</label>
-                                                    <select class="form-control" name="khus">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group" id="khusus" style="display:none;">
+                                                <label for="khus">Jalur Khusus</label>
+                                                <select class="form-control" name="khus">
                                                         <option>-Pilih Jalur Khusus-</option>
                                                         <option value="yatim">Yatim / Yatim Piatu</option>
                                                         <option value="mts/smp w9">dari MTs./SMP Walisongo</option>
@@ -254,146 +257,134 @@
                                                         <option value="pa/pi guru/karyawan">Putra/i Guru/karyawan di Walisongo</option>
                                                         <option value="pilih KT">Peserta didik Kriya Tekstil dan Batik</option>
                                                         <option value="tahfidz">Peserta didik Tahfidz minimal 5 Juz</option>
-                                                    </select>
-                                                </div>
+                                                </select>
                                             </div>
+                                            <!-- <div class="form-group" id="industri" style="display:none;">
+                                                <select name="industri" class="form-control">
+                                                    <option>-Pilih Jurusan Industri-</option>
+                                                    <option value="TKRO">TKRO</option>
+                                                    <option value="TKJ">TKJ</option>
+                                                </select>
+                                            </div> -->
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="khus">Jurusan Pertama</label>
-                                                    <select class="form-control" name="jur1">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="khus">Jurusan Pertama</label>
+                                                <select class="form-control" name="jur1">
                                                         <option>-Pilih Jurusan-</option>
                                                         <option value="KT">Kriya Tekstil</option>
                                                         <option value="TKR">Teknik Kendaraan Ringan</option>
                                                         <option value="TKJ">Teknik Komputer Jaringan</option>
                                                         <option value="PBS">Perbankan Syari'ah</option>
                                                     </select>
-                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="khus">Jurusan Kedua</label>
-                                                    <select class="form-control" name="jur2">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="khus">Jurusan Kedua</label>
+                                                <select class="form-control" name="jur2">
                                                         <option>-Pilih Jurusan-</option>
                                                         <option value="KT">Kriya Tekstil</option>
                                                         <option value="TKR">Teknik Kendaraan Ringan</option>
                                                         <option value="TKJ">Teknik Komputer Jaringan</option>
                                                         <option value="PBS">Perbankan Syari'ah</option>
                                                     </select>
-                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="sek_asal">Nama Sekolah Asal</label>
-                                            <input type="text" name="sek_asal" id="sek_asal" placeholder="MTs. Madaul Huda" class="form-control">
-                                        </div>
-                                        <label for="al_sek">Alamat Asal sekolah</label>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <input type="text" name="sek_asal_des" id="al_sek" placeholder="Desa" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <input type="text" name="sek_asal_kec" id="al_sek1" placeholder="Kecamatan" class="form-control">
-                                                </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sek_asal">Nama Sekolah Asal</label>
+                                        <input type="text" name="sek_asal" id="sek_asal" placeholder="MTs. Madaul Huda" class="form-control">
+                                    </div>
+                                    <label for="al_sek">Alamat Asal sekolah</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" name="sek_asal_des" id="al_sek" placeholder="Desa" class="form-control">
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="preak">Prestasi Akademik</label>
-                                                    <textarea name="preak" id="preak" cols="5" rows="3" class="form-control" placeholder="Masukan Prestasi Akademik dipisah dengan ; jika lebih dari 1"></textarea>
-                                                </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" name="sek_asal_kec" id="al_sek1" placeholder="Kecamatan" class="form-control">
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="prenon">Prestasi Nonakademik</label>
-                                                    <textarea name="preak" id="preak" cols="5" rows="3" class="form-control" placeholder="Masukan Prestasi Nonakademik dipisah dengan ; jika lebih dari 1"></textarea>
-                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="preak">Prestasi Akademik</label>
+                                                <textarea name="preak" id="preak" cols="5" rows="3" class="form-control" placeholder="Masukan Prestasi Akademik dipisah dengan ; jika lebih dari 1"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="prenon">Prestasi Nonakademik</label>
+                                                <textarea name="preak" id="preak" cols="5" rows="3" class="form-control" placeholder="Masukan Prestasi Nonakademik dipisah dengan ; jika lebih dari 1"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- end of data Pendaftaran -->
-                            <!-- data trespass -->
-                            <div class="col-md-6">
-                                <div class="box box-default">
-                                    <div class="box-header">
-                                        <h4>Trespass Peserta Didik Baru</h4>
+                        </div>
+                        <!-- end of data Pendaftaran -->
+                        <!-- data trespass -->
+                        <div class="col-md-6">
+                            <div class="box box-default">
+                                <div class="box-header">
+                                    <h4>Trespass Peserta Didik Baru</h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="rokok">Apakah Anda Merokok ?</label><br>
+                                                <label class="radio-inline" for="ya"><input type="radio" name="rokok" id="ya" value="Iya"> Iya</label>
+                                                <label class="radio-inline" for="tdk"><input type="radio" name="rokok" id="tdk" value="Tidak"> Tidak</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="kbthn">Apakah Anda Berkebutuhan Khusus ?</label><br>
+                                                <label class="radio-inline" for="ya1"><input type="radio" name="kbthn" id="ya1" value="Iya"> Iya</label>
+                                                <label class="radio-inline" for="tdk1"><input type="radio" name="kbthn" id="tdk1" value="Tidak"> Tidak</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="tato">Apakah Anda Bertato ?</label><br>
+                                                <label class="radio-inline" for="ya2"><input type="radio" name="tato" id="ya2" value="Iya"> Iya</label>
+                                                <label class="radio-inline" for="tdk2"><input type="radio" name="tato" id="tdk2" value="Tidak"> Tidak</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="buta">Apakah Anda Buta Warna ?</label><br>
+                                                <label class="radio-inline" for="ya3"><input type="radio" name="buta" id="ya3" value="Iya"> Iya</label>
+                                                <label class="radio-inline" for="tdk3"><input type="radio" name="buta" id="tdk3" value="Tidak"> Tidak</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="yatim">Apakah Anda Yatim ?</label><br>
+                                                <label class="radio-inline" for="ya4"><input type="radio" name="yatim" id="ya4" value="Iya"> Iya</label>
+                                                <label class="radio-inline" for="tdk4"><input type="radio" name="yatim" id="tdk4" value="Tidak"> Tidak</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="kip">Apakah Anda Penerima KIP ?</label><br>
+                                                <label class="radio-inline" for="ya5"><input type="radio" name="kip" id="ya5" value="Iya"> Iya</label>
+                                                <label class="radio-inline" for="tdk5"><input type="radio" name="kip" id="tdk5" value="Tidak"> Tidak</label>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="box-body">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="rokok">Apakah Anda Merokok ?</label><br>
-                                                    <label class="radio-inline" for="ya"><input type="radio" name="rokok" id="ya" value="Iya"> Iya</label>
-                                                    <label class="radio-inline" for="tdk"><input type="radio" name="rokok" id="tdk" value="Tidak"> Tidak</label>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="kbthn">Apakah Anda Berkebutuhan Khusus ?</label><br>
-                                                    <label class="radio-inline" for="ya1"><input type="radio" name="kbthn" id="ya1" value="Iya"> Iya</label>
-                                                    <label class="radio-inline" for="tdk1"><input type="radio" name="kbthn" id="tdk1" value="Tidak"> Tidak</label>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="tato">Apakah Anda Bertato ?</label><br>
-                                                    <label class="radio-inline" for="ya2"><input type="radio" name="tato" id="ya2" value="Iya"> Iya</label>
-                                                    <label class="radio-inline" for="tdk2"><input type="radio" name="tato" id="tdk2" value="Tidak"> Tidak</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="buta">Apakah Anda Buta Warna ?</label><br>
-                                                    <label class="radio-inline" for="ya3"><input type="radio" name="buta" id="ya3" value="Iya"> Iya</label>
-                                                    <label class="radio-inline" for="tdk3"><input type="radio" name="buta" id="tdk3" value="Tidak"> Tidak</label>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="yatim">Apakah Anda Yatim ?</label><br>
-                                                    <label class="radio-inline" for="ya4"><input type="radio" name="yatim" id="ya4" value="Iya"> Iya</label>
-                                                    <label class="radio-inline" for="tdk4"><input type="radio" name="yatim" id="tdk4" value="Tidak"> Tidak</label>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="kip">Apakah Anda Penerima KIP ?</label><br>
-                                                    <label class="radio-inline" for="ya5"><input type="radio" name="kip" id="ya5" value="Iya"> Iya</label>
-                                                    <label class="radio-inline" for="tdk5"><input type="radio" name="kip" id="tdk5" value="Tidak"> Tidak</label>
-                                                </div>
-                                            </div>
+                                    <div class="form-group">
+                                        <div class="checkbox"><label for="agree"><input type="checkbox" name="agree" id="agree">Saya menyatakan dengan sesungguhnya bahwa isian data dalam formulir ini adalah benar. Apabila ternyata data tersebut tidak benar / palsu, maka saya bersedia menerima sanksi berupa PEMBATALAN menjadi CALON PESERTA DIDIK SMK Walisongo Pecangaan</label></div>
+                                        <div class="checkbox"><label for="agree1"><input type="checkbox" name="agree" id="agree1">Bersedia menyerahkan Fotokopi KARTU KELUARGA (KK) kepada Panitia PPDB SMK Walisongo Pecangaan</label></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div id="divGenerateRandomValues"></div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="checkbox"><label for="agree"><input type="checkbox" name="agree" id="agree">Saya menyatakan dengan sesungguhnya bahwa isian data dalam formulir ini adalah benar. Apabila ternyata data tersebut tidak benar / palsu, maka saya bersedia menerima sanksi berupa PEMBATALAN menjadi CALON PESERTA DIDIK SMK Walisongo Pecangaan</label></div>
-                                            <div class="checkbox"><label for="agree1"><input type="checkbox" name="agree" id="agree1">Bersedia menyerahkan Fotokopi KARTU KELUARGA (KK) kepada Panitia PPDB SMK Walisongo Pecangaan</label></div>
+                                        <div class="col-md-6">
+                                            <input type="text" id="textInput" />
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <tr><td>Captcha : </td>
-                                                    <td id="captcha" colspan="2">
-                                                        <script> createCaptcha(); </script>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Type Captcha : </td>
-                                                    <td><input type="text" name="recaptcha" id="recaptcha" placeholder="Type the captcha" class="form-control"/></td>
-                                                    <td id="errCaptcha" class="errmsg"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3" style="text-align:right;">
-                                                        <input type="button" value="Submit" class="btn btn-sm btn-primary form-control" onClick="validateRecaptcha()"/>
-                                                    </td>
-                                                </tr>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="input-group">
-                                                    <label for="capt"></label>
-                                                    <input type="text" name="recaptcha" id="recaptcha" class="form-control" placeholder="Tulis captcha disini">
-                                                    <span class="input-group-btn">
-                                                        <button class="btn btn-success btn-flat" onclick="validateRecaptcha()"><i class="fa fa-check-circle"></i></button>
-                                                    </span>
-                                                    <span class="help-block errmsg" id="errCaptcha"></span>
-                                                </div>
-                                            </div>
+                                        <div class="col-md-4">
+                                            <button id="btnGetCaptcha" name="daftar">Daftar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -404,7 +395,9 @@
             </div>
         </div>
     </div>
-    
-<script src="../assets/js/bootstrap-datepicker.min.js"></script>
+    </div>
+
+    <script src="../assets/js/bootstrap-datepicker.min.js"></script>
 </body>
+
 </html>
