@@ -7,7 +7,7 @@
                 <b>Version</b> 2.4.0
             </div> -->
     <strong>Copyright &copy; 2018 - <?= date('Y') ?> <a target="_blank" href="http://smkw9jepara.sch.id">SMK Walisongo Pecangaan</a>.</strong> All rights
-    reserved.
+    reserved.| Coded by <a href="http://github.com/hid0" target="_blank" rel="noopener noreferrer">Hid0</a>
 </footer>
 
 </div>
