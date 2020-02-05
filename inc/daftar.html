@@ -243,7 +243,7 @@
                                                 <label for="jalur">Jalur Pendaftaran</label><br>
                                                 <label class="radio-inline" for="jal1"><input type="radio" name="jalur" id="jal1" value="umum"> Umum</label>
                                                 <label class="radio-inline" for="jal2"><input type="radio" name="jalur" id="jal2" value="khusus"> Khusus</label>
-                                                <!-- <label class="radio-inline" for="jal3"><input type="radio" name="jalur" id="jal3" value="industri"> Industri</label> -->
+                                                <label class="radio-inline" for="jal3"><input type="radio" name="jalur" id="jal3" value="industri"> Industri</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -378,10 +378,14 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <div id="divGenerateRandomValues"></div>
+                                            <div class="form-group">
+                                                <div id="divGenerateRandomValues"></div>
+                                            </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" id="textInput" />
+                                            <div class="form-group">
+                                                <input type="text" placeholder="Masukan Angka disamping" id="textInput" />
+                                            </div>
                                         </div>
                                         <div class="col-md-4">
                                             <button id="btnGetCaptcha" name="daftar">Daftar</button>

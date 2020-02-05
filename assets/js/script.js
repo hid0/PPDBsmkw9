@@ -8,10 +8,6 @@ $(document).ready(function() {
     $('input[value="umum"]').click(function() {
         $("#khusus").hide();
     });
-    // $('input[value="industri"]').click(function() {
-    //     $("#industri").show();
-    //     $("#khusus").hide();
-    // });
     $('textarea').css("resize", "none");
     $('input[type="text"]').attr("autocomplete", "off");
     $('a[type="button"]').click(function() {
@@ -38,7 +34,7 @@ $(document).ready(function() {
     $("#divGenerateRandomValues").css({ "background-image": 'url(../img/captcha.png)', 'width': '100p%', 'height': '40px' });
     $("#divGenerateRandomValues").html("<input id='txtNewInput'></input>");
     $("#txtNewInput").css({ 'background': 'transparent', 'font-family': 'Serif', 'font-style': 'bold', 'font-size': '35px' });
-    $("#txtNewInput").css({ 'width': '100px', 'border': 'none', 'color': 'black', 'text-decoration': 'line-through' });
+    $("#txtNewInput").css({ 'width': '100px', 'border': 'none', 'color': 'black', 'text-decoration': 'line-through', 'font-style': 'italic' });
     $("#txtNewInput").val(iNumber);
     $("#txtNewInput").prop('disabled', true);
 
@@ -61,4 +57,12 @@ $(document).ready(function() {
     });
     $("#textInput").addClass('form-control input-lg');
     $("#btnGetCaptcha").addClass('btn btn-success btn-lg btn-block btn-flat');
+    // $('input[value="industri"]').click(function() {});
+    if ($('input[value="industri"]').click()) {
+        $('option[value="KT"]').hide();
+        $('option[value="PBS"]').hide();
+    } else {
+        $('option[value="KT"]').show();
+        $('option[value="PBS"]').show();
+    }
 });
