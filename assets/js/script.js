@@ -5,7 +5,7 @@ $(document).ready(function() {
     $('input[value="khusus"]').click(function() {
         $("#khusus").show();
     });
-    $('input[value="umum"]').click(function() {
+    $('input[value="umum"], [value="industri"]').click(function() {
         $("#khusus").hide();
     });
     $('textarea').css("resize", "none");
@@ -57,12 +57,12 @@ $(document).ready(function() {
     });
     $("#textInput").addClass('form-control input-lg');
     $("#btnGetCaptcha").addClass('btn btn-success btn-lg btn-block btn-flat');
-    // $('input[value="industri"]').click(function() {});
-    if ($('input[value="industri"]').click()) {
+    $('input[value="industri"]').click(function() {
         $('option[value="KT"]').hide();
         $('option[value="PBS"]').hide();
-    } else {
+    });
+    $('input[value="umum"], [value="khusus"]').click(function() {
         $('option[value="KT"]').show();
         $('option[value="PBS"]').show();
-    }
+    })
 });
