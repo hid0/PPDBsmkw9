@@ -38,13 +38,13 @@ $(document).ready(function() {
     $("#txtNewInput").val(iNumber);
     $("#txtNewInput").prop('disabled', true);
 
-    $("#btnGetCaptcha").click(function() {
-        if ($("#textInput").val() != iNumber) {
-            alert("Captcha Keliru, Mohon diulangi!!!");
-        } else {
-            alert("Captcha bNer... :)");
-        }
-    });
+    // $("#btnGetCaptcha").click(function() {
+    //     if ($("#textInput").val() != iNumber) {
+    //         alert("Captcha Keliru, Mohon diulangi!!!");
+    //     } else {
+    //         alert("Captcha bNer... :)");
+    //     }
+    // });
     var wrongInput = function() {
         if ($("#textInput").val() != iNumber) {
             return true;

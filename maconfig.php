@@ -31,38 +31,26 @@ if(!file_exists($config['autoload_path'].$config['autoload_name']))
 	die("ERROR : ".$config['autoload_path'].$config['autoload_name']." Not Exists !");
 
 /* add */
-function idr($idr)
-{
+function idr($idr) {
 	$idr = "Rp. ".number_format($idr,0,',','.');
 	return $idr;
 }
-function getAsset(){
-	return "assets/";
+function getAsset() {
+	return "./assets/";
 }
-function getCss()
-{
+function getCss() {
 	return getAsset()."css/";
 }
-function getJs()
-{
+function getJs() {
 	return getAsset()."js/";
 }
-function getImg()
-{
+function getImg() {
 	return getAsset()."img/";
 }
-function getInc()
-
-{
-	return "inc/";
+function getPages() {
+	return getAsset()."pages/";
 }
-
-function getTemplate()
-{
-	return getInc()."template/";
-}
-function localdate($tgl)
-{
+function localdate($tgl) {
 	$date = substr($tgl, 8, 2);
 	$month = substr($tgl, 5, 2);
 	$years = substr($tgl, 0, 4);
