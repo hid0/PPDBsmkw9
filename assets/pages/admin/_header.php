@@ -13,14 +13,13 @@ $ez = $db->fetch($qu);
     <meta name="author" content="Faiz Hidayatulloh">
     <link rel="shortcut icon" href="<?= getImg() ?>logo-smk.png" type="image/x-icon">
     <link rel="stylesheet" href="<?= getCss() ?>bootstrap.min.css">
-    <link rel="stylesheet" href="<?= getCss() ?>dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="<?= getCss() ?>font-awesome.min.css">
     <link rel="stylesheet" href="<?= getCss() ?>ionicons.min.css">
+    <link rel="stylesheet" href="<?= getCss() ?>dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="<?= getCss() ?>select2.min.css">
     <link rel="stylesheet" href="<?= getCss() ?>AdminLTE.min.css">
     <link rel="stylesheet" href="<?= getCss() ?>skins/_all-skins.min.css">
-    <link rel="stylesheet" href="<?= getCss() ?>select2.min.css">
-    <link rel="stylesheet" href="<?= getCss() ?>select2-bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" /> -->
     <script src="<?= getJS() ?>jquery.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -62,11 +61,10 @@ $ez = $db->fetch($qu);
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-                        <li class="dropdown messages-menu">
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="<?= getImg() ?><?= $ez['profile'] ?>" class="user-image" alt="User Image">
-                                <span class="hidden-xs"><b>Account</b></span>
+                                <span class="hidden-xs"><b>Akun</b></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
@@ -112,18 +110,99 @@ $ez = $db->fetch($qu);
                 </div>
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
-                    <?php
-                    if ($_SESSION['rol_log'] == 'super-admin') {
-                        echo "<li><a href=\"?a=index&ke=dashboard\"><i class=\"fa fa-dashboard\"></i> <span>Dashboard</span></a></li><li><a href=\"?a=bayar&ke=list\"><i class=\"fa fa-money\"></i> Lihat Pembayaran</a></li><li><a href=\"?a=nagih\"><i class=\"fa fa-balance-scale\"></i>Tagihan</a></li><li><a href=\"?a=setting\"><i class=\"fa fa-gear\"></i><span>Setting</span></a></li><li><a href=\"?a=logout\"><i class=\"fa fa-sign-out\"></i><span> Logout</span></a></li>";
-                    } elseif ($_SESSION['rol_log'] == 'keuangan') {
-                        echo "<li><a href=\"?a=index&ke=dashboard\"><i class=\"fa fa-dashboard\"></i> <span>Dashboard</span></a></li><li><a href=\"?a=bayar&ke=list\"><i class=\"fa fa-money\"></i> Lihat Pembayaran</a></li><li><a href=\"?a=setting\"><i class=\"fa fa-gear\"></i><span>Setting</span></a></li><li><a href=\"?a=logout\"><i class=\"fa fa-sign-out\"></i><span> Logout</span></a></li>";
-                    } elseif ($_SESSION['rol_log'] == 'tata-usaha') {
-                        echo "<li><a href=\"?a=index&ke=dashboard\"><i class=\"fa fa-dashboard\"></i> <span>Dashboard</span></a></li><li><a href=\"?a=setting\"><i class=\"fa fa-gear\"></i><span>Setting</span></a></li><li><a href=\"?a=logout\"><i class=\"fa fa-sign-out\"></i><span> Logout</span></a></li>";
-                    }
-                    ?>
+                <?php
+                if ($_SESSION['rol_log'] == 'super-admin') {
+                ?>
+                    <li>
+                        <a href="?page=dashboard">
+                            <i class="fa fa-dashboard"></i>&nbsp;
+                            <span>Halam Depan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="?page=payments">
+                            <i class="fa fa-money"></i> 
+                            <span>Pembayaran</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="?page=invoice">
+                            <i class="fa fa-balance-scale"></i>&nbsp;
+                            <span>Tagihan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="?page=users">
+                            <i class="fa fa-users"></i>&nbsp;
+                            <span>Pengguna</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="?page=setting">
+                            <i class="fa fa-gear"></i>&nbsp;
+                            <span>Pengaturan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="?page=auth&sign=out" onclick="return confirm('Yakin Ingin Keluar?')">
+                            <i class="fa fa-sign-out"></i>&nbsp;
+                            <span>Keluar</span>
+                        </a>
+                    </li>
+                <?php
+                } elseif ($_SESSION['rol_log'] == 'keuangan') {
+                ?>
+                    <li>
+                        <a href="?page=dashboard">
+                            <i class="fa fa-dashboard"></i>&nbsp;
+                            <span>Halam Depan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="?page=payments">
+                            <i class="fa fa-money"></i> 
+                            <span>Pembayaran</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="?page=setting">
+                            <i class="fa fa-gear"></i>&nbsp;
+                            <span>Pengaturan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="?page=auth&sign=out" onclick="return confirm('Yakin Ingin Keluar?')">
+                            <i class="fa fa-sign-out"></i>&nbsp;
+                            <span>Keluar</span>
+                        </a>
+                    </li>
+                <?php
+                } elseif ($_SESSION['rol_log'] == 'tata-usaha') {
+                ?>
+                    <li>
+                        <a href="?page=dashboard">
+                            <i class="fa fa-dashboard"></i>&nbsp;
+                            <span>Halam Depan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="?page=setting">
+                            <i class="fa fa-gear"></i>&nbsp;
+                            <span>Pengaturan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="?page=auth&sign=out" onclick="return confirm('Yakin Ingin Keluar?')">
+                            <i class="fa fa-sign-out"></i>&nbsp;
+                            <span>Keluar</span>
+                        </a>
+                    </li>
+                <?php
+                }
+                ?>
                 </ul>
             </section>
             <!-- /.sidebar -->
         </aside>
         <div class="content-wrapper">
-            <!-- Berisi Konten Webnya -- >
+        <!-- Berisi Konten Webnya -- >

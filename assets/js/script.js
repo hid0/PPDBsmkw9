@@ -37,14 +37,6 @@ $(document).ready(function() {
     $("#txtNewInput").css({ 'width': '100px', 'border': 'none', 'color': 'black', 'text-decoration': 'line-through', 'font-style': 'italic' });
     $("#txtNewInput").val(iNumber);
     $("#txtNewInput").prop('disabled', true);
-
-    // $("#btnGetCaptcha").click(function() {
-    //     if ($("#textInput").val() != iNumber) {
-    //         alert("Captcha Keliru, Mohon diulangi!!!");
-    //     } else {
-    //         alert("Captcha bNer... :)");
-    //     }
-    // });
     var wrongInput = function() {
         if ($("#textInput").val() != iNumber) {
             return true;
@@ -58,11 +50,9 @@ $(document).ready(function() {
     $("#textInput").addClass('form-control input-lg');
     $("#btnGetCaptcha").addClass('btn btn-success btn-lg btn-block btn-flat');
     $('input[value="industri"]').click(function() {
-        $('option[value="KT"]').hide();
-        $('option[value="PBS"]').hide();
+        $('option[value="KT"], [value="PBS"]').hide();
     });
     $('input[value="umum"], [value="khusus"]').click(function() {
-        $('option[value="KT"]').show();
-        $('option[value="PBS"]').show();
+        $('option[value="KT"], [value="PBS"]').show();
     })
 });

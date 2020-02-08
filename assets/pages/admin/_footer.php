@@ -19,8 +19,6 @@
 <script src="<?= getJs() ?>sweetalert2.min.js"></script>
 <script src="<?= getJS() ?>bootstrap.min.js"></script>
 <script src="<?= getJS() ?>adminlte.min.js"></script>
-<!-- <script src="<?= getJs() ?>Chart.min.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 <?php
 $kt = $db->query("SELECT * FROM registrasi WHERE jurusan1 = 'KT'");
 $num_kt = $db->count_rows($kt);
@@ -33,6 +31,7 @@ $num_pbs = $db->count_rows($pbs);
 ?>
 <script>
     $(document).ready(function() {
+        $('#siswa').css('line-height', '28px');
         $("#dt-data").DataTable({
             "lengthMenu": [
                 [5, 10, 15, -1],
@@ -42,6 +41,7 @@ $num_pbs = $db->count_rows($pbs);
             "bSort": false,
             "order": []
         });
+        $('.select2').select2();
     });
     var ctx = document.getElementById('Donut').getContext('2d');
     var myChart = new Chart(ctx, {

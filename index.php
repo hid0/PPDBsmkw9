@@ -6,7 +6,7 @@ require __DIR__.'/vendor/autoload.php';
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDepencyException;
 
-if(@$_GET['register'] == 'true' || isset($_GET['a'])) {
+if(empty($_GET['register']) || $_GET['register'] == 'true') {
 
 	require getPages().'reg.php';
 
@@ -15,7 +15,7 @@ if(@$_GET['register'] == 'true' || isset($_GET['a'])) {
 		// data diri peserta didik baru
 		$id      = Uuid::uuid4()->toString();
 		$nik     = $core->filter_xss($_POST['nik']);
-		$nama    = $core->filter_xss($_POST['nama']);
+		$nama    = strtoupper($core->filter_xss($_POST['nama']));
 		$jk      = $core->filter_xss($_POST['jk']);
 		$pass    = sha1($core->filter_xss($_POST['passwd']));
 		$lahir   = $core->filter_xss($_POST['lahir']);
@@ -49,11 +49,13 @@ if(@$_GET['register'] == 'true' || isset($_GET['a'])) {
 		$buta    = $core->filter_xss($_POST['buta']);
 		$yatim   = $core->filter_xss($_POST['yatim']);
 		$kip     = $core->filter_xss($_POST['kip']);
+		$status  = "tidak";
+		$time    = date('Y-m-d H:i:s', time());
 		// proccessing insert data
-		$data = array($id, $nik, $nama, $jk, $pass, $lahir, $tgl, $agm, $alamat, $hp, $trnsprt, $ayah, $k_ayah, $ibu, $k_ibu, $wali, $k_wali, $sdr, $anakke, $jalur, $khus, $jur1, $jur2, $asal, $al_asal, $preak, $prenon, $rokok, $kbthn, $tato, $buta, $yatim, $kip, );
+		$data = array($id, $nik, $nama, $jk, $pass, $lahir, $tgl, $agm, $alamat, $hp, $trnsprt, $ayah, $k_ayah, $ibu, $k_ibu, $wali, $k_wali, $sdr, $anakke, $jalur, $khus, $jur1, $jur2, $asal, $al_asal, $preak, $prenon, $rokok, $kbthn, $tato, $buta, $yatim, $kip, $status, $time);
 		if ($db->insert('new_students', $data)) {
 			echo "<script>alert('Data Berhasil DItambahkan!!');</script>";
-			echo "<script>document.location.href = '?registrasi=done';</script>";
+			echo "<script>document.location.href = 'index.php?registrasi=done';</script>";
 		} else {
 			echo "<script>alert('Data Gagal Ditambahkan!!');</script>";
 		}
@@ -61,10 +63,14 @@ if(@$_GET['register'] == 'true' || isset($_GET['a'])) {
 	}
 
 
-} else if (@$_GET['register'] == 'done') {
-	echo "Pendaftarab berhasil";
+} else if ($_GET['register'] == 'done') {
+
+	echo "Pendaftaran berhasil";
+
 } else {
+
 	echo "<script>document.location.href = 'index.html';</script>";
+	
 }
 
 ?>

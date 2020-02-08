@@ -20,22 +20,20 @@ ob_start();
 require_once 'maconfig.php';
 require_once $config['default_path'].$config['db_class_name'];
 require_once $config['default_path'].$config['core_class_name'];
-if(@opendir($config['plugins_path']))
-{
-	$s=scandir($config['plugins_path']);
+if (@opendir($config['plugins_path'])) {
+	$s = scandir($config['plugins_path']);
 	
 	$kecuali = ['.','..','index.html','index.php']; // Files except to require.
 
-	foreach($s as $file)
-	{if(in_array($file,$kecuali))continue;
+	foreach ($s as $file) {
+		if (in_array($file,$kecuali))continue;
 		require_once $config['plugins_path'].$file;
 	}
 }
 
-if($config['error_reporting'] === true)
-{
+if($config['error_reporting'] === true) {
 	error_reporting(E_ALL);
-}else{
+} else {
 	error_reporting(0);
 }
 
