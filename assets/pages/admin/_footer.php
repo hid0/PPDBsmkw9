@@ -1,6 +1,7 @@
 <!-- /.content -->
-</div>
+</section>
 <!-- /.content-wrapper -->
+</div>
 
 <footer class="main-footer" style="height: 45px !important;">
     <!-- <div class="pull-right hidden-xs">
@@ -31,7 +32,7 @@ $num_pbs = $db->count_rows($pbs);
 ?>
 <script>
     $(document).ready(function() {
-        $('#siswa').css('line-height', '28px');
+        // $('.select2').css('line-height', '28px');
         $("#dt-data").DataTable({
             "lengthMenu": [
                 [5, 10, 15, -1],

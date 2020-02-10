@@ -17,13 +17,18 @@
 
         if (empty($_GET['act'])) {
 
-            if ($_SESSION['rol_log'] == 'super-admin' || $_SESSION['rol_log'] == 'tata-usaha' || $_SESSION['rol_log'] == 'keuangan') {
+            if ($_SESSION['rol_log'] == 'super-admin' || $_SESSION['rol_log'] == 'tata-usaha') {
                 echo "<title>Dashboard | Penerimaan Peserta Didik Baru SMK Walisongo Pecangaan</title>";
                 include getPages() . "admin/daftar_siswa.php";
                 if (isset($_POST['status'])) {
                     $q = $db->update('new_students', ['status' => $_POST['status']], ['id' => $_POST['id']]);
                     $core->redirect('admin.php?page=dashboard');
                 }
+            } else if ($_SESSION['rol_log'] == 'keuangan') {
+
+                echo "<title>Dashboard | Penerimaan Peserta Didik Baru SMK Walisongo Pecangaan</title>";
+                include getPages() . "admin/dashboard.php";
+                
             } else {
                 echo "<title>Error 405 Access Denied!!!</title>";
                 echo "<h1 class=\"text-danger\">Anda tidak punya akses</h1>";
@@ -45,7 +50,7 @@
             }
         } else if ($_GET['act'] == 'details') {
 
-            require getPages().'admin.detail-siswa.php';
+            require getPages().'admin/detail-siswa.php';
             
         }
         

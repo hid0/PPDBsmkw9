@@ -16,9 +16,9 @@ $ez = $db->fetch($qu);
     <link rel="stylesheet" href="<?= getCss() ?>font-awesome.min.css">
     <link rel="stylesheet" href="<?= getCss() ?>ionicons.min.css">
     <link rel="stylesheet" href="<?= getCss() ?>dataTables.bootstrap.min.css">
-    <link rel="stylesheet" href="<?= getCss() ?>select2.min.css">
     <link rel="stylesheet" href="<?= getCss() ?>AdminLTE.min.css">
     <link rel="stylesheet" href="<?= getCss() ?>skins/_all-skins.min.css">
+    <link rel="stylesheet" href="<?= getCss() ?>select2.min.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" /> -->
     <script src="<?= getJS() ?>jquery.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->

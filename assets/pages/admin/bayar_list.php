@@ -68,11 +68,11 @@
                 <div class="form-group">
                     <label for="nama">Nama Siswa Baru</label>
                     <!-- <input type="text" name="id_casis" id="id_casis" class="form-control" autofocus required> -->
-                    <div class="input-group">
+                    <!-- <div class="input-group">
                         <div class="input-group-addon">
                             <i class="glyphicon glyphicon-user"></i>
-                        </div>
-                        <select name="siswa" id="nama" class="form-control select2" style="width: 100%;">
+                        </div> -->
+                        <select name="siswa" id="nama" class="select2 form-control" style="width: 100%;">
                             <option>-- Pilih --</option>
                             <?php
 
@@ -85,7 +85,7 @@
                         }
                         ?>
                         </select>
-                    </div>
+                    <!-- </div> -->
                 </div>
                 <div class="form-group">
                     <label for="tgl_setor">Tanggal Setor</label>
