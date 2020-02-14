@@ -19,6 +19,7 @@
 <script src="<?= getJs() ?>select2.min.js"></script>
 <script src="<?= getJs() ?>sweetalert2.min.js"></script>
 <script src="<?= getJS() ?>bootstrap.min.js"></script>
+<script src="<?= getJs() ?>bootstrap-datepicker.min.js"></script>
 <script src="<?= getJS() ?>adminlte.min.js"></script>
 <?php
 $kt = $db->query("SELECT * FROM registrasi WHERE jurusan1 = 'KT'");
@@ -33,6 +34,9 @@ $num_pbs = $db->count_rows($pbs);
 <script>
     $(document).ready(function() {
         // $('.select2').css('line-height', '28px');
+        $('.datepicker').datepicker({
+            format: 'dd/mm/yyyy',
+        });
         $("#dt-data").DataTable({
             "lengthMenu": [
                 [5, 10, 15, -1],

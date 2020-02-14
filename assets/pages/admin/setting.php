@@ -113,22 +113,3 @@
         </div>
     </div>
 </div>
-<?php
-
-if (isset($_POST['passku'])) {
-    if ($_POST['pass1'] == $_POST['pass2']) {
-        $db->update('padmin', ['password' => sha1($_POST['pass2'])], ['username' => $user]);
-        echo "<script>alert('Password Changed!!');</script>";
-    } elseif ($_POST['pass1'] != $_POST['pass2']) {
-        echo "<script>alert('Pastikan Password sama!!!');</script>";
-    }
-} elseif (isset($_POST['theme'])) {
-    $db->update('padmin', ['theme' => $_POST['theme']], ['username' => $user]);
-    echo '<script type=\"text/javascript\">alertSuccess();</script>';
-    $core->redirect('?a=setting');
-} elseif (isset($_POST['profile'])) {
-    $db->update('padmin', ['profile' => $_POST['profile']], ['username' => $user]);
-    // echo '<script type=\"text/javascript\">alert(\"Berhasil Ganti Profile!!!\");</script>';
-    echo "<script>alert('Berhasil Ganti!!!');</script>";
-    $core->redirect('?a=setting');
-}

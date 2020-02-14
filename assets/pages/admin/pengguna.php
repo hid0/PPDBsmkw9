@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="pull-left">
-            <a data-toggle="modal" data-target="#tagihan" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+            <a data-toggle="modal" data-target="#user" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
         </div>
     </div>
 </div><br>
@@ -9,7 +9,7 @@
     <div class="col-md-10 col-md-offset-1">
         <div class="box box-success">
             <div class="box-header">
-                <div class="box-title">Daftar Tagihan Siswa Baru</div>
+                <div class="box-title">Daftar Akun Pengguna</div>
             </div>
             <div class="box-body">
                 <div class="table-responsive">
@@ -17,29 +17,28 @@
                         <thead>
                             <tr>
                                 <th style="width:3px;">#</th>
-                                <th>Nama Tagihan</th>
-                                <th>Jumlah Nilai</th>
-                                <th>Untuk</th>
-                                <th>Keterangan</th>
-                                <th style="width:50px;">#</th>
+                                <th>Nama</th>
+                                <th>Username</th>
+                                <th>Level</th>
+                                <th style="width:90px;">#</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             $n = 1;
-                            $q = $db->query('SELECT * FROM `tagihan`');
+                            $q = $db->query('SELECT * FROM `padmin`');
 
                             while ($cok = $db->fetch($q)) { ?>
 
                                 <tr>
-                                    <td><?= $n++ ?>.</td>
-                                    <td><?= $cok['nama_tagihan'] ?></td>
-                                    <td><?= idr($cok['jml_tag']) ?></td>
-                                    <td><?= $jk = ($cok['utk'] == 'L') ? 'Laki-laki' : 'Perempuan'; ?></td>
-                                    <td><?= $cok['ket'] ?></td>
+                                    <td><?=$n++?></td>
+                                    <td><?=$cok['name']?></td>
+                                    <td><?=$cok['username']?></td>
+                                    <td><?=$cok['roles']?></td>
                                     <td style="width:3px;">
                                         <center>
-                                            <a href="?page=invoice&act=del&id=<?= $cok['id'] ?>" onclick="return confirm('Yakin Menghapus?')" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>&nbsp;
+                                            <a href="?page=users&act=del&id=<?= $cok['id'] ?>" onclick="return confirm('Yakin Menghapus?')" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>&nbsp;
+                                            <a href="?page=users&act=reset&id=<?= $cok['id'] ?>" onclick="return confirm('Yakin Mereset Sandi?')" class="btn btn-xs btn-warning"><i class="fa fa-refresh"></i></a>&nbsp;
                                         </center>
                                     </td>
                                 </tr>
@@ -55,12 +54,12 @@
     </div>
 </div>
 
-<div id="tagihan" class="modal fade">
+<div id="user" class="modal fade">
     <div class="modal-dialog">
         <form method="post" action="" class="modal-content">
             <div class="modal-header">
             <button class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"  style="font-weight: bold;text-align: center;">Tambah Tagihan</h4>
+                <h4 class="modal-title"  style="font-weight: bold;text-align: center;">Tambah Pengguna</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group">

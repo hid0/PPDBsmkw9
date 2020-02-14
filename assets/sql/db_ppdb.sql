@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb4
+-- version 4.9.2deb1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jan 26, 2020 at 08:38 PM
--- Server version: 10.1.41-MariaDB-0+deb9u1
--- PHP Version: 7.0.33-0+deb9u6
+-- Host: localhost
+-- Generation Time: Feb 11, 2020 at 08:27 AM
+-- Server version: 10.3.22-MariaDB-1
+-- PHP Version: 7.3.11-0ubuntu2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,66 +25,53 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_casis`
+-- Table structure for table `new_students`
 --
 
-CREATE TABLE `data_casis` (
-  `id_casis` int(11) NOT NULL,
-  `id_reg` int(11) NOT NULL,
-  `nama_lengkap` varchar(121) NOT NULL,
-  `jenkel` enum('L','P') NOT NULL,
-  `ttl` varchar(121) NOT NULL,
-  `agama` varchar(121) NOT NULL,
+CREATE TABLE `new_students` (
+  `id` varchar(40) NOT NULL,
+  `nik` varchar(16) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `jk` varchar(2) NOT NULL,
+  `passwd` varchar(100) NOT NULL,
+  `tempat_lahir` varchar(25) NOT NULL,
+  `tgl_lahir` varchar(20) NOT NULL,
+  `agama` varchar(20) NOT NULL,
   `alamat` text NOT NULL,
-  `tempat_tinggal` varchar(121) NOT NULL,
-  `transportasi` varchar(121) NOT NULL,
-  `hp` varchar(121) NOT NULL,
-  `email` varchar(121) NOT NULL,
-  `nama_ayah` varchar(121) NOT NULL,
-  `pekerjaan_ayah` varchar(121) NOT NULL,
-  `nama_ibu` varchar(121) NOT NULL,
-  `pekerjaan_ibu` varchar(121) NOT NULL,
-  `nama_wali` varchar(121) NOT NULL,
-  `pekerjaan_wali` varchar(121) NOT NULL,
-  `anakke` varchar(121) NOT NULL,
-  `saudara` varchar(121) NOT NULL
+  `hp_ortu` varchar(14) NOT NULL,
+  `kendaraan` varchar(30) NOT NULL,
+  `ayah` varchar(35) NOT NULL,
+  `kerjaan_ayah` varchar(30) NOT NULL,
+  `ibu` varchar(35) NOT NULL,
+  `kerjaan_ibu` varchar(30) NOT NULL,
+  `wali` varchar(35) NOT NULL,
+  `kerjaan_wali` varchar(30) NOT NULL,
+  `jml_saudara` int(3) NOT NULL,
+  `anakke` int(3) NOT NULL,
+  `jalur_daftar` varchar(45) NOT NULL,
+  `khusus` varchar(35) NOT NULL,
+  `jur_pertama` varchar(5) NOT NULL,
+  `jur_kedua` varchar(5) NOT NULL,
+  `sekolah_asal` varchar(30) NOT NULL,
+  `alamatnya` text NOT NULL,
+  `akademik` text NOT NULL,
+  `nonakademik` text NOT NULL,
+  `merokok` varchar(6) NOT NULL,
+  `butuh_khusus` varchar(6) NOT NULL,
+  `bertato` varchar(6) NOT NULL,
+  `buta_warna` varchar(6) NOT NULL,
+  `yatim` varchar(6) NOT NULL,
+  `kip` varchar(6) NOT NULL,
+  `status` varchar(5) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `jadwal`
+-- Dumping data for table `new_students`
 --
 
-CREATE TABLE `jadwal` (
-  `tanggal` varchar(121) NOT NULL,
-  `jam` varchar(121) NOT NULL,
-  `homepage` varchar(121) NOT NULL,
-  `keterangan` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `jadwal`
---
-
-INSERT INTO `jadwal` (`tanggal`, `jam`, `homepage`, `keterangan`) VALUES
-('Senin , 26 Maret 2018', '09:00 WIB', 'http://workspace.kinal/ppdbnew/ujian', 'Ujian online Pendaftaran Siswa Baru SMK WALISONGO JEPARA, &quot;Senin , 26 Maret 2018&quot; Jam 09:00 WIB Dikerjakan dimana seja secara online. \r\n\r\nlink : http://workspace.kinal/ppdbnew/ujian');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nilai_un`
---
-
-CREATE TABLE `nilai_un` (
-  `id_un` int(11) NOT NULL,
-  `id_casis` int(11) NOT NULL,
-  `id_reg` int(11) NOT NULL,
-  `mtk` float NOT NULL,
-  `bindo` float NOT NULL,
-  `bing` float NOT NULL,
-  `ipa` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `new_students` (`id`, `nik`, `nama`, `jk`, `passwd`, `tempat_lahir`, `tgl_lahir`, `agama`, `alamat`, `hp_ortu`, `kendaraan`, `ayah`, `kerjaan_ayah`, `ibu`, `kerjaan_ibu`, `wali`, `kerjaan_wali`, `jml_saudara`, `anakke`, `jalur_daftar`, `khusus`, `jur_pertama`, `jur_kedua`, `sekolah_asal`, `alamatnya`, `akademik`, `nonakademik`, `merokok`, `butuh_khusus`, `bertato`, `buta_warna`, `yatim`, `kip`, `status`, `timestamp`) VALUES
+('90f5e393-3b5c-4b15-8c39-baf6e8dff6de', '3320031105990002', 'FAIZ HIDAYATULLOH', 'L', '5aeb2b3c09e430c14082bd599fa89c8af064759b', 'Jepara', '11/05/1999', 'Islam', 'Pec RT.1 RW.1, Pec, Jepara', '989898', 'Kendaraan Pribadi', 'Jan', 'Swasta', 'Jan', 'Ibu Rumah Tangga', 'Jan', 'Swasta', 2, 1, 'umum', '-Pilih Jalur Khusus-', 'TKR', 'TKJ', 'Mts', 'dklnfjdf', '', '', 'Tidak', 'Tidak', 'Tidak', 'Tidak', 'Tidak', 'Tidak', 'tidak', '2020-02-08 09:17:34');
 
 -- --------------------------------------------------------
 
@@ -114,7 +103,7 @@ INSERT INTO `padmin` (`id`, `name`, `username`, `password`, `id_menu`, `profile`
 (7, 'Asrori', 'asrori', '4aed7fb4eed446796c59ab3fd911e359f063ec83', 3, 'avatar3.png', 'skin-green', 'tata-usaha'),
 (8, 'Muh. Syafiq', 'syafiq', 'e52b23862ac0c5a92db325ad74298c7ddcf3ddf8', 3, 'user8-128x128.jpg', 'skin-green', 'tata-usaha'),
 (9, 'Ahmad Sholihul', 'ahmad', '2c4c3891e2ac6958e9810a1e49c6705784fbfa1a', 3, 'avatar5.png', 'skin-green', 'tata-usaha'),
-(10, 'Faiz Hidayatulloh', 'faiz', 'd321c195ab96c75a811d4ee3dc15b7e999195a3f', 1, 'user1-128x128.jpg', 'skin-purple', 'super-admin'),
+(10, 'Faiz Hidayatulloh', 'faiz', '8ab7b004f4ac17eab77eebf3b0e733fa74ddbf99', 1, 'user8-128x128.jpg', 'skin-purple', 'super-admin'),
 (11, 'Mokh. Faris', 'faris', '40e15b60947665dc4be5fc4ede58d41863fcc3fe', 3, 'avatar4.png', 'skin-green', 'tata-usaha');
 
 -- --------------------------------------------------------
@@ -125,34 +114,10 @@ INSERT INTO `padmin` (`id`, `name`, `username`, `password`, `id_menu`, `profile`
 
 CREATE TABLE `pembayaran` (
   `id_bayar` int(11) NOT NULL,
-  `id_casis` int(11) NOT NULL,
-  `tanggal` date NOT NULL,
-  `setor` int(15) NOT NULL,
-  `saldo` int(15) NOT NULL,
-  `petugas` enum('Administrator','Keuangan','','') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `registrasi`
---
-
-CREATE TABLE `registrasi` (
-  `id_reg` int(11) NOT NULL,
-  `jenis_pendaftaran` enum('baru','pindahan') NOT NULL,
-  `tgl_dftr` date NOT NULL,
-  `jalur_pendaftaran` enum('umum','khusus') NOT NULL,
-  `jalur_DaftarKhusus` enum('yatim','mts/smp w9','saudara 1 unit','pa/pi guru/karyawan','pilih KT','tahfidz') DEFAULT NULL,
-  `jurusan1` varchar(121) NOT NULL,
-  `jurusan2` varchar(121) NOT NULL,
-  `asal_sekolah` varchar(121) NOT NULL,
-  `alamat_asal_sekolah` text NOT NULL,
-  `no_nik` varchar(121) NOT NULL,
-  `password_login` varchar(200) NOT NULL,
-  `prestasi_akademik` text NOT NULL,
-  `prestasi_nonakademik` text NOT NULL,
-  `status` enum('lulus','tidak') NOT NULL
+  `nik` varchar(16) NOT NULL,
+  `tgl` date NOT NULL,
+  `setor` int(11) NOT NULL,
+  `petugas` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -177,46 +142,16 @@ INSERT INTO `tagihan` (`id`, `nama_tagihan`, `jml_tag`, `utk`, `ket`) VALUES
 (6, 'Pembiayaan Awal', 858000, 'L', 'MOPDIK (Masa Orientasi Peserta Didik); Pembelian Seragam'),
 (7, 'Pembiayaan Awal', 923000, 'P', 'MOPDIK (Masa Orientasi Peserta Didik); Pembelian Seragam');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `trespass`
---
-
-CREATE TABLE `trespass` (
-  `id_tp` int(11) NOT NULL,
-  `id_casis` int(11) NOT NULL,
-  `merokok` enum('IYA','TIDAK') NOT NULL,
-  `bertato` enum('IYA','TIDAK') NOT NULL,
-  `bk` enum('IYA','TIDAK') NOT NULL,
-  `bw` enum('IYA','TIDAK') NOT NULL,
-  `info` varchar(255) DEFAULT NULL,
-  `info0` varchar(255) DEFAULT NULL,
-  `info1` varchar(255) DEFAULT NULL,
-  `info2` varchar(255) DEFAULT NULL,
-  `info3` varchar(255) DEFAULT NULL,
-  `info4` varchar(255) DEFAULT NULL,
-  `info5` varchar(255) DEFAULT NULL,
-  `rekom` enum('inisiatif sendiri','keluarga','teman','siswa SMK','alumni SMK','guru SMK') NOT NULL,
-  `nm_siswa` varchar(30) DEFAULT NULL,
-  `nm_guru` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `data_casis`
+-- Indexes for table `new_students`
 --
-ALTER TABLE `data_casis`
-  ADD PRIMARY KEY (`id_casis`);
-
---
--- Indexes for table `nilai_un`
---
-ALTER TABLE `nilai_un`
-  ADD PRIMARY KEY (`id_un`);
+ALTER TABLE `new_students`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `nik` (`nik`);
 
 --
 -- Indexes for table `padmin`
@@ -229,14 +164,8 @@ ALTER TABLE `padmin`
 --
 ALTER TABLE `pembayaran`
   ADD PRIMARY KEY (`id_bayar`),
-  ADD KEY `id_casis` (`id_casis`),
-  ADD KEY `id_casis_2` (`id_casis`);
-
---
--- Indexes for table `registrasi`
---
-ALTER TABLE `registrasi`
-  ADD PRIMARY KEY (`id_reg`);
+  ADD UNIQUE KEY `nik` (`nik`),
+  ADD KEY `nik_2` (`nik`);
 
 --
 -- Indexes for table `tagihan`
@@ -245,59 +174,27 @@ ALTER TABLE `tagihan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `trespass`
---
-ALTER TABLE `trespass`
-  ADD PRIMARY KEY (`id_tp`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
---
--- AUTO_INCREMENT for table `data_casis`
---
-ALTER TABLE `data_casis`
-  MODIFY `id_casis` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `nilai_un`
---
-ALTER TABLE `nilai_un`
-  MODIFY `id_un` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `padmin`
 --
 ALTER TABLE `padmin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
   MODIFY `id_bayar` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `registrasi`
---
-ALTER TABLE `registrasi`
-  MODIFY `id_reg` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tagihan`
 --
 ALTER TABLE `tagihan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT for table `trespass`
---
-ALTER TABLE `trespass`
-  MODIFY `id_tp` int(11) NOT NULL AUTO_INCREMENT;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `pembayaran`
---
-ALTER TABLE `pembayaran`
-  ADD CONSTRAINT `byr` FOREIGN KEY (`id_casis`) REFERENCES `data_casis` (`id_casis`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
