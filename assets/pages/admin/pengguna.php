@@ -26,12 +26,11 @@
                         <tbody>
                             <?php
                             $n = 1;
-                            $q = $db->query('SELECT * FROM `padmin`');
-
-                            while ($cok = $db->fetch($q)) { ?>
+                            $sql = $db->query("SELECT * FROM `padmin`");
+                            while ($cok = $db->fetch($sql)) { ?>
 
                                 <tr>
-                                    <td><?=$n++?></td>
+                                    <td><?=$n++?>.</td>
                                     <td><?=$cok['name']?></td>
                                     <td><?=$cok['username']?></td>
                                     <td><?=$cok['roles']?></td>
@@ -65,44 +64,47 @@
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-briefcase"></i>
+                            <i class="fa fa-user-plus"></i>
                         </div>
-                        <input type="text" name="name" class="form-control" placeholder="Nama Tagihan" required>
+                        <input type="text" name="name" class="form-control" placeholder="Nama Pengguna" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <!-- <i class="fa fa-dollar"></i> -->
-                            <span>Rp</span>
+                            <i class="fa fa-user"></i>
                         </div>
-                        <input type="text" name="rp" class="form-control" placeholder="100000" required>
+                        <input type="text" name="uname" class="form-control" placeholder="Username" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-users"></i>
+                            <i class="fa fa-unlock-alt"></i>
                         </div>
-                        <select name="for" class="form-control" required>
+                        <input type="password" name="pass" id="pass" value="smkw9_jepara" class="form-control">
+                        <a type="button" class="input-group-addon">
+                            <i class="pw fa fa-eye"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-indent"></i>
+                        </div>
+                        <select name="role" class="form-control" required>
                             <option value="">-- Pilih --</option>
-                            <option value="L">Laki-Laki</option>
-                            <option value="P">Perempuan</option>
+                            <option value="super-admin">Administrator</option>
+                            <option value="keuangan">Keuangan</option>
+                            <option value="tata-usaha">Tata Usaha</option>
                         </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-comments"></i>
-                        </div>
-                        <textarea name="ket" id="ket" cols="30" rows="3" class="form-control"></textarea>
                     </div>
                 </div>
                 </div>
                 <div class="modal-footer">
                     <div class="pull-left">
-                            <button class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Tutup</i></button>
+                        <button class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Tutup</i></button>
                     </div>
                     <div class="pull-right">
                         <button type="submit" name="save" class="btn btn-block btn-primary"><i class="fa fa-save"></i> Save</button>

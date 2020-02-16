@@ -23,7 +23,7 @@
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="?a=index" class="logo">
+            <a href="?page=dashboard" class="logo">
                 <span class="logo-mini"><b>PSB</b></span>
                 <span class="logo-lg"><b>PPDB</b> SMK Walisongo</span>
             </a>
@@ -46,22 +46,22 @@
                                 <!-- User image -->
                                 <?php
                                 $nik = $_SESSION['user_siswa'];
-                                $q = $db->query("SELECT * FROM `registrasi`,`data_casis` WHERE registrasi.id_reg=data_casis.id_reg AND registrasi.no_nik='$nik' ");
+                                $q = $db->query("SELECT * FROM `new_students` WHERE `new_students`.`nik`='$nik' ");
                                 $d = $db->fetch($q);
                                 ?>
                                 <li class="user-header">
                                     <img src="<?= getImg() ?>avatar5.png" class="img-circle" alt="User Image">
                                     <p>
-                                        <?= $d['nama_lengkap'] ?>
+                                        <?= $d['nama'] ?>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="?a=pengaturan" class="btn btn-default btn-flat disabled">Setting</a>
+                                        <a href="?page=setting" class="btn btn-default btn-flat disabled">Setting</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="?a=logout" onclick="return confirm('Apakah ingin Keluar?')" class="btn btn-default btn-flat">Logout</a>
+                                        <a href="?auth=logout" onclick="return confirm('Apakah ingin Keluar?')" class="btn btn-default btn-flat">Logout</a>
                                     </div>
                                 </li>
                             </ul>
@@ -81,21 +81,21 @@
                         <img src="<?= getImg() ?>avatar5.png" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p style="font-size: 12px;"><?= $d['nama_lengkap'] ?></p>
+                        <p style="font-size: 12px;"><?= $d['nama'] ?></p>
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
                 </div>
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li>
-                        <a href="?a=index">
+                    <li class="<?=$_GET['page'] == 'dashboard' ? "active" : null ?>">
+                        <a href="?page=dashboard">
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             <!-- <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span> -->
                         </a>
                     </li>
-                    <li class="treeview">
+                    <li class="treeview <?=$_GET['page'] == 'payments' ? "active menu-open" : null ?>">
                         <a href="#">
                             <i class="fa fa-pie-chart"></i>
                             <span>Pembayaran</span>
@@ -104,13 +104,13 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="?a=pembayaran&ke=history"><i class="fa fa-line-chart"></i> Riwayat Pembayaran</a></li>
-                            <li><a href="?a=pembayaran&ke=tagihan"><i class="fa fa-money"></i> Daftar Tagihan</a></li>
+                            <li class="<?=$_GET['a'] == "history" ? 'active' : null ;?>"><a href="?page=payments&a=history"><i class="fa fa-line-chart"></i> Riwayat Pembayaran</a></li>
+                            <li class="<?=$_GET['a'] == "invoice" ? 'active' : null ;?>"><a href="?page=payments&a=invoice"><i class="fa fa-money"></i> Daftar Tagihan</a></li>
                             <!-- <script src="<?= getJS() ?>jquery.min.js"></script> -->
                         </ul>
                     </li>
                     <li>
-                        <a href="?a=logout">
+                        <a href="?auth=logout">
                             <i class="fa fa-sign-out"></i>
                             <span>Logout</span>
                         </a>

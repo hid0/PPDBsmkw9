@@ -41,7 +41,7 @@ $ez = $db->fetch($qu);
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="?a=index" class="logo">
+            <a href="?page=dashboard" class="logo">
                 <span class="logo-mini"><b>PSB</b></span>
                 <span class="logo-lg"><b>PPDB</b> SMK Walisongo</span>
             </a>
@@ -106,31 +106,31 @@ $ez = $db->fetch($qu);
                 <?php
                 if ($_SESSION['rol_log'] == 'super-admin') {
                 ?>
-                    <li>
+                    <li class="<?=$_GET['page'] == 'dashboard' ? "active" : null ?>">
                         <a href="?page=dashboard">
                             <i class="fa fa-dashboard"></i>&nbsp;
                             <span>Halam Depan</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="<?=$_GET['page'] == 'payments' ? "active" : null ?>">
                         <a href="?page=payments">
                             <i class="fa fa-money"></i> 
                             <span>Pembayaran</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="<?=$_GET['page'] == 'invoice' ? "active" : null ?>">
                         <a href="?page=invoice">
                             <i class="fa fa-balance-scale"></i>&nbsp;
                             <span>Tagihan</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="<?=$_GET['page'] == 'users' ? "active" : null ?>">
                         <a href="?page=users">
                             <i class="fa fa-users"></i>&nbsp;
                             <span>Pengguna</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="<?=$_GET['page'] == 'setting' ? "active" : null ?>">
                         <a href="?page=setting">
                             <i class="fa fa-gear"></i>&nbsp;
                             <span>Pengaturan</span>
@@ -145,19 +145,19 @@ $ez = $db->fetch($qu);
                 <?php
                 } elseif ($_SESSION['rol_log'] == 'keuangan') {
                 ?>
-                    <li>
+                    <li class="<?=$_GET['page'] == 'dashboard' ? "active" : null ?>">
                         <a href="?page=dashboard">
                             <i class="fa fa-dashboard"></i>&nbsp;
                             <span>Halam Depan</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="<?=$_GET['page'] == 'payments' ? "active" : null ?>">
                         <a href="?page=payments">
                             <i class="fa fa-money"></i> 
                             <span>Pembayaran</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="<?=$_GET['page'] == 'setting' ? "active" : null ?>">
                         <a href="?page=setting">
                             <i class="fa fa-gear"></i>&nbsp;
                             <span>Pengaturan</span>
@@ -172,13 +172,13 @@ $ez = $db->fetch($qu);
                 <?php
                 } elseif ($_SESSION['rol_log'] == 'tata-usaha') {
                 ?>
-                    <li>
+                    <li class="<?=$_GET['page'] == 'dashboard' ? "active" : null ?>">
                         <a href="?page=dashboard">
                             <i class="fa fa-dashboard"></i>&nbsp;
                             <span>Halam Depan</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="<?=$_GET['page'] == 'setting' ? "active" : null ?>">
                         <a href="?page=setting">
                             <i class="fa fa-gear"></i>&nbsp;
                             <span>Pengaturan</span>

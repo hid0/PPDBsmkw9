@@ -54,7 +54,7 @@ if(empty($_GET['register']) || $_GET['register'] == 'true') {
 		// proccessing insert data
 		$data = array($id, $nik, $nama, $jk, $pass, $lahir, $tgl, $agm, $alamat, $hp, $trnsprt, $ayah, $k_ayah, $ibu, $k_ibu, $wali, $k_wali, $sdr, $anakke, $jalur, $khus, $jur1, $jur2, $asal, $al_asal, $preak, $prenon, $rokok, $kbthn, $tato, $buta, $yatim, $kip, $status, $time);
 		if ($db->insert('new_students', $data)) {
-			echo "<script>alert('Data Berhasil DItambahkan!!');</script>";
+			echo "<script>alert('Peserta Didik Baru Berhasil Terdaftarkan!!');</script>";
 			echo "<script>document.location.href = 'index.php?registrasi=done';</script>";
 		} else {
 			echo "<script>alert('Data Gagal Ditambahkan!!');</script>";
@@ -65,7 +65,7 @@ if(empty($_GET['register']) || $_GET['register'] == 'true') {
 
 } else if ($_GET['register'] == 'done') {
 
-	echo "Pendaftaran berhasil";
+	require getPages().'reg-done.php';
 
 } else {
 

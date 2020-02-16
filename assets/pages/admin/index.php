@@ -144,7 +144,7 @@
                         echo "<script>alert('Gagal Masukin Data');</script>";
                     }
                 }
-
+                
             } else if (@$_GET['act'] == 'del') {
                 $db->delete('tagihan', ['id' => $_GET['id']]);
                 $core->redirect('?page=invoice');
@@ -154,10 +154,49 @@
             echo "<h1 class=\"text-danger\">Anda tidak punya akses</h1>";
         } 
     } else if ($_GET['page'] == 'users') {
-        if (empty($_GET['act'])) {
-
-            echo "<title>Daftar Akun | PPDB SMK Walisongo Pecangaan</title>";
-            include getPages() . "admin/pengguna.php";
-
+        
+        if ($_SESSION['rol_log'] == 'super-admin') {
+            
+            if (empty($_GET['act'])) {
+                
+                echo "<title>Daftar Akun | PPDB SMK Walisongo Pecangaan</title>";
+                include getPages() . "admin/pengguna.php";
+                // todo adding new username
+                if (isset($_POST['save'])) {
+                    
+                    $nama = $core->filter_xss($_POST['name']);
+                    $user = $core->filter_xss($_POST['uname']);
+                    $pass = sha1($core->filter_xss($_POST['pass']));
+                    $role = $core->filter_xss($_POST['role']);
+                    $newUser = array('', $nama, $user, $pass, 'avatar1.png', 'skin-blue', $role);
+                    
+                    if ($db->insert('padmin', $newUser)) {
+                        echo "<script>alert('Data Berhasil Tersimpan!!!');</script>";
+                        // ? echo "<script>javascript:history.back();</script>";
+                        $core->redirect('?page=users');
+                    } else {
+                        echo "<script>alert('Gagal Masukin Data');</script>";
+                    }
+                    // !var_dump($newUser);
+                    
+                }
+                
+            } else if ($_GET['act'] == 'reset') {
+                
+                $id = $_GET['id'];
+                $db->update('padmin', ['password' => sha1('smkw9_jepara')], ['id' => $id]);
+                $core->redirect('?page=users');
+                
+            } else if ($_GET['act'] == 'del') {
+                
+                // ? Delete Username by id
+                $id = $_GET['id'];
+                $db->delete('padmin', ['id' => $id]);
+                $core->redirect('?page=users');
+                
+            }
+        } else {
+            echo "<title>Error 405 Access Denied!!!</title>";
+            echo "<h1 class=\"text-danger\">Anda tidak punya akses</h1>";
         }
     }

@@ -13,21 +13,22 @@
 
 <?php
 
-if (empty($_GET['a']) || $_GET['a'] == 'index') {
-    include getInc()."siswa/details.php";
+if (empty($_GET['page']) || $_GET['page'] == 'dashboard') {
+    include getPages()."siswa/details.php";
     echo "<title>Dashboard Siswa | PPDB SMK Walisongo</title>";
-} elseif ($_GET['a'] == 'pembayaran') {
-    if ($_GET['ke'] == 'history') {
+} elseif ($_GET['page'] == 'payments') {
+    if ($_GET['a'] == 'history') {
         echo "<title>Riwayat Pembayaran | PPDB SMK Walisongo Pecangaan</title>";
-        include getInc()."siswa/list_bayar.php";
-    } elseif ($_GET['ke'] == 'tagihan') {
+        include getPages()."siswa/list_bayar.php";
+    } elseif ($_GET['a'] == 'invoice') {
         // echo "Ini halaman nageh utang";
         echo "<title>Halaman Tagihan Siswa Baru | PPDB SMK Walisongo Pecangaan</title>";
-        include getInc()."siswa/tagihan.php";
+        include getPages()."siswa/tagihan.php";
     }
-} elseif ($_GET['a'] == 'logout') {
-    session_destroy();
+} else if ($_GET['auth'] == 'logout') {
     $core->redirect('?');
+    // ? echo "<script>document.location.href = '?';</script>";
+    session_destroy();
 }
 
 

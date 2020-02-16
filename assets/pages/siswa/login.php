@@ -14,16 +14,6 @@
     <link rel="stylesheet" href="<?= getCss() ?>AdminLTE.min.css">
     <script src="<?= getJs() ?>jquery.min.js"></script>
     <script src="<?= getJs() ?>bootstrap.min.js"></script>
-    <script src="<?= getAsset() ?>iCheck/icheck.min.js"></script>
-    <script>
-        $(function() {
-            $('input').iCheck({
-                checkboxClass: 'icheckbox_square-blue',
-                radioClass: 'iradio_square-blue',
-                increaseArea: '20%' /* optional */
-            });
-        });
-    </script>
 </head>
 
 <body>
@@ -58,16 +48,16 @@
 <?php
 if (isset($_POST['submit'])) {
 	$nik = $core->filter_xss($_POST['nik']);
-	$password = $core->filter_xss(md5($_POST['password']));
+	$password = $core->filter_xss(sha1($_POST['password']));
 
-	$q = $db->query("SELECT * FROM registrasi WHERE no_nik='$nik' AND password_login='$password' ");
+	$q = $db->query("SELECT * FROM new_students WHERE nik='$nik' AND passwd='$password' ");
 	$n = $db->count_rows($q);
 	$f = $db->fetch($q);
 
 	if ($n > 0) {
-		$_SESSION['user_siswa'] = $f['no_nik'];
-		$_SESSION['pass_siswa'] = $f['password_login'];
-		$core->redirect('siswa.php?a=index');
+		$_SESSION['user_siswa'] = $f['nik'];
+		$_SESSION['pass_siswa'] = $f['passwd'];
+		$core->redirect('siswa.php?page=dashboard');
 	} else {
 		$core->redirect('siswa.php?error=1');
 	}

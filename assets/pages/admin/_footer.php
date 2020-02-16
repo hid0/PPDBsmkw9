@@ -47,6 +47,17 @@ $num_pbs = $db->count_rows($pbs);
             "order": []
         });
         $('.select2').select2();
+        $('a[type="button"]').click(function() {
+            if ($('#pass').get(0).type == 'password') {
+                $('#pass').attr('type', 'text');
+                $('.pw').removeClass("fa-eye");
+                $('.pw').addClass("fa-eye-slash");
+            } else {
+                $('#pass').attr('type', 'password');
+                $('.pw').removeClass("fa-eye-slash");
+                $('.pw').addClass("fa-eye");
+            }
+        });
     });
     var ctx = document.getElementById('Donut').getContext('2d');
     var myChart = new Chart(ctx, {
