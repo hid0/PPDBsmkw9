@@ -8,11 +8,15 @@
     <title>Penerimaan Peserta Didik Baru | SMK Walisongo Pecangaan Jepara</title>
     <link rel="shortcut icon" href="<?=getAsset()?>svg/yayasan.svg" type="image/x-icon">
     <link rel="stylesheet" href="<?=getCss()?>bootstrap.min.css">
-    <link rel="stylesheet" href="<?=getCss()?>AdminLTE.min.css">
     <link rel="stylesheet" href="<?=getCss()?>font-awesome.min.css">
     <link rel="stylesheet" href="<?=getCss()?>bootstrap-datepicker.min.css">
-    <script src="<?=getJs()?>jquery.min.js"></script>
+    <link rel="stylesheet" href="<?=getCss()?>jquery-ui.min.css">
+    <link rel="stylesheet" href="<?=getCss()?>AdminLTE.min.css">
+    <script src="<?=getJs()?>jquery.js"></script>
+    <script src="<?=getJs()?>jquery-ui.min.js"></script>
     <script src="<?=getJs()?>bootstrap.min.js"></script>
+    <!-- <script src="<?=getJs()?>select2.min.js"></script> -->
+    <script src="<?=getJS()?>adminlte.min.js"></script>
     <script src="<?=getJs()?>script.js"></script>
 </head>
 
@@ -154,7 +158,7 @@
                                             <div class="form-group">
                                                 <label for="trns">Transportasi</label>
                                                 <select name="trns" class="form-control" required>
-                                                    <option ="">--Transportasi ke sekolah--</option>
+                                                    <option>--Transportasi ke sekolah--</option>
                                                     <option value="Jalan Kaki">Jalan Kaki</option>
                                                     <option value="Kendaraan Pribadi">Kendaraan Pribadi</option>
                                                     <option value="Kendaraan Umum">Kendaraan Umum</option>
@@ -255,7 +259,7 @@
                                                 <label for="khus">Jalur Khusus</label>
                                                 <select class="form-control" name="khus">
                                                         <option>-Pilih Jalur Khusus-</option>
-                                                        <option value="yatim">Yatim / Yatim Piatu</option>
+                                                        <option value="yatim" onselect="yatim()">Yatim / Yatim Piatu</option>
                                                         <option value="mts/smp w9">dari MTs./SMP Walisongo</option>
                                                         <option value="saudara 1 unit">Saudara Kandung siswa di Walisongo</option>
                                                         <option value="pa/pi guru/karyawan">Putra/i Guru/karyawan di Walisongo</option>
@@ -291,19 +295,23 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="ui-widget form-group">
                                         <label for="sek_asal">Nama Sekolah Asal</label>
-                                        <input type="text" name="sek_asal" id="sek_asal" placeholder="MTs. Madaul Huda" class="form-control" required>
+                                        <input type="text" name="sek_asal" id="sek_asal" placeholder="MTs Madaul Huda" class="form-control" required>
+                                        <!-- <select name="sek_asal" id="sek_asal" class="form-control select2">
+                                            <option value="">-- Nama Sekolah Asal --</option>
+                                            <option value=""></option>
+                                        </select> -->
                                     </div>
                                     <label for="al_sek">Alamat Asal sekolah</label>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="form-group">
+                                            <div class="ui-widget form-group">
                                                 <input type="text" name="sek_asal_des" id="al_sek" placeholder="Desa" class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group">
+                                            <div class="ui-widget form-group">
                                                 <input type="text" name="sek_asal_kec" id="al_sek1" placeholder="Kecamatan" class="form-control" required>
                                             </div>
                                         </div>

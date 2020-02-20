@@ -78,9 +78,9 @@
                     $jml = $core->filter_xss($_POST['jml_setor']);
                     $pet = $core->filter_xss($_POST['petugas']);
 
-                    $data = array('', $sis, $tgl, $jml, $pet);
+                    $byr = array('', $sis, $tgl, $jml, $pet);
 
-                    if ($db->insert('pembayaran', $data)) {
+                    if ($db->insert('pembayaran', $byr)) {
                         echo "<script>alert('Pembayaran Telah Diterima');</script>";
                         $core->redirect('?page=payments');
                     } else {

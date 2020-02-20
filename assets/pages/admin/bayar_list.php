@@ -26,7 +26,7 @@
                         <tbody>
                             <?php
                             $n = 1;
-                            $er = $db->query('SELECT *, SUM(setor) AS totalSetor FROM pembayaran a JOIN new_students b WHERE `a`.`nik`=`b`.`nik`');
+                            $er = $db->query('SELECT *, SUM(setor) AS totalSetor FROM `pembayaran` JOIN `new_students` WHERE `pembayaran`.`nik`=`new_students`.`nik`');
 
                             while ($g = $db->fetch($er)) { ?>
 
@@ -34,7 +34,7 @@
                                     <td><?= $n++ ?>.</td>
                                     <td><?= $g['nama'] ?></td>
                                     <td><b><?= $g['jur_pertama'] ?></b></td>
-                                    <td><?= idr($g['totalSetor']) ?></td>
+                                    <td><?= idr($g['setor']) ?></td>
                                     <td style="width:3px;">
                                         <center>
                                             <a href="?page=payments&act=del&id=<?= $g['id_bayar'] ?>" onclick="return confirm('Yakin Menghapus?')" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>&nbsp;
@@ -55,7 +55,7 @@
 </div>
 <div id="bayar" class="modal fade">
     <div class="modal-dialog">
-        <form action="" method="post" class="modal-content">
+        <form method="post" class="modal-content">
             <div class="modal-header">
                 <button class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title"  style="font-weight: bold;text-align: center;">Tambah Pembayaran</h4>
@@ -72,7 +72,7 @@
                             <option>-- Pilih --</option>
                             <?php
 
-                            $sis = $db->query('SELECT * FROM `new_students` ORDER BY `new_students`.`nama` ASC');
+                            $sis = $db->query('SELECT nik, nama FROM `new_students` ORDER BY `new_students`.`nama` ASC');
                             while ($a = $db->fetch($sis)) { ?>
 
                                 <option value="<?= $a['nik'] ?>"><?= $a['nama'] ?></option>
@@ -88,7 +88,7 @@
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" name="tgl_setor" id="tgl_setor" class="form-control datepicker" value="<?=date('d/m/Y')?>" required>
+                        <input type="date" name="tgl_setor" id="tgl_setor" class="form-control" value="<?=date('mm/dd/YYYY')?>" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -106,10 +106,7 @@
                         <div class="input-group-addon">
                             <i class="fa fa-vcard"></i>
                         </div>
-                        <select name="petugas" id="petugas" class="form-control">
-                            <option value="Administrator" <?= $_SESSION['user_admin'] == 'admin' ? "selected" : '' ?>>Administrator</option>
-                            <option value="Keuangan" <?= $_SESSION['user_admin'] == 'ku' ? "selected" : '' ?>>Keuangan</option>
-                        </select>
+                        <input type="text" name="petugas" id="petugas" class="form-control" value="<?=$_SESSION['user_admin']?>" readonly>
                     </div>
                 </div>
             </div>
