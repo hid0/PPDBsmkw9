@@ -21,7 +21,7 @@
                 echo "<title>Dashboard | Penerimaan Peserta Didik Baru SMK Walisongo Pecangaan</title>";
                 include getPages() . "admin/daftar_siswa.php";
                 if (isset($_POST['status'])) {
-                    $q = $db->update('new_students', ['status' => $_POST['status']], ['id' => $_POST['id']]);
+                    $q = $db->update('new_students', ['status' => $_POST['status']], ['id_pd' => $_POST['id']]);
                     $core->redirect('admin.php?page=dashboard');
                 }
             } else if ($_SESSION['rol_log'] == 'keuangan') {
@@ -38,7 +38,7 @@
 
             if ($_SESSION['rol_log'] == 'super-admin') {
 
-                $db->delete('new_students', ['id' => $_GET['id']]);
+                $db->delete('new_students', ['id_pd' => $_GET['id']]);
                 echo "<script>alert('Berhasil Terhapus!!!')</script>";
                 $core->redirect('?page=dashboard');
 

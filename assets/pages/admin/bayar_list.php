@@ -26,9 +26,9 @@
                         <tbody>
                             <?php
                             $n = 1;
-                            $er = $db->query('SELECT *, SUM(setor) AS totalSetor FROM `pembayaran` JOIN `new_students` WHERE `pembayaran`.`nik`=`new_students`.`nik`');
+                            $er = $db->query('SELECT * FROM `pembayaran` JOIN `new_students` WHERE `pembayaran`.`nik`=`new_students`.`nik`');
 
-                            while ($g = $db->fetch($er)) { ?>
+                            while ($g = $db->assoc($er)) { ?>
 
                                 <tr>
                                     <td><?= $n++ ?>.</td>
@@ -38,7 +38,6 @@
                                     <td style="width:3px;">
                                         <center>
                                             <a href="?page=payments&act=del&id=<?= $g['id_bayar'] ?>" onclick="return confirm('Yakin Menghapus?')" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>&nbsp;
-                                            <!-- <a href="?a=bayar&ke=list&action=detail&siswa=<?= $g['id_casis'] ?>" clas="btn btn-xs btn-info" title="Detail Pembayaran Siswa"><i class="fa fa-location-arrow"></i> </a> -->
                                         </center>
                                     </td>
                                 </tr>
@@ -68,7 +67,7 @@
                         <div class="input-group-addon">
                             <i class="glyphicon glyphicon-user"></i>
                         </div>
-                        <select name="siswa" id="nama" class="select2" style="width: 100%;line-height: 20px !important;">
+                        <select name="siswa" id="nama" class="form-control select2" style="width: 100%;line-height: 20px !important;">
                             <option>-- Pilih --</option>
                             <?php
 

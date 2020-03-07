@@ -1,15 +1,13 @@
 <title>Detail Biodata Peserta Didik Baru | PPDB SMK Walisongo Pecangaan</title>
-<!-- <div class="row">
-</div> -->
 <?php
-$q = $db->query("SELECT * FROM `new_students` WHERE `new_students`.`id`='$_GET[id]' ");
+$q = $db->query("SELECT * FROM `new_students` WHERE `new_students`.`id_pd`='$_GET[id]' ");
 $d = $db->fetch($q);
-// while ($q = $db->fetch($q)) {
 ?>
 <div class="pull-left">
     <a href="?page=dashboard" class="btn btn-warning"><i class="glyphicon glyphicon-chevron-left"></i> Kembali</a>
-    <a href="export.php?e=single&id=<?= $d['id_casis'] ?>" target="_blank" class="btn btn-info"><i class="glyphicon glyphicon-print"></i> Export</a>
+    <a href="export.php?e=single&id=<?= $d['id_pd'] ?>" target="_blank" class="btn btn-info"><i class="glyphicon glyphicon-print"></i> Export</a>
     <a type="button" class="btn btn-success" data-toggle="modal" data-target="#passLogin"><i class="fa fa-random"></i> Ubah Password</a>
+    <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#histori"><i class="fa fa-dollar"></i> Riwayat Pembayaran</a>
 </div><br /><br />
 <form action="" method="post">
 <div class="row">
@@ -26,7 +24,7 @@ $d = $db->fetch($q);
                 <div class="form-group">
                     <label class="control-label">No.Pendaftaran</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="id_reg" id="id_reg" value="<?= $d['id'] ?>" class="form-control" readonly disabled>
+                    <input type="text" name="id_reg" id="id_reg" value="<?=str_pad(@$d['id_reg'], 3, '0', STR_PAD_LEFT)?>" class="form-control" readonly disabled>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Tgl. Pendaftaran</label>
@@ -41,7 +39,7 @@ $d = $db->fetch($q);
                 <div class="form-group">
                     <label class="control-label">TTL</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="ttl" id="ttl" value="<?= $d['tgl_lahir'] ?>" class="form-control" required>
+                    <input type="text" name="ttl" id="ttl" value="<?= $d['tempat_lahir'] ?>, <?= $d['tgl_lahir'] ?>" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Jenis Kelamin</label>
@@ -102,14 +100,14 @@ $d = $db->fetch($q);
                     <!-- <p class="form-control-static"></p> -->
                     <input type="text" name="pekerjaan_wali" id="krjw" value="<?= $d['kerjaan_wali'] ?>" class="form-control" required>
                 <div class="form-group">
+                    <label class="control-label">Jumlah Saudara</label>
+                    <!-- <p class="form-control-static"></p> -->
+                    <input type="number" name="saudara" id="sdr" value="<?= $d['jml_saudara'] ?>" class="form-control">
+                </div>
+                <div class="form-group">
                     <label class="control-label">Anak Ke-</label>
                     <!-- <p class="form-control-static"></p> -->
                     <input type="number" name="anakke" id="an" value="<?= $d['anakke'] ?>" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Jumlah Saudara</label>
-                    <!-- <p class="form-control-static"></p> -->
-                    <input type="number" name="saudara" id="sdr" value="<?= $d['sdr'] ?>" class="form-control">
                 </div>
             </div>
         </div>
@@ -125,15 +123,6 @@ $d = $db->fetch($q);
                 </div>
             </div>
             <div class="box-body">
-                <div class="form-group">
-                    <label class="control-label">Jalur Pendaftaran</label>
-                    <!-- <p class="form-control-static"></p> -->
-                    <select name="jenis" id="jenis" class="form-control">
-                        <option value="">-- Pilih satu--</option>
-                        <option value="baru" <?= $d['jenis_pendaftaran'] == 'baru' ? 'selected' : '' ?>>Baru</option>
-                        <option value="pindahan" <?= $d['jenis_pendaftaran'] == 'pindahan' ? 'selected' : '' ?>>Pindahan</option>
-                    </select>
-                </div>
                 <div class="form-group">
                     <label class="control-label">Jalur Pendaftaran</label>
                     <!-- <p class="form-control-static"></p> -->
@@ -156,55 +145,20 @@ $d = $db->fetch($q);
                 <div class="form-group">
                     <label class="control-label">Asal Sekolah</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="asalsek" id="asalsek" value="<?= $d['asal_sekolah'] ?>" class="form-control" required>
+                    <input type="text" name="asalsek" id="asalsek" value="<?= $d['sekolah_asal'] ?>" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Alamat Asal Sekolah</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="almsekas" id="almsekas" value="<?= $d['alamat_asal_sekolah'] ?>" class="form-control" required>
+                    <input type="text" name="almsekas" id="almsekas" value="<?= $d['alamatnya'] ?>" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Prestadi Akademik</label>
-                    <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="presak" id="presak" value="<?= $d['prestasi_akademik'] ?>" class="form-control">
+                    <textarea name="akademik" id="aka" cols="4" rows="3" class="form-control"><?= $d['akademik'] ?></textarea>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Prestadi Nonakademik</label>
-                    <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="presnon" id="presnon" value="<?= $d['prestasi_nonakademik'] ?>" class="form-control">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- NIlai UN -->
-    <div class="col-md-6">
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h4 class="box-title">
-                    <span class="fa fa-dollar"></span>
-                    Daftar Nilai UN
-                </h4>
-            </div>
-            <div class="box-body">
-                <div class="form-group">
-                    <label class="control-label">Matematika</label>
-                    <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="mtk" id="mtk" value="<?= $d['mtk'] ?>" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Bahasa Indonesia</label>
-                    <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="bindo" id="bindo" value="<?= $d['bindo'] ?>" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Bahasa Inggris</label>
-                    <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="bing" id="bing" value="<?= $d['bing'] ?>" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label class="control-label">IPA</label>
-                    <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="ipa" id="ipa" value="<?= $d['ipa'] ?>" class="form-control">
+                    <textarea name="nonakademik" id="nonaka" cols="4" rows="3" class="form-control"><?= $d['nonakademik'] ?></textarea>
                 </div>
             </div>
         </div>
@@ -224,35 +178,48 @@ $d = $db->fetch($q);
                     <!-- <p class="form-control-static"></p> -->
                     <select name="rokok" id="rokok" class="form-control" required>
                         <option value="">-- Pilih Satu --</option>
-                        <option value="IYA" <?= $d['merokok'] == 'IYA' ? 'selected' : '' ?>>IYA</option>
-                        <option value="TIDAK" <?= $d['merokok'] == 'TIDAK' ? 'selected' : '' ?>>TIDAK</option>
+                        <option value="Iya" <?= $d['merokok'] == 'Iya' ? 'selected' : '' ?>>Iya</option>
+                        <option value="Tidak" <?= $d['merokok'] == 'Tidak' ? 'selected' : '' ?>>Tidak</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Bertato</label>
-                    <!-- <p class="form-control-static"></p> -->
                     <select name="tato" id="tato" class="form-control" required>
                         <option value="">-- Pilih Satu --</option>
-                        <option value="IYA" <?= $d['bertato'] == 'IYA' ? 'selected' : '' ?>>IYA</option>
-                        <option value="TIDAK" <?= $d['bertato'] == 'TIDAK' ? 'selected' : '' ?>>TIDAK</option>
+                        <option value="Iya" <?= $d['bertato'] == 'Iya' ? 'selected' : '' ?>>Iya</option>
+                        <option value="Tidak" <?= $d['bertato'] == 'Tidak' ? 'selected' : '' ?>>Tidak</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Berkebutuhan Khusus</label>
-                    <!-- <p class="form-control-static"><?= $d['bk'] ?></p> -->
                     <select name="bk" id="bk" class="form-control" required>
                         <option value="">-- Pilih Satu --</option>
-                        <option value="IYA" <?= $d['bk'] == 'IYA' ? 'selected' : '' ?>>IYA</option>
-                        <option value="TIDAK" <?= $d['bk'] == 'TIDAK' ? 'selected' : '' ?>>TIDAK</option>
+                        <option value="Iya" <?= $d['butuh_khusus'] == 'Iya' ? 'selected' : '' ?>>Iya</option>
+                        <option value="Tidak" <?= $d['butuh_khusus'] == 'Tidak' ? 'selected' : '' ?>>Tidak</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Buta Warna</label>
-                    <!-- <p class="form-control-static"><?= $d['bw'] ?></p> -->
                     <select name="bw" id="bw" class="form-control" required>
                         <option value="">-- Pilih Satu --</option>
-                        <option value="IYA" <?= $d['bw'] == 'IYA' ? 'selected' : '' ?>>IYA</option>
-                        <option value="TIDAK" <?= $d['bw'] == 'TIDAK' ? 'selected' : '' ?>>TIDAK</option>
+                        <option value="Iya" <?= $d['buta_warna'] == 'Iya' ? 'selected' : '' ?>>Iya</option>
+                        <option value="Tidak" <?= $d['buta_warna'] == 'Tidak' ? 'selected' : '' ?>>Tidak</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Memiliki KIP</label>
+                    <select name="bw" id="bw" class="form-control" required>
+                        <option value="">-- Pilih Satu --</option>
+                        <option value="Iya" <?= $d['kip'] == 'Iya' ? 'selected' : '' ?>>Iya</option>
+                        <option value="Tidak" <?= $d['kip'] == 'Tidak' ? 'selected' : '' ?>>Tidak</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Yatim / Yatim Piatu</label>
+                    <select name="bw" id="bw" class="form-control" required>
+                        <option value="">-- Pilih Satu --</option>
+                        <option value="Iya" <?= $d['yatim'] == 'Iya' ? 'selected' : '' ?>>Iya</option>
+                        <option value="Tidak" <?= $d['yatim'] == 'Tidak' ? 'selected' : '' ?>>Tidak</option>
                     </select>
                 </div>
             </div>
@@ -260,7 +227,7 @@ $d = $db->fetch($q);
     </div>
 </div>
 <div class="row col-md-12">
-    <button type="submit" name="savekabeh" class="btn btn-success btn-block"><i class="fa fa-save"></i> Simpan Data</button>
+    <button type="submit" name="savekabeh" class="btn btn-success btn-block" disabled><i class="fa fa-save"></i> Simpan Data</button>
 </div><br /><br />
 </form>
 
@@ -280,8 +247,8 @@ $d = $db->fetch($q);
                             <div class="input-group-addon">
                                 <span class="fa fa-user"></span>
                             </div>
-                            <input type="hidden" name="iduser" value="<?= $d['id_reg'] ?>">
-                            <input type="text" class="form-control" value="<?= $d['no_nik'] ?>" readonly>
+                            <input type="hidden" name="iduser" value="<?= $d['id_pd'] ?>">
+                            <input type="text" class="form-control" value="<?= $d['nik'] ?>" readonly>
                             <span class="help-block"></span>
                         </div>
                     </div>
@@ -319,6 +286,57 @@ $d = $db->fetch($q);
                             <i class="fa fa-close"></i> Close
                         </button>
                     </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal Riwayat Pembayaran -->
+<div id="histori" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Riwayat Pembayaran</h4>
+            </div>
+            <form action="" method="post">
+                <div class="modal-body table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th width="5">No.</th>
+                                <th>Tanggal</th>
+                                <th>Nominal</th>
+                            </tr>
+                        </thead>
+                        <?php
+                        $no = 1;
+                        $sql = $db->query("SELECT *, setor, SUM(setor) AS jumlah FROM `pembayaran` `a` JOIN `new_students` `b` ON `a`.`nik`=`b`.`nik` WHERE `b`.`id_pd`='$_GET[id]' ORDER BY `a`.`tgl` DESC");
+                        while ($res = $db->fetch($sql)) {
+                        ?>
+                        <tbody>
+                            <tr>
+                                <td><?=$no++?>.</td>
+                                <td><?=$res['tgl']?></td>
+                                <td><?=idr($res['tgl'])?></td>
+                            </tr>
+                        </tbody>
+                        <?php 
+                        }
+                        $total = $db->fetch($sql);
+                        ?>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2">Jumlah Total</td>
+                                <td><?=$total['jumlah']?></td>
+                            </tr>
+                        </tfoot>
+                    </table> 
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default pull-right" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Close
+                    </button>
                 </div>
             </form>
         </div>

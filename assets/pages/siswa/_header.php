@@ -61,7 +61,7 @@
                                         <a href="?page=setting" class="btn btn-default btn-flat disabled">Setting</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="?auth=logout" onclick="return confirm('Apakah ingin Keluar?')" class="btn btn-default btn-flat">Logout</a>
+                                        <a href="?page=logout" onclick="return confirm('Apakah ingin Keluar?')" class="btn btn-default btn-flat">Logout</a>
                                     </div>
                                 </li>
                             </ul>

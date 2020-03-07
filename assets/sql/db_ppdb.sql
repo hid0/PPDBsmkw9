@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 11, 2020 at 08:27 AM
+-- Generation Time: Feb 23, 2020 at 12:47 PM
 -- Server version: 10.3.22-MariaDB-1
 -- PHP Version: 7.3.11-0ubuntu2
 
@@ -29,7 +29,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `new_students` (
-  `id` varchar(40) NOT NULL,
+  `id_reg` int(11) NOT NULL,
+  `id_pd` varchar(50) NOT NULL,
   `nik` varchar(16) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `jk` varchar(2) NOT NULL,
@@ -49,7 +50,7 @@ CREATE TABLE `new_students` (
   `jml_saudara` int(3) NOT NULL,
   `anakke` int(3) NOT NULL,
   `jalur_daftar` varchar(45) NOT NULL,
-  `khusus` varchar(35) NOT NULL,
+  `khusus` varchar(35) DEFAULT NULL,
   `jur_pertama` varchar(5) NOT NULL,
   `jur_kedua` varchar(5) NOT NULL,
   `sekolah_asal` varchar(30) NOT NULL,
@@ -70,8 +71,8 @@ CREATE TABLE `new_students` (
 -- Dumping data for table `new_students`
 --
 
-INSERT INTO `new_students` (`id`, `nik`, `nama`, `jk`, `passwd`, `tempat_lahir`, `tgl_lahir`, `agama`, `alamat`, `hp_ortu`, `kendaraan`, `ayah`, `kerjaan_ayah`, `ibu`, `kerjaan_ibu`, `wali`, `kerjaan_wali`, `jml_saudara`, `anakke`, `jalur_daftar`, `khusus`, `jur_pertama`, `jur_kedua`, `sekolah_asal`, `alamatnya`, `akademik`, `nonakademik`, `merokok`, `butuh_khusus`, `bertato`, `buta_warna`, `yatim`, `kip`, `status`, `timestamp`) VALUES
-('90f5e393-3b5c-4b15-8c39-baf6e8dff6de', '3320031105990002', 'FAIZ HIDAYATULLOH', 'L', '5aeb2b3c09e430c14082bd599fa89c8af064759b', 'Jepara', '11/05/1999', 'Islam', 'Pec RT.1 RW.1, Pec, Jepara', '989898', 'Kendaraan Pribadi', 'Jan', 'Swasta', 'Jan', 'Ibu Rumah Tangga', 'Jan', 'Swasta', 2, 1, 'umum', '-Pilih Jalur Khusus-', 'TKR', 'TKJ', 'Mts', 'dklnfjdf', '', '', 'Tidak', 'Tidak', 'Tidak', 'Tidak', 'Tidak', 'Tidak', 'tidak', '2020-02-08 09:17:34');
+INSERT INTO `new_students` (`id_reg`, `id_pd`, `nik`, `nama`, `jk`, `passwd`, `tempat_lahir`, `tgl_lahir`, `agama`, `alamat`, `hp_ortu`, `kendaraan`, `ayah`, `kerjaan_ayah`, `ibu`, `kerjaan_ibu`, `wali`, `kerjaan_wali`, `jml_saudara`, `anakke`, `jalur_daftar`, `khusus`, `jur_pertama`, `jur_kedua`, `sekolah_asal`, `alamatnya`, `akademik`, `nonakademik`, `merokok`, `butuh_khusus`, `bertato`, `buta_warna`, `yatim`, `kip`, `status`, `timestamp`) VALUES
+(1, '905bcfb3-3997-4e83-8832-d7f252b06330', '3320021105990002', 'FAIZ HIDAYATULLOH', 'L', '5aeb2b3c09e430c14082bd599fa89c8af064759b', 'Jepara', '11/05/1999', 'Islam', 'Pecangaan RT.2 RW.1, Pecangaan, Jepara', '89671891052', 'Jalan Kaki', 'Muhammad', 'Swasta', 'Luluk', 'Ibu Rumah Tangga', 'Muhammad', 'Swasta', 2, 1, 'umum', '', 'TKR', 'PBS', 'MTs Al Alawiyah', 'Karangrandu, Pecangaan', '', '', 'Tidak', 'Tidak', 'Tidak', 'Tidak', 'Tidak', 'Tidak', 'Tidak', '2020-02-22 05:34:43');
 
 -- --------------------------------------------------------
 
@@ -84,7 +85,6 @@ CREATE TABLE `padmin` (
   `name` varchar(50) NOT NULL,
   `username` varchar(121) NOT NULL,
   `password` varchar(121) NOT NULL,
-  `id_menu` int(11) NOT NULL,
   `profile` enum('avatar1.png','avatar2.png','avatar3.png','avatar4.png','avatar5.png','user1-128x128.jpg','user2-160x160.jpg','user3-128x128.jpg','user4-128x128.jpg','user5-128x128.jpg','user6-128x128.jpg','user7-128x128.jpg','user8-128x128.jpg') NOT NULL,
   `theme` enum('skin-blue','skin-black','skin-green','skin-purple','skin-red','skin-yellow') NOT NULL,
   `roles` enum('super-admin','keuangan','tata-usaha') NOT NULL
@@ -94,17 +94,16 @@ CREATE TABLE `padmin` (
 -- Dumping data for table `padmin`
 --
 
-INSERT INTO `padmin` (`id`, `name`, `username`, `password`, `id_menu`, `profile`, `theme`, `roles`) VALUES
-(1, 'Administrator', 'admin', '08d04420b318c336c2732b6f3f7a9e7f04743f20', 1, 'user8-128x128.jpg', 'skin-green', 'super-admin'),
-(2, 'Santi Mawarni', 'santi', '3e4fc6ae741670aa40825aa6ab622520381b6356', 2, 'avatar2.png', 'skin-yellow', 'keuangan'),
-(3, 'Tata Usaha', 'shohir', '58fecf057bc9bc9d4808569113f88829b7e14ff9', 3, 'user1-128x128.jpg', 'skin-blue', 'tata-usaha'),
-(4, 'Siti Khanifah', 'khanif', '8f21200da746619042a2646d2b3cca4589ba8fb2', 2, 'avatar2.png', 'skin-yellow', 'keuangan'),
-(5, 'Ahmad Nizar', 'nizar', '35779736edfe151b5493c3c99c7e451be5e4a1fe', 2, 'user6-128x128.jpg', 'skin-green', 'keuangan'),
-(7, 'Asrori', 'asrori', '4aed7fb4eed446796c59ab3fd911e359f063ec83', 3, 'avatar3.png', 'skin-green', 'tata-usaha'),
-(8, 'Muh. Syafiq', 'syafiq', 'e52b23862ac0c5a92db325ad74298c7ddcf3ddf8', 3, 'user8-128x128.jpg', 'skin-green', 'tata-usaha'),
-(9, 'Ahmad Sholihul', 'ahmad', '2c4c3891e2ac6958e9810a1e49c6705784fbfa1a', 3, 'avatar5.png', 'skin-green', 'tata-usaha'),
-(10, 'Faiz Hidayatulloh', 'faiz', '8ab7b004f4ac17eab77eebf3b0e733fa74ddbf99', 1, 'user8-128x128.jpg', 'skin-purple', 'super-admin'),
-(11, 'Mokh. Faris', 'faris', '40e15b60947665dc4be5fc4ede58d41863fcc3fe', 3, 'avatar4.png', 'skin-green', 'tata-usaha');
+INSERT INTO `padmin` (`id`, `name`, `username`, `password`, `profile`, `theme`, `roles`) VALUES
+(1, 'Administrator', 'admin', '08d04420b318c336c2732b6f3f7a9e7f04743f20', 'user8-128x128.jpg', 'skin-green', 'super-admin'),
+(2, 'Santi Mawarni', 'santi', '3e4fc6ae741670aa40825aa6ab622520381b6356', 'avatar2.png', 'skin-yellow', 'keuangan'),
+(4, 'Siti Khanifah', 'khanif', '8f21200da746619042a2646d2b3cca4589ba8fb2', 'avatar2.png', 'skin-yellow', 'keuangan'),
+(5, 'Ahmad Nizar', 'nizar', '35779736edfe151b5493c3c99c7e451be5e4a1fe', 'user6-128x128.jpg', 'skin-green', 'keuangan'),
+(7, 'Asrori', 'asrori', '4aed7fb4eed446796c59ab3fd911e359f063ec83', 'avatar3.png', 'skin-green', 'tata-usaha'),
+(8, 'Muh. Syafiq', 'syafiq', 'e52b23862ac0c5a92db325ad74298c7ddcf3ddf8', 'user8-128x128.jpg', 'skin-green', 'tata-usaha'),
+(9, 'Ahmad Sholihul', 'ahmad', '2c4c3891e2ac6958e9810a1e49c6705784fbfa1a', 'avatar5.png', 'skin-green', 'tata-usaha'),
+(10, 'Faiz Hidayatulloh', 'faiz', 'd321c195ab96c75a811d4ee3dc15b7e999195a3f', 'user8-128x128.jpg', 'skin-purple', 'super-admin'),
+(11, 'Mokh. Faris', 'faris', '40e15b60947665dc4be5fc4ede58d41863fcc3fe', 'avatar4.png', 'skin-green', 'tata-usaha');
 
 -- --------------------------------------------------------
 
@@ -116,7 +115,7 @@ CREATE TABLE `pembayaran` (
   `id_bayar` int(11) NOT NULL,
   `nik` varchar(16) NOT NULL,
   `tgl` date NOT NULL,
-  `setor` int(11) NOT NULL,
+  `setor` int(9) NOT NULL,
   `petugas` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -135,14 +134,6 @@ CREATE TABLE `tagihan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tagihan`
---
-
-INSERT INTO `tagihan` (`id`, `nama_tagihan`, `jml_tag`, `utk`, `ket`) VALUES
-(6, 'Pembiayaan Awal', 858000, 'L', 'MOPDIK (Masa Orientasi Peserta Didik); Pembelian Seragam'),
-(7, 'Pembiayaan Awal', 923000, 'P', 'MOPDIK (Masa Orientasi Peserta Didik); Pembelian Seragam');
-
---
 -- Indexes for dumped tables
 --
 
@@ -150,7 +141,7 @@ INSERT INTO `tagihan` (`id`, `nama_tagihan`, `jml_tag`, `utk`, `ket`) VALUES
 -- Indexes for table `new_students`
 --
 ALTER TABLE `new_students`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id_reg`),
   ADD KEY `nik` (`nik`);
 
 --
@@ -178,22 +169,28 @@ ALTER TABLE `tagihan`
 --
 
 --
+-- AUTO_INCREMENT for table `new_students`
+--
+ALTER TABLE `new_students`
+  MODIFY `id_reg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `padmin`
 --
 ALTER TABLE `padmin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_bayar` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_bayar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tagihan`
 --
 ALTER TABLE `tagihan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -89,7 +89,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Tanggal Lahir</label>
-                                                <input type="text" name="tgl_lahir" id="tgl_lahir" class="form-control datepicker" placeholder="01/01/2005" required>
+                                                <input type="text" name="tgl_lahir" id="tgl_lahir" class="form-control datepicker" placeholder="28/12/2005" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -118,7 +118,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="rt">RT</label>
-                                                <input type="number" name="rt" id="rt" class="form-control" placeholder="01" required>
+                                                <input type="number" name="rt" id="rt" class="form-control" placeholder="1" required>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -153,24 +153,31 @@
                                     <h4>Data Keluarga & Orang Tua Peserta Didik Baru</h4>
                                 </div>
                                 <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="trns">Transportasi</label>
+                                        <select name="trns" class="form-control" required>
+                                            <option value="">--Transportasi ke sekolah--</option>
+                                            <option value="Jalan Kaki">Jalan Kaki</option>
+                                            <option value="Kendaraan Pribadi">Kendaraan Pribadi</option>
+                                            <option value="Kendaraan Umum">Kendaraan Umum</option>
+                                        </select>
+                                    </div>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="trns">Transportasi</label>
-                                                <select name="trns" class="form-control" required>
-                                                    <option>--Transportasi ke sekolah--</option>
-                                                    <option value="Jalan Kaki">Jalan Kaki</option>
-                                                    <option value="Kendaraan Pribadi">Kendaraan Pribadi</option>
-                                                    <option value="Kendaraan Umum">Kendaraan Umum</option>
-                                                </select>
-                                            </div>
-                                        </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="nohp">Nomer Telepon Orang Tua</label>
                                                 <div class="input-group">
                                                     <div class="input-group-addon">+62</div>
                                                     <input type="text" name="nohp" id="nohp" class="form-control" placeholder="89004455661" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="nohp1">Nomer HP Peserta Didik</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">+62</div>
+                                                    <input type="text" name="nohp1" id="nohp1" class="form-control" placeholder="89004455660">
                                                 </div>
                                             </div>
                                         </div>
@@ -249,22 +256,21 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="jalur">Jalur Pendaftaran</label><br>
-                                                <label class="radio-inline" for="jal1"><input type="radio" name="jalur" id="jal1" value="umum"> Umum</label>
-                                                <label class="radio-inline" for="jal2"><input type="radio" name="jalur" id="jal2" value="khusus"> Khusus</label>
-                                                <label class="radio-inline" for="jal3"><input type="radio" name="jalur" id="jal3" value="industri"> Industri</label>
+                                                <label class="radio-inline" for="jal1"><input type="radio" name="jalur" id="jal1" value="Umum"> Umum</label>
+                                                <label class="radio-inline" for="jal2"><input type="radio" name="jalur" id="jal2" value="Khusus"> Khusus</label>
+                                                <label class="radio-inline" for="jal3"><input type="radio" name="jalur" id="jal3" value="Industri"> Industri</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group" id="khusus" style="display:none;">
                                                 <label for="khus">Jalur Khusus</label>
-                                                <select class="form-control" name="khus">
-                                                        <option>-Pilih Jalur Khusus-</option>
-                                                        <option value="yatim" onselect="yatim()">Yatim / Yatim Piatu</option>
-                                                        <option value="mts/smp w9">dari MTs./SMP Walisongo</option>
-                                                        <option value="saudara 1 unit">Saudara Kandung siswa di Walisongo</option>
-                                                        <option value="pa/pi guru/karyawan">Putra/i Guru/karyawan di Walisongo</option>
-                                                        <option value="pilih KT">Peserta didik Kriya Tekstil dan Batik</option>
-                                                        <option value="tahfidz">Peserta didik Tahfidz minimal 5 Juz</option>
+                                                <select class="form-control" name="khus" id="pilih">
+                                                    <option value="">-Pilih Jalur Khusus-</option>
+                                                    <option value="yatim">Yatim / Yatim Piatu</option>
+                                                    <option value="mts/smp w9">dari MTs./SMP Walisongo</option>
+                                                    <option value="saudara 1 unit">Saudara Kandung siswa di Walisongo</option>
+                                                    <option value="pa/pi guru/karyawan">Putra/i Guru/karyawan di Walisongo</option>
+                                                    <option value="tahfidz">Peserta didik Tahfidz minimal 5 Juz</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -274,34 +280,30 @@
                                             <div class="form-group">
                                                 <label for="khus">Jurusan Pertama</label>
                                                 <select class="form-control" name="jur1" required>
-                                                        <option>-Pilih Jurusan-</option>
-                                                        <option value="KT">Kriya Tekstil</option>
-                                                        <option value="TKR">Teknik Kendaraan Ringan</option>
-                                                        <option value="TKJ">Teknik Komputer Jaringan</option>
-                                                        <option value="PBS">Perbankan Syari'ah</option>
-                                                    </select>
+                                                    <option value="">-Pilih Jurusan-</option>
+                                                    <option value="KT">Kriya Tekstil</option>
+                                                    <option value="TKR">Teknik Kendaraan Ringan</option>
+                                                    <option value="TKJ">Teknik Komputer Jaringan</option>
+                                                    <option value="PBS">Perbankan Syari'ah</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="khus">Jurusan Kedua</label>
                                                 <select class="form-control" name="jur2" required>
-                                                        <option>-Pilih Jurusan-</option>
-                                                        <option value="KT">Kriya Tekstil</option>
-                                                        <option value="TKR">Teknik Kendaraan Ringan</option>
-                                                        <option value="TKJ">Teknik Komputer Jaringan</option>
-                                                        <option value="PBS">Perbankan Syari'ah</option>
-                                                    </select>
+                                                    <option value="">-Pilih Jurusan-</option>
+                                                    <option value="KT">Kriya Tekstil</option>
+                                                    <option value="TKR">Teknik Kendaraan Ringan</option>
+                                                    <option value="TKJ">Teknik Komputer Jaringan</option>
+                                                    <option value="PBS">Perbankan Syari'ah</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="ui-widget form-group">
                                         <label for="sek_asal">Nama Sekolah Asal</label>
                                         <input type="text" name="sek_asal" id="sek_asal" placeholder="MTs Madaul Huda" class="form-control" required>
-                                        <!-- <select name="sek_asal" id="sek_asal" class="form-control select2">
-                                            <option value="">-- Nama Sekolah Asal --</option>
-                                            <option value=""></option>
-                                        </select> -->
                                     </div>
                                     <label for="al_sek">Alamat Asal sekolah</label>
                                     <div class="row">
@@ -326,7 +328,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="prenon">Prestasi Nonakademik</label>
-                                                <textarea name="preak" id="prenon" cols="5" rows="3" class="form-control" placeholder="Masukan Prestasi Nonakademik dipisah dengan ; jika lebih dari 1"></textarea>
+                                                <textarea name="prenon" id="prenon" cols="5" rows="3" class="form-control" placeholder="Masukan Prestasi Nonakademik dipisah dengan ; jika lebih dari 1"></textarea>
                                             </div>
                                         </div>
                                     </div>

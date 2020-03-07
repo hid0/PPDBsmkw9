@@ -8,6 +8,8 @@
                 <li><a href="export.php?e=data&method=all" target="_blank" rel="noopener noreferrer">All Data</a></li>
                 <li><a href="export.php?e=data&method=ngam" target="_blank" rel="noopener noreferrer">Umum</a></li>
                 <li><a href="export.php?e=data&method=khos" target="_blank" rel="noopener noreferrer">Khusus</a></li>
+                <li><a href="export.php?e=data&method=industri" target="_blank" rel="noopener noreferrer">Industri</a></li>
+                <li><a href="export.php?e=data&method=kip" target="_blank" rel="noopener noreferrer">KIP</a></li>
                 <li class="divider" role="separator"></li>
                 <li><a href="export.php?e=data&method=kt" target="_blank" rel="noopener noreferrer">KT</a></li>
                 <li><a href="export.php?e=data&method=tkr" target="_blank" rel="noopener noreferrer">TKR</a></li>
@@ -66,7 +68,7 @@
                                                 <option value="lulus" selected>LULUS</option>
                                                 <option value="tidak">TIDAK LULUS</option>
                                             </select>
-                                            <input type="hidden" name="id" value="<?= $res['id'] ?>">
+                                            <input type="hidden" name="id" value="<?= $res['id_pd'] ?>">
                                         </form>
 
                                     <?php
@@ -77,7 +79,7 @@
                                                 <option value="lulus">LULUS</option>
                                                 <option value="tidak" selected>TIDAK LULUS</option>
                                             </select>
-                                            <input type="hidden" name="id" value="<?= $res['id'] ?>">
+                                            <input type="hidden" name="id" value="<?= $res['id_pd'] ?>">
                                         </form>
 
                                 <?php
@@ -85,9 +87,9 @@
                                 </td>
                                 <td>
                                     <!-- <a href="#" class="btn btn-xs btn-info"><i class="fa fa-info"></i></a> -->
-                                    <a href="export.php?type=single&id=<?=$res['id']?>" target="_blank" class="btn btn-xs btn-success"><i class="fa fa-print"></i></a>
-                                    <a href="?page=dashboard&act=details&id=<?=$res['id']?>" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i></a>
-                                    <a href="?page=dashboard&act=del&id=<?=$res['id']?>" onclick="return confirm('Anda Yakin ingin menghapus data ini ?')" href="#" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>
+                                    <a href="export.php?e=single&id=<?=$res['id_pd']?>" target="_blank" class="btn btn-xs btn-success"><i class="fa fa-print"></i></a>
+                                    <a href="?page=dashboard&act=details&id=<?=$res['id_pd']?>" class="btn btn-xs btn-warning"><i class="fa fa-info"></i></a>
+                                    <a href="?page=dashboard&act=del&id=<?=$res['id_pd']?>" onclick="return confirm('Anda Yakin ingin menghapus data ini ?')" href="#" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
 
@@ -96,27 +98,6 @@
                     ?>
                     </tbody>
                 </table>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="st" class="modal fade">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-            <button class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"  style="font-weight: bold;text-align: center;">Statistik Kelas</h4>
-            </div>
-            <div class="modal-body">
-                <div class="chart">
-                    <canvas id="Donut"></canvas>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="pull-left">
-                    <button class="btn btn-danger" data-dismiss="modal">Tutup</i></button>
-                </div>
             </div>
         </div>
     </div>
