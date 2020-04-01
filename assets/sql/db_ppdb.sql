@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2deb1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 23, 2020 at 12:47 PM
--- Server version: 10.3.22-MariaDB-1
--- PHP Version: 7.3.11-0ubuntu2
+-- Host: 127.0.0.1
+-- Generation Time: Mar 09, 2020 at 07:17 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -40,6 +40,7 @@ CREATE TABLE `new_students` (
   `agama` varchar(20) NOT NULL,
   `alamat` text NOT NULL,
   `hp_ortu` varchar(14) NOT NULL,
+  `hp_siswa` varchar(12) DEFAULT NULL,
   `kendaraan` varchar(30) NOT NULL,
   `ayah` varchar(35) NOT NULL,
   `kerjaan_ayah` varchar(30) NOT NULL,
@@ -71,8 +72,8 @@ CREATE TABLE `new_students` (
 -- Dumping data for table `new_students`
 --
 
-INSERT INTO `new_students` (`id_reg`, `id_pd`, `nik`, `nama`, `jk`, `passwd`, `tempat_lahir`, `tgl_lahir`, `agama`, `alamat`, `hp_ortu`, `kendaraan`, `ayah`, `kerjaan_ayah`, `ibu`, `kerjaan_ibu`, `wali`, `kerjaan_wali`, `jml_saudara`, `anakke`, `jalur_daftar`, `khusus`, `jur_pertama`, `jur_kedua`, `sekolah_asal`, `alamatnya`, `akademik`, `nonakademik`, `merokok`, `butuh_khusus`, `bertato`, `buta_warna`, `yatim`, `kip`, `status`, `timestamp`) VALUES
-(1, '905bcfb3-3997-4e83-8832-d7f252b06330', '3320021105990002', 'FAIZ HIDAYATULLOH', 'L', '5aeb2b3c09e430c14082bd599fa89c8af064759b', 'Jepara', '11/05/1999', 'Islam', 'Pecangaan RT.2 RW.1, Pecangaan, Jepara', '89671891052', 'Jalan Kaki', 'Muhammad', 'Swasta', 'Luluk', 'Ibu Rumah Tangga', 'Muhammad', 'Swasta', 2, 1, 'umum', '', 'TKR', 'PBS', 'MTs Al Alawiyah', 'Karangrandu, Pecangaan', '', '', 'Tidak', 'Tidak', 'Tidak', 'Tidak', 'Tidak', 'Tidak', 'Tidak', '2020-02-22 05:34:43');
+INSERT INTO `new_students` (`id_reg`, `id_pd`, `nik`, `nama`, `jk`, `passwd`, `tempat_lahir`, `tgl_lahir`, `agama`, `alamat`, `hp_ortu`, `hp_siswa`, `kendaraan`, `ayah`, `kerjaan_ayah`, `ibu`, `kerjaan_ibu`, `wali`, `kerjaan_wali`, `jml_saudara`, `anakke`, `jalur_daftar`, `khusus`, `jur_pertama`, `jur_kedua`, `sekolah_asal`, `alamatnya`, `akademik`, `nonakademik`, `merokok`, `butuh_khusus`, `bertato`, `buta_warna`, `yatim`, `kip`, `status`, `timestamp`) VALUES
+(5, '228b96fc-8437-4a45-836f-fbf81461d946', '3320021105990002', 'FAIZ HIDAYATULLOH', 'L', '5aeb2b3c09e430c14082bd599fa89c8af064759b', 'Jepara', '11/05/1999', 'Islam', 'Kulon RT.3 RW.5, Pecangaan, Jepara', '89671891052', '89671891052', 'Jalan Kaki', 'Muhammad', 'Swasta', 'Luluk', 'Ibu Rumah Tangga', 'Muhammad', 'Swasta', 2, 1, 'Umum', NULL, 'TKJ', 'TKR', 'MTs Salafiyah', 'Sowan Kidul, Pakis Aji', '', '', 'Tidak', 'Tidak', 'Tidak', 'Tidak', 'Tidak', 'Tidak', 'lulus', '2020-03-04 09:45:46');
 
 -- --------------------------------------------------------
 
@@ -118,6 +119,14 @@ CREATE TABLE `pembayaran` (
   `setor` int(9) NOT NULL,
   `petugas` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pembayaran`
+--
+
+INSERT INTO `pembayaran` (`id_bayar`, `nik`, `tgl`, `setor`, `petugas`) VALUES
+(3, '3320021105990002', '2020-03-02', 100000, 'faiz'),
+(5, '3320010505030001', '2020-03-04', 200000, 'faiz');
 
 -- --------------------------------------------------------
 
@@ -172,7 +181,7 @@ ALTER TABLE `tagihan`
 -- AUTO_INCREMENT for table `new_students`
 --
 ALTER TABLE `new_students`
-  MODIFY `id_reg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_reg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `padmin`
@@ -184,13 +193,13 @@ ALTER TABLE `padmin`
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_bayar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_bayar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tagihan`
 --
 ALTER TABLE `tagihan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

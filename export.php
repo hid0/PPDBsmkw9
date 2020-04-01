@@ -22,11 +22,17 @@ if(isset($_GET['e'])) {
 		$q = $db->query("SELECT * FROM `new_students` WHERE `new_students`.`id_pd`='$_GET[id]' ");
 		$d = $db->fetch($q);
 		if ($d['jk'] == 'L') {
-			$jk = "Laki-Laki";
+			$jk     = "PUTRA";
+			$jilbab = "-";
+			$peci   = "35.000";
+			$total  = "708.000";
 		} elseif($d['jk'] == 'P') {
-			$jk = "Perempuan";
+			$jk     = "PUTRI";
+			$jilbab = "100.000";
+			$peci   = "-";
+			$total  = "773.000";
 		} else {
-			$jk = "Jenis Kelamin";
+			$jk = "";
 		}
 		$username = $d['nik'];
 		$password = 'smkw9_jepara';

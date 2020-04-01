@@ -2,10 +2,10 @@ $(document).ready(function() {
     $(".datepicker").datepicker({
         format: "dd/mm/yyyy"
     });
-    $('input[value="khusus"]').click(function() {
+    $('input[value="Khusus"]').click(function() {
         $("#khusus").show();
     });
-    $('input[value="umum"], [value="industri"]').click(function() {
+    $('input[value="Umum"], [value="Industri"]').click(function() {
         $("#khusus").hide();
         $("#pilih").prop("selectedIndex", 0);
         $('input[type="radio"]#ya4').prop("checked", false);
