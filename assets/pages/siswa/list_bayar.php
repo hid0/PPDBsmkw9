@@ -25,9 +25,7 @@
                                 <td><?= localdate($b['tanggal']) ?></td>
                                 <td><?= idr($b['setor']) ?></td>
                             </tr>
-                            <?php
-
-} ?>
+                            <?php } ?>
                         </tbody>
                         <tfoot>
                             <tr style="font-weight: bold;">
