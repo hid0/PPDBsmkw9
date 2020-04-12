@@ -19,6 +19,7 @@
                                 <th style="width:3px;">#</th>
                                 <th>Nama Lengkap</th>
                                 <th>Jurusan</th>
+                                <!-- menampilkan saldo dulu bukan setoran -->
                                 <th>Saldo</th>
                                 <th>Action</th>
                             </tr>
@@ -27,13 +28,14 @@
                             <?php
                             $n = 1;
                             $er = $db->query('SELECT * FROM `pembayaran` JOIN `new_students` WHERE `pembayaran`.`nik`=`new_students`.`nik`');
-
+                            
                             while ($g = $db->assoc($er)) { ?>
 
                                 <tr>
                                     <td><?= $n++ ?>.</td>
                                     <td><?= $g['nama'] ?></td>
                                     <td><b><?= $g['jur_pertama'] ?></b></td>
+                                    <!-- diganti saldo saja -->
                                     <td><?= idr($g['setor']) ?></td>
                                     <td style="width:3px;">
                                         <center>
