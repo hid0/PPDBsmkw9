@@ -74,10 +74,10 @@ $ez = $db->fetch($qu);
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="?a=setting" class="btn btn-default btn-flat">Setting</a>
+                                        <a href="?page=setting" class="btn btn-default btn-flat">Setting</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="?a=logout" onclick="return confirm('Apakah ingin Keluar?')" class="btn btn-default btn-flat">Logout</a>
+                                        <a href="?page=auth&sign=out" onclick="return confirm('Apakah ingin Keluar?')" class="btn btn-default btn-flat">Logout</a>
                                     </div>
                                 </li>
                             </ul>

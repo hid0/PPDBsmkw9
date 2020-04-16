@@ -43,7 +43,7 @@
                             <th>Alamat</th>
                             <th>Jurusan</th>
                             <th>Status</th>
-                            <th style="width:80px;">#</th>
+                            <th style="width:80px;">Opsi</th>
                         </tr>
                     </thead>
                     <tbody>

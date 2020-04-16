@@ -19,34 +19,33 @@
                                 <th style="width:3px;">#</th>
                                 <th>Nama Lengkap</th>
                                 <th>Jurusan</th>
-                                <!-- menampilkan saldo dulu bukan setoran -->
-                                <th>Saldo</th>
+                                <th>Tanggal Setor</th>
+                                <th>Jumlah Setor</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             $n = 1;
-                            $er = $db->query('SELECT * FROM `pembayaran` JOIN `new_students` WHERE `pembayaran`.`nik`=`new_students`.`nik`');
-                            
-                            while ($g = $db->assoc($er)) { ?>
-
+                            $er = $db->query('SELECT * FROM `pembayaran` JOIN `new_students` WHERE `pembayaran`.`nik`=`new_students`.`nik` ORDER BY tgl DESC');
+                            while ($g = $db->assoc($er)){ ?>
                                 <tr>
                                     <td><?= $n++ ?>.</td>
                                     <td><?= $g['nama'] ?></td>
                                     <td><b><?= $g['jur_pertama'] ?></b></td>
-                                    <!-- diganti saldo saja -->
-                                    <td><?= idr($g['setor']) ?></td>
+                                    <td><?= localdate($g['tgl']) ?></td>
+                                    <td><b><?= idr($g['setor']) ?></b></td>
                                     <td style="width:3px;">
                                         <center>
                                             <a href="?page=payments&act=del&id=<?= $g['id_bayar'] ?>" onclick="return confirm('Yakin Menghapus?')" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>&nbsp;
                                         </center>
                                     </td>
                                 </tr>
-
-                            <?php
+                                <?php
                             }
                             ?>
+
+
                         </tbody>
                     </table>
                 </div>

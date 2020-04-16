@@ -29,7 +29,7 @@ $d = $db->fetch($q);
                 <div class="form-group">
                     <label class="control-label">Tgl. Pendaftaran</label>
                     <!-- <p class="form-control-static"></p> -->
-                    <input type="text" name="tgl_dftr" id="tgl" value="<?= $d['timestamp'] ?>" class="form-control" readonly>
+                    <input type="text" name="tgl_dftr" id="tgl" value="<?= localdate($d['timestamp']) ?>" class="form-control" readonly>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Nama Lengkap</label>
@@ -311,24 +311,25 @@ $d = $db->fetch($q);
                         </thead>
                         <?php
                         $no = 1;
-                        $sql = $db->query("SELECT *, setor, SUM(setor) AS jumlah FROM `pembayaran` `a` JOIN `new_students` `b` ON `a`.`nik`=`b`.`nik` WHERE `b`.`id_pd`='$_GET[id]' ORDER BY `a`.`tgl` DESC");
+                        $sql = $db->query("SELECT * FROM `pembayaran`");
                         while ($res = $db->fetch($sql)) {
                         ?>
                         <tbody>
                             <tr>
                                 <td><?=$no++?>.</td>
-                                <td><?=$res['tgl']?></td>
-                                <td><?=idr($res['tgl'])?></td>
+                                <td><?=localdate($res['tgl'])?></td>
+                                <td><?=idr($res['setor'])?></td>
                             </tr>
                         </tbody>
                         <?php 
                         }
-                        $total = $db->fetch($sql);
+                        $sql = $db->query("SELECT SUM(setor) AS totalSetor FROM pembayaran");
+                        $data = $db->fetch($sql);
                         ?>
                         <tfoot>
-                            <tr>
-                                <td colspan="2">Jumlah Total</td>
-                                <td><?=$total['jumlah']?></td>
+                            <tr style="font-weight: bold;">
+                                <td colspan="2" style="text-align: right;">Jumlah Total</td>
+                                <td><?=idr($data['totalSetor'])?></td>
                             </tr>
                         </tfoot>
                     </table> 

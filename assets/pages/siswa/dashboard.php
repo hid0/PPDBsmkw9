@@ -1,7 +1,7 @@
 <!-- Info boxes -->
 <?php
 $nik = $_SESSION['user_siswa'];
-$q = $db->query("SELECT * FROM `new_students` WHERE `new_students`.`nik`='$nik' ");
+$q = $db->query("SELECT * FROM `new_students` WHERE `new_students`.`nik`='$nik'; ");
 $d = $db->fetch($q);
 ?>
 <div class="row">
@@ -20,7 +20,7 @@ $d = $db->fetch($q);
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Tgl. Pendaftaran</label>
                     <div class="col-sm-8">
-                        <p class="form-control-static"><?= localdate($d['tgl']) ?></p>
+                        <p class="form-control-static"><?= localdate($d['timestamp']) ?></p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -32,7 +32,7 @@ $d = $db->fetch($q);
                 <div class="form-group">
                     <label class="col-sm-4 control-label">TTL</label>
                     <div class="col-sm-8">
-                        <p class="form-control-static"><?= $d['tempat_lahir'] ?>, <?=localdate($d['tgl_lahir'])?></p>
+                        <p class="form-control-static"><?= $d['tempat_lahir'] ?>, <?=($d['tgl_lahir'])?></p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -133,15 +133,15 @@ $d = $db->fetch($q);
             <div class="box-body">
                 <?php
                 // anda terdaftar pada gel 1, segera daftar ulang maksimal 31 Mei 2019 untuk mendapatkan 20% potongan seragam
-                if ($d['tgl_dftr'] >= '2019-05-02' && $d['tgl_dftr'] <= '2019-06-14') {
+                if ($d['timestamp'] >= '01-01-2020' && $d['timestamp'] <= '30-04-2020') {
                     // echo "gel 1";
-                    echo "<div class=\"alert alert-info\">Anda Terdaftar Sebagai Siswa Gelombang Ke-1, \n segera daftar ulang maksimal 31 Mei 2019 untuk mendapatkan 20% potongan seragam</div>";
-                }elseif ($d['tgl_dftr'] >= '2019-06-15' && $d['tgl_dftr'] <= '2019-07-11') {
+                    echo "<div class=\"alert alert-info\">Anda Terdaftar Sebagai Calon Peserta Didik Gelombang Ke-1, \n segera daftar ulang, bagi 100 pendaftar PERTAMA berhak mendapatkan 1 stel seragam</div>";
+                }elseif ($d['timestamp'] >= '01-05-2020' && $d['timestamp'] <= '05-06-2020') {
                     // echo "gel 2";
-                    echo "<div class=\"alert alert-info\">Anda Terdaftar Sebagai Siswa Gelombang Ke-2</div>";
+                    echo "<div class=\"alert alert-info\">Anda Terdaftar Sebagai Calon Peserta Didik Gelombang Ke-2</div>";
                 } else {
                     // echo "gel 3";
-                    echo "<div class=\"alert alert-info\">Anda Terdaftar Sebagai Siswa Gelombang Ke-3</div>";
+                    echo "<div class=\"alert alert-info\">Anda Terdaftar Sebagai Calon Peserta Didik Gelombang Ke-3</div>";
                 }
                 ?>
             </div>
@@ -157,19 +157,17 @@ $d = $db->fetch($q);
                 if ($d['status'] == 'lulus') { ?>
 
                     <div class="alert alert-success">
-                        Selamat Anda Diterima menjadi Siswa di SMK Walisongo Pecangaan
+                        Selamat Anda Diterima menjadi Calon Peserta Didik di SMK Walisongo Pecangaan
                     </div>
-
-                <?php
-            } else if ($d['status'] == 'tidak') { ?>
-
+                    <?php
+                } else if ($d['status'] == 'Tidak') { ?>
                     <div class="alert alert-danger">
-                        Anda Belum Diterima menjadi Siswa di SMK Walisongo Pecangaan
+                        Anda Belum Diterima menjadi Peserta Didik di SMK Walisongo Pecangaan
                     </div>
-
-                <?php
-            }
-            ?>
+                    <?php
+                }
+                ?>
+                
             </div>
         </div>
     </div>

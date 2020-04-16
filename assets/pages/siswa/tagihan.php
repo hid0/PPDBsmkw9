@@ -16,8 +16,10 @@
                     </thead>
                     <?php
                     $n = 1;
-                    $jk = $d['jenkel'];
-                    $tgh = $db->query("SELECT *, SUM(jml_tag) AS totale FROM `tagihan` WHERE '$jk' = tagihan.utk");
+                    $jk = $d['jk'];
+                    // $data = $db->query("SELECT nama, jk FROM `new_students` WHERE `new_students`.`nik`=$_SESSION[user_siswa]");
+                    // $jk = $db->fetch($data);
+                    $tgh = $db->query("SELECT nama_tagihan,jml_tag,ket  FROM `tagihan` WHERE `tagihan`.`utk`=$jk");
                     while ($getD = $db->fetch($tgh)) {
                     ?>
                     <tbody>
